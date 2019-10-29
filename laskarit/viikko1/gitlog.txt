@@ -1,0 +1,113 @@
+commit b7307c735e7ec280b9e96a1862fba8d8f7a584eb
+Author: Mikael Törnwall <mikael.tornwall@aalto.fi>
+Date:   Tue Oct 29 16:55:45 2019 +0200
+
+    muutoksia
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 94d8dd7eee4254766f262942f5d40c7523d4275d
+Author: Mikael Törnwall <mikael.tornwall@aalto.fi>
+Date:   Tue Oct 29 16:51:02 2019 +0200
+
+    lisää tiedostoja
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 2206f3742f4bf68e451fae6bcf07d77174e7fc54
+Author: Mikael Törnwall <mikael.tornwall@aalto.fi>
+Date:   Tue Oct 29 16:45:05 2019 +0200
+
+    lisää ja poista tekstiä eka.txt ja kolmas.txt
+
+ eka.txt    | 14 ++++++--------
+ kolmas.txt |  8 +++++++-
+ 2 files changed, 13 insertions(+), 9 deletions(-)
+
+commit 2256bf914191c5ab378af245bca9a55fa12accdf
+Author: Mikael Törnwall <mikael.tornwall@aalto.fi>
+Date:   Tue Oct 29 16:41:50 2019 +0200
+
+    vaihda tiedosto.txt nimi eka.txt, poista toinen.txt
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 74e920334b13a6d716ad60b55bd458dbfdc2c629
+Author: Mikael Törnwall <mikael.tornwall@aalto.fi>
+Date:   Tue Oct 29 16:40:11 2019 +0200
+
+    poista toinen.txt
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 0eb004f8ddf72ea06a581c73f6ce05d13bceb68c
+Author: Mikael Törnwall <mikael.tornwall@aalto.fi>
+Date:   Tue Oct 29 16:38:11 2019 +0200
+
+    lisää ja poista tekstiä tiedosto.txt
+
+ tiedosto.txt | 14 +++++---------
+ 1 file changed, 5 insertions(+), 9 deletions(-)
+
+commit 5f80f5fef6d3fdda0d568172708281a75fa2bd40
+Author: Mikael Törnwall <mikael.tornwall@aalto.fi>
+Date:   Tue Oct 29 16:35:35 2019 +0200
+
+    lisää tekstiä tiedosto.txt
+
+ tiedosto.txt | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+
+commit 46688eaee75e74f7c996bf57b2d628e429c3056f
+Author: Mikael Törnwall <mikael.tornwall@aalto.fi>
+Date:   Tue Oct 29 16:22:39 2019 +0200
+
+    lisää kansio stuff ja tiedosto moreStuff.txt
+
+ stuff/moreStuff.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit cbf9149b4abe7602a93dcfd7542b0b192ec3780b
+Author: Mikael Törnwall <mikael.tornwall@aalto.fi>
+Date:   Tue Oct 29 16:21:14 2019 +0200
+
+    muokkaa toinen.txt ja kolmas.txt
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 847380ba9ac1d3d4835d386425a209d13a1de3a0
+Author: Mikael Törnwall <mikael.tornwall@aalto.fi>
+Date:   Tue Oct 29 16:19:03 2019 +0200
+
+    lisaa kolmas.txt
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit e316952f0869011f011842e2d92108f03b34953b
+Author: Mikael Törnwall <mikael.tornwall@aalto.fi>
+Date:   Tue Oct 29 16:11:55 2019 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 415d5e6915205b1239c6cea535d2ae1a1a31f701
+Author: Mikael Törnwall <mikael.tornwall@aalto.fi>
+Date:   Tue Oct 29 16:08:37 2019 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
