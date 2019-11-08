@@ -1,6 +1,6 @@
-# Ohjelmointitekniikka 2019 -kurssin laskarit
+# Ohjelmointitekniikka 2019 -kurssi
 
-## Sisältö
+## Laskarit
 
 [__Viikko 1__](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/laskarit/viikko1)
 
@@ -10,5 +10,14 @@ Git ja GitHub -harjoitukset:
 
 [komentorivi.txt](https://github.com/MikaelTornwall/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
 
+[__Viikko 2__](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/laskarit/viikko2)
 
+Testaus:
 
+[Maksukortti](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/laskarit/viikko2/Maksukortti)
+
+[Unicafe](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/laskarit/viikko2/Unicafe)
+
+## Programming project (in English)
+
+[Documentation](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/documentation)
