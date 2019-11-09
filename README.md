@@ -1,5 +1,9 @@
 # Ohjelmointitekniikka 2019 -kurssi
 
+## Programming project (in English)
+
+[Documentation](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/documentation)
+
 ## Laskarit
 
 [__Viikko 1__](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/laskarit/viikko1)
@@ -17,7 +21,3 @@ Testaus:
 [Maksukortti](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/laskarit/viikko2/Maksukortti)
 
 [Unicafe](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/laskarit/viikko2/Unicafe)
-
-## Programming project (in English)
-
-[Documentation](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/documentation)
