@@ -21,3 +21,17 @@ Testaus:
 [Maksukortti](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/laskarit/viikko2/Maksukortti)
 
 [Unicafe](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/laskarit/viikko2/Unicafe)
+
+[__Viikko 3__](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/laskarit/viikko3)
+
+Luokkakaaviot
+
+[Tehtava 1](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/laskarit/viikko3/tehtava1.png)
+
+[Tehtava 2](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/laskarit/viikko3/tehtava2.png)
+
+Sekvenssikaaviot
+
+[Tehtava 3](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/laskarit/viikko3/tehtava3.png)
+
+[Tehtava 4](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/laskarit/viikko3/tehtava4.png)
