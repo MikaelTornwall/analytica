@@ -4,5 +4,5 @@
 | :----:|:--------:| :-----|
 | 9.11  | 1        | Start writing the preliminary requirements documentation and create work hour log |
 | 10.11 | 0.5      | Continue writing the preliminary requirements documentation |
-| -     | -        | -     |
-| total | 1.5      |       |
+| 17.11 | 4.5        | Create UI with login and dashboard drafts, create user and statistics classes, write first tests |
+| total | 6.0      |       |

@@ -27,7 +27,7 @@ __Before logging in__
 - User can register
   - Required information is
     - Username (length at least 6 characters)
-    -Password (length at least 8 characters and must include both letters and numbers)
+    - Password (length at least 8 characters and must include both letters and numbers)
 - User can log in
   - If login is successful user will be directed to the application
   - If login is unsuccessful user will receive a notification and can try again

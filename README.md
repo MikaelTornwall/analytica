@@ -1,37 +1,37 @@
-# Ohjelmointitekniikka 2019 -kurssi
+## Analytica
 
-## Programming project (in English)
+Application is intended for the use of an imaginary company that organizes investment events.
+It provides an interface for collecting and analyzing data that is most relevant to their core business.
 
-[Documentation](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/documentation)
+## 1. Documentation
 
-## Laskarit
+[Requirements](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/documentation/requirements.md)
 
-[__Viikko 1__](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/laskarit/viikko1)
+[Work hour log](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/documentation/workhours.md)
 
-Git ja GitHub -harjoitukset:
+## 2. How to
 
-[gitlog.txt](https://github.com/MikaelTornwall/ot-harjoitustyo/blob/master/laskarit/viikko1/gitlog.txt)
+### 2.1. Initialize
 
-[komentorivi.txt](https://github.com/MikaelTornwall/ot-harjoitustyo/blob/master/laskarit/viikko1/komentorivi.txt)
+1. Clone the project to your local machine
+2. Navigate to "analytica" folder
 
-[__Viikko 2__](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/laskarit/viikko2)
+### 2.2 Run the application
 
-Testaus:
+Type the following to your command line
 
-[Maksukortti](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/laskarit/viikko2/Maksukortti)
+`mvn compile exec:java -Dexec.mainClass=analytica.Main`
 
-[Unicafe](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/laskarit/viikko2/Unicafe)
+### 2.3. Run the tests
 
-[__Viikko 3__](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/laskarit/viikko3)
+Type the following to your command line
 
-Luokkakaaviot
+`mvn test`
 
-[Tehtava 1](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/laskarit/viikko3/tehtava1.png)
+### 2.4. Create and view the test report
 
-[Tehtava 2](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/laskarit/viikko3/tehtava2.png)
+Type the following to your command line
 
-Sekvenssikaaviot
+`mvn test jacoco:report`
 
-[Tehtava 3](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/laskarit/viikko3/tehtava3.png)
-
-[Tehtava 4](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/laskarit/viikko3/tehtava4.png)
+After creating the test report, you can view it by opening the following file in your browser target/site/jacoco/index.hmtl
