@@ -41,99 +41,54 @@ public class AnalyticaUI extends Application {
     @Override
     public void start(Stage stage) {
         
-        this.init();
+        // 1. Initialization
+        this.init();                                     
+                                     
+        // 2. Create layouts        
+        // 2.1 Login layout
+        Login login = new Login();        
+        BorderPane loginLayout = (BorderPane) login.getLogin();
         
-        // Login screen       
-        // Create login components
-        Label loginLabel = new Label("Login");
-        Label unsuccessfulLoginLabel = new Label("");
-        Label usernameLabel = new Label("Username");
-        Label passwordLabel = new Label("Password");        
-        TextField usernameInput = new TextField();       
-        TextField passwordInput = new PasswordField();             
-        Button loginButton = new Button("Login");
-        Button createButton = new Button("Create new user");         
-                
-        // Create panes
-        VBox loginPane = new VBox(SPACING);        
-        HBox inputPaneUsername = new HBox(SPACING);
-        HBox inputPanePassword = new HBox(SPACING);                                
+        // 2.2 New user layout
+        Register register = new Register();
+        BorderPane registerLayout = (BorderPane) register.getRegister();
         
-        // Add login components        
-        inputPaneUsername.getChildren().addAll(usernameLabel, usernameInput);        
-        inputPanePassword.getChildren().addAll(passwordLabel, passwordInput);                                               
-        loginPane.getChildren().addAll(unsuccessfulLoginLabel, inputPaneUsername, inputPanePassword, loginButton, createButton);
+        // 2.3 Dashboard layout
+        Dashboard dashboard = new Dashboard();
+        BorderPane dashboardLayout = (BorderPane) dashboard.getDashboard();        
         
-        // Styling and spacing
-        loginLabel.setPadding(new Insets(SPACING));
-        loginPane.setPadding(new Insets(SPACING));                          
-        
-        // Create new user screen
-        // Create components
-        Label registerLabel = new Label("Create new user");                
-        Label reservedUsername = new Label("");        
-        Label newUsernameLabel = new Label("Username");
-        Label newPasswordLabel = new Label("Password");        
-        TextField newUsernameInput = new TextField();       
-        TextField newPasswordInput = new PasswordField();   
-        Button createUserButton = new Button("Create");
-        Button backToLoginButton = new Button("Back");
-        
-        // Create panes
-        VBox registerPane = new VBox(SPACING);
-        HBox inputPaneNewUsername = new HBox(SPACING);
-        HBox inputPaneNewPassword = new HBox(SPACING);
-        
-        inputPaneNewUsername.getChildren().addAll(newUsernameLabel, newUsernameInput);        
-        inputPaneNewPassword.getChildren().addAll(newPasswordLabel, newPasswordInput);                                               
-        registerPane.getChildren().addAll(inputPaneNewUsername, inputPaneNewPassword, createUserButton, backToLoginButton);
-        
-        // Dashboard screen
-        // Create components
-        Label dashboardLabel = new Label("Dashboard");
-        
-        // Create panes        
-        FlowPane dashboardPane = new FlowPane();
-        
-        // Add components
-        dashboardPane.getChildren().add(dashboardLabel);
-        
-        // Create layouts
-        // Login layout
-        BorderPane loginLayout = new BorderPane();
-        loginLayout.setTop(loginLabel);
-        loginLayout.setCenter(loginPane);        
-        
-        // Create new user layout
-        BorderPane registerLayout = new BorderPane();
-        registerLayout.setTop(registerLabel);
-        registerLayout.setCenter(registerPane);
-        
-        // Dashboard layout
-        BorderPane dashboardLayout = new BorderPane();
-        dashboardLayout.setCenter(dashboardPane);
-        
-        // Create scenes
+        // 3. Create scenes
+        loginScene = new Scene(loginLayout, 700, 500);
         registerScene = new Scene(registerLayout, 700, 500);            
         dashboardScene = new Scene(dashboardLayout, 700, 500);
-        // Login screen event handlers
+                
+        // 4. Get components required for event handling
+        // 4.1 Login
+        Button loginButton = login.getLoginButton();
+        Button createButton = login.getCreateButton();
+        
+        // 4.2 Register
+        Button createUserButton = register.getCreateButton();
+        Button backToLoginButton = register.getBackButton();
+        
+        // 5. Event handlers
+        // 5.1 Login screen event handlers
         loginButton.setOnAction((event) -> {
-            String username = usernameInput.getText();
-            String password = passwordInput.getText();
+            String username = login.getUsernameInput();
+            String password = login.getPasswordInput();
             
-            usernameInput.setText("");
-            passwordInput.setText("");
+            login.setUsernameInput("");
+            login.setPasswordInput("");
             
             System.out.println("Username: " + username);
             System.out.println("Password: " + password);
-                        
-            
+                                    
             if (!this.users.isEmpty()) {
                 users.stream().forEach(user -> {
                     if (user.getUsername().equals(username)) {
                         if (user.checkPassword(password)) {
                             this.user = user;
-                            unsuccessfulLoginLabel.setText(""); 
+                            login.setUnsuccessfulLoginLabel(""); 
                             stage.setScene(dashboardScene);                                                       
                         }
                     }
@@ -141,21 +96,21 @@ public class AnalyticaUI extends Application {
             }            
                         
             if (this.user == null) {
-                unsuccessfulLoginLabel.setText("Invalid username or password.");
+                login.setUnsuccessfulLoginLabel("Invalid username or password.");
             }
         });
                 
         createButton.setOnAction((event) -> {            
             stage.setScene(registerScene);
         });
-        
-        // Register screen event handlers
+                
+        // 5.2 Register screen event handlers
         createUserButton.setOnAction((event) -> {
-            String username = newUsernameInput.getText();
-            String password = newPasswordInput.getText();
+            String username = register.getUsernameInput();
+            String password = register.getPasswordInput();
             
-            newUsernameInput.setText("");
-            newPasswordInput.setText("");
+            register.setUsernameInput("");
+            register.setPasswordInput("");
             
             User newUser = new User(username, password);
             
@@ -163,17 +118,16 @@ public class AnalyticaUI extends Application {
                 this.users.add(newUser);
                 stage.setScene(loginScene);
             } else {
-                reservedUsername.setText("This username is already in use. Choose another one.");
+                register.setReservedUsernameLabel("This username is already in use. Choose another one.");
             }                                    
         });
         
         backToLoginButton.setOnAction((event) -> {
-           reservedUsername.setText("");
+           register.setReservedUsernameLabel("");
            stage.setScene(loginScene); 
         });
-                                        
-        loginScene = new Scene(loginLayout, 700, 500);
-        
+                 
+        // 6. Set initial stage
         stage.setWidth(WIDTH);
         stage.setHeight(HEIGHT);        
         stage.setScene(loginScene);
