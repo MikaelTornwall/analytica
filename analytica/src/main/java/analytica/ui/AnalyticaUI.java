@@ -123,8 +123,8 @@ public class AnalyticaUI extends Application {
         });
         
         backToLoginButton.setOnAction((event) -> {
-           register.setReservedUsernameLabel("");
-           stage.setScene(loginScene); 
+            register.setReservedUsernameLabel("");
+            stage.setScene(loginScene); 
         });
                  
         // 6. Set initial stage

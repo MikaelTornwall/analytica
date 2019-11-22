@@ -9,6 +9,8 @@ It provides an interface for collecting and analyzing data that is most relevant
 
 [Work hour log](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/documentation/workhours.md)
 
+[Architecture](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/documentation/architecture.md)
+
 ## 2. How to
 
 ### 2.1. Initialize
