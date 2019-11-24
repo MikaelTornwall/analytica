@@ -37,3 +37,9 @@ Type the following to your command line
 `mvn test jacoco:report`
 
 After creating the test report, you can view it by opening the following file in your browser target/site/jacoco/index.hmtl
+
+### 2.5 Checkstyle
+
+Run the following command `mvn jxr:jxr checkstyle:checkstyle`
+
+Then open file _target/site/checkstyle.html_ in your browser to see the results

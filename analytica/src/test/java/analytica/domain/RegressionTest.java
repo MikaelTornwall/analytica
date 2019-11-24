@@ -25,4 +25,9 @@ public class RegressionTest {
 
         assertEquals(1L, regression.getNumberOfValuePairs());
     }
+    
+    @Test
+    public void modelCanBeCleared() {        
+        assertEquals(0, regression.getNumberOfValuePairs());
+    }
 }

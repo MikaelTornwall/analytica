@@ -90,4 +90,12 @@ public class StatisticsTest {
         
         assertEquals(sum, this.statistics.getSum(), 0.0f);
     }
+    
+    @Test
+    public void varianceIsCorrect() {
+        double[] array = {2, 7, 8, 9, 10, 10, 11, 11, 12, 18};        
+        double variance = 14.760000000000002;                
+        this.statistics.addValues(array);        
+        assertEquals(variance, this.statistics.getVariance(), 0.0f);
+    }
 }

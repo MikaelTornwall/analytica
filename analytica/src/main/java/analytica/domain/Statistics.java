@@ -1,45 +1,90 @@
 package analytica.domain;
 
-import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
+import java.util.Arrays;
 import java.util.List;
+import java.util.ArrayList;
 
-public class Statistics {
-    DescriptiveStatistics ds;
+public class Statistics {    
+    double[] values;    
+    int index;    
+    int size;
     
     public Statistics() {
-        this.ds = new DescriptiveStatistics();
+        this.values = new double[10];
+        this.size = 10;
+        this.index = 0;        
     }       
     
+    public void increaseLength() {
+        this.size += (this.values.length + this.values.length / 2);
+        double[] newValues = new double[size];
+        
+        for (int i = 0; i < this.values.length; i++) {
+            newValues[i] = this.values[i];
+        }
+        
+        this.values = newValues;
+    }
+    
     public void addValue(double value) {
-        ds.addValue(value);
+        if (this.index < this.size) {
+            this.values[index] = value;
+            this.index++;            
+        } else {
+            this.increaseLength();
+            this.values[index] = value;
+            this.index++;
+        }
     }
     
     public void addValues(double[] values) {
-        for (Double value : values) {
-            this.ds.addValue(value);
+        for (double value : values) {
+            this.addValue(value);
         }
     }
     
     public void addValues(List<Double> values) {
         for (double value : values) {
-            this.ds.addValue(value);
+            this.addValue(value);
         }
     }
     
     public double[] getValues() {
-        return ds.getValues();
+        double[] result = new double[this.index];
+        
+        for (int i = 0; i < this.index; i++) {
+            result[i] = this.values[i];
+        }
+        
+        return result;
     }
     
-    public double getMean() {
-        return this.ds.getMean();
+    public double getMean() {                        
+        return this.getSum() / this.index;
     }
     
     public double getSum() {
-        return this.ds.getSum();
+        double sum = 0;
+        
+        for (double value : this.values) {
+            sum += value;
+        }
+        
+        return sum;
+    }
+    
+    public double getVariance() {
+        double mean = this.getMean();
+        double SSD = 0;
+        
+        for (Double value : this.values) {            
+            SSD += Math.pow((value - mean), 2);
+        }
+        return SSD / this.index;
     }
     
     @Override
     public String toString() {
-        return ds.toString();
+        return Arrays.toString(this.values);
     }
 }
