@@ -34,6 +34,10 @@ public class Statistics {
         return this.ds.getMean();
     }
     
+    public double getSum() {
+        return this.ds.getSum();
+    }
+    
     @Override
     public String toString() {
         return ds.toString();

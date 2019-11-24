@@ -9,10 +9,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author Duuni
- */
 public class StatisticsTest {       
     
     private Statistics statistics;        
@@ -77,5 +73,21 @@ public class StatisticsTest {
         this.statistics.addValues(array);
         
         assertEquals(mean, this.statistics.getMean(), 0.0f);
+    }
+    
+    @Test
+    public void sumIsCorrect() {
+        int n = 10;
+        double[] array = new double[n];
+        double sum = 0.0;
+                
+        for (int i = 1; i <= 10; i++) {
+            array[i - 1] = i;
+            sum += i;
+        }
+        
+        this.statistics.addValues(array);
+        
+        assertEquals(sum, this.statistics.getSum(), 0.0f);
     }
 }
