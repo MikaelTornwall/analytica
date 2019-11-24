@@ -113,4 +113,12 @@ public class StatisticsTest {
         this.statistics.addValues(array);        
         assertEquals(sd, this.statistics.getStandardDeviation(), 0.0f);
     }
+    
+    @Test
+    public void modelCanBeCleared() {
+        double[] array = {2, 7, 8, 9, 10, 10, 11, 11, 12, 18};
+        this.statistics.addValues(array);
+        this.statistics.clear();
+        assertEquals(0L, this.statistics.getNumberOfValues());
+    }
 }

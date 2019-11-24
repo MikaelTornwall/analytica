@@ -36,7 +36,7 @@ Type the following to your command line
 
 `mvn test jacoco:report`
 
-After creating the test report, you can view it by opening the following file in your browser target/site/jacoco/index.hmtl
+After creating the test report, you can view it by opening the following file in your browser _target/site/jacoco/index.html_
 
 ### 2.5 Checkstyle
 

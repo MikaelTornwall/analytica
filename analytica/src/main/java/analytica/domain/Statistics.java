@@ -77,12 +77,12 @@ public class Statistics {
     
     public double getVariance() {
         double mean = this.getMean();
-        double SSD = 0;
+        double ssd = 0;
         
         for (Double value : this.values) {            
-            SSD += Math.pow((value - mean), 2);
+            ssd += Math.pow((value - mean), 2);
         }
-        return SSD / this.index;
+        return ssd / this.index;
     }
     
     public double getStandardDeviation() {
