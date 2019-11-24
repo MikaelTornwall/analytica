@@ -15,26 +15,28 @@ public class Statistics {
         this.index = 0;        
     }       
     
+    public long getNumberOfValues() {
+        return this.index;
+    }
+    
     public void increaseLength() {
-        this.size += (this.values.length + this.values.length / 2);
-        double[] newValues = new double[size];
+        this.size = (this.size + this.size / 2);
+        double[] array = new double[size];
         
         for (int i = 0; i < this.values.length; i++) {
-            newValues[i] = this.values[i];
+            array[i] = this.values[i];
         }
         
-        this.values = newValues;
+        this.values = array;
     }
     
     public void addValue(double value) {
-        if (this.index < this.size) {
-            this.values[index] = value;
-            this.index++;            
-        } else {
+        if (this.index >= this.size) {
             this.increaseLength();
-            this.values[index] = value;
-            this.index++;
         }
+        
+        this.values[index] = value;
+        this.index++;                  
     }
     
     public void addValues(double[] values) {
@@ -50,13 +52,13 @@ public class Statistics {
     }
     
     public double[] getValues() {
-        double[] result = new double[this.index];
+        double[] array = new double[this.index];
         
         for (int i = 0; i < this.index; i++) {
-            result[i] = this.values[i];
+            array[i] = this.values[i];
         }
         
-        return result;
+        return array;
     }
     
     public double getMean() {                        
@@ -81,6 +83,16 @@ public class Statistics {
             SSD += Math.pow((value - mean), 2);
         }
         return SSD / this.index;
+    }
+    
+    public double getStandardDeviation() {
+        return Math.sqrt(this.getVariance());
+    }
+    
+    public void clear() {        
+        this.values = new double[10];
+        this.size = 10;
+        this.index = 0;
     }
     
     @Override

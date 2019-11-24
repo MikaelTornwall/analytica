@@ -1,21 +1,70 @@
 package analytica.domain;
 
-import org.apache.commons.math3.stat.regression.SimpleRegression;
-
 public class Regression {
-    
-    private SimpleRegression sr;
+        
+    private double[] xValues;
+    private double[] yValues;
+    private int index;
+    private int size;
     
     public Regression() {
-        this.sr = new SimpleRegression();
+        this.xValues = new double[10];
+        this.yValues = new double[10];
+        this.index = 0;
+        this.size = 10;
     }
     
-    public long getNumberOfValuePairs() {
-        return this.sr.getN();
+    public void increaseLength() {
+        this.size = this.size + this.size / 2;
+        double[] xArray = new double[this.size];
+        double[] yArray = new double[this.size];
+
+        for (int i = 0; i < this.index; i++) {
+            xArray[i] = this.xValues[i];
+            yArray[i] = this.yValues[i];
+        }
+
+        this.xValues = xArray;
+        this.yValues = yArray;        
     }
     
     public void addData(double x, double y) {
-        this.sr.addData(x, y);
+        if (this.index >= this.size) {
+            this.increaseLength();
+        }
+        
+        this.xValues[index] = x;
+        this.yValues[index] = y;
+        this.index++;
     }
     
+    public boolean checkDataArrayStructure(double[][] data) {
+        for (int i = 0; i < data.length; i++) {
+            if (data[i].length != 2) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    public void addData(double[][] data) {   
+        if (!this.checkDataArrayStructure(data)) {
+            return;
+        }
+        
+        for (int i = 0; i < data.length; i++) {
+            this.addData(data[i][0], data[i][1]);
+        }                
+    }
+    
+    public long getNumberOfValuePairs() {
+        return this.index;
+    }    
+    
+    public void clear() {
+        this.xValues = new double[10];
+        this.yValues = new double[10];
+        this.size = 10;
+        this.index = 0;
+    }
 }

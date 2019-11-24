@@ -59,6 +59,13 @@ public class StatisticsTest {
     }
     
     @Test
+    public void numberOfAddedValuesIsCorrect() {
+        double[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        this.statistics.addValues(array);
+        assertEquals(9L, this.statistics.getNumberOfValues());
+    }
+    
+    @Test
     public void meanIsCorrect() {
         int n = 10;
         double[] array = new double[n];
@@ -97,5 +104,13 @@ public class StatisticsTest {
         double variance = 14.760000000000002;                
         this.statistics.addValues(array);        
         assertEquals(variance, this.statistics.getVariance(), 0.0f);
+    }
+    
+    @Test
+    public void standardDeviationIsCorrect() {
+        double[] array = {2, 7, 8, 9, 10, 10, 11, 11, 12, 18};        
+        double sd = Math.sqrt(14.760000000000002);                
+        this.statistics.addValues(array);        
+        assertEquals(sd, this.statistics.getStandardDeviation(), 0.0f);
     }
 }
