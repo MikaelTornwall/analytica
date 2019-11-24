@@ -50,20 +50,16 @@ __Before logging in__
   - User can select a preferred analysis method and select preferred data and receive the results for the analysis
 
     __Statistics__
-      - [x] Add a single value
-      - [x] Add a list of values
-      - [x] Add an array of values
-      - [x] Get number of values
+      - [x] Add values      
       - [x] Sum
       - [x] Mean
       - [x] Variance
       - [x] Standard error  
 
-    __Regression__
-      - [x] Add a single value pair
-      - [x] Get number of values
-
-
+    __Regression__      
+      - [x] Add value pairs
+      - [x] Covariance
+      - [x] Slope, intercept and predict
 
   _Graphs_
   - User can view graphs
