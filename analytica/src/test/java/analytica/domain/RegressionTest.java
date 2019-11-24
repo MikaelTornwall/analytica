@@ -49,4 +49,18 @@ public class RegressionTest {
         regression.addData(data);
         assertEquals(0L, regression.getNumberOfValuePairs());
     }
+    
+    @Test
+    public void covarianceIsCorrect() {
+        double[][] data = {{1,10}, {2,12}, {3,14}, {8, 11}, {7, 2}, {9, 19}};
+        regression.addData(data);
+        assertEquals(1.5, regression.getCovariance(), 0.0f);
+    }
+    
+    @Test
+    public void slopeIsCorrect() {
+        double[][] data = {{1,10}, {2,12}, {3,14}, {8, 11}, {7, 2}, {9, 19}};
+        regression.addData(data);
+        assertEquals(0.15517241379310345, regression.getSlope(), 0.0f);
+    }
 }

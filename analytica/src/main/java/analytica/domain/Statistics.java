@@ -79,8 +79,8 @@ public class Statistics {
         double mean = this.getMean();
         double ssd = 0;
         
-        for (Double value : this.values) {            
-            ssd += Math.pow((value - mean), 2);
+        for (int i = 0; i < this.index; i++) {            
+            ssd += Math.pow((this.values[i] - mean), 2);
         }
         return ssd / this.index;
     }
@@ -97,6 +97,6 @@ public class Statistics {
     
     @Override
     public String toString() {
-        return Arrays.toString(this.values);
+        return Arrays.toString(this.getValues());
     }
 }

@@ -6,12 +6,16 @@ public class Regression {
     private double[] yValues;
     private int index;
     private int size;
+    Statistics xStatistics;
+    Statistics yStatistics;
     
     public Regression() {
         this.xValues = new double[10];
         this.yValues = new double[10];
         this.index = 0;
         this.size = 10;
+        this.xStatistics = new Statistics();
+        this.yStatistics = new Statistics();
     }
     
     public void increaseLength() {
@@ -36,6 +40,8 @@ public class Regression {
         this.xValues[index] = x;
         this.yValues[index] = y;
         this.index++;
+        this.xStatistics.addValue(x);
+        this.yStatistics.addValue(y);
     }
     
     public boolean checkDataArrayStructure(double[][] data) {
@@ -60,6 +66,33 @@ public class Regression {
     public long getNumberOfValuePairs() {
         return this.index;
     }    
+    
+    public double getCovariance() {                
+        double xMean = xStatistics.getMean();
+        double yMean = yStatistics.getMean();
+        double sumOfProducts = 0;
+        
+        for (int i = 0; i < this.index; i++) {
+            sumOfProducts += ((xValues[i] - xMean) * (yValues[i] - yMean));
+        }
+        
+        return sumOfProducts / index;        
+    }
+    
+    public double getSlope() {        
+        double covariance = this.getCovariance();
+        double variance = this.xStatistics.getVariance();
+
+        return covariance / variance;
+    }
+    
+    public double getIntercept() {        
+        return yStatistics.getMean() - (this.getSlope() * xStatistics.getMean());
+    }
+
+    public double predict(double x) {
+        return this.getIntercept() + this.getSlope() * x;
+    }
     
     public void clear() {
         this.xValues = new double[10];
