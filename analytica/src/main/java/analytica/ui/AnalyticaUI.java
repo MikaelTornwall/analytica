@@ -27,15 +27,17 @@ public class AnalyticaUI extends Application {
     private Scene registerScene;
     private Scene dashboardScene;        
     
-    // Currently logged in user
+    // Currently logged user
     private User user;
     
     // Temporary solution before DB
     private Set<User> users;
     
     public void init() {
-        this.user = null;
+        this.user = null;        
         this.users = new HashSet<>();
+        User current = new User("Chill", "Pill");
+        users.add(current);
     }
     
     @Override
@@ -107,14 +109,13 @@ public class AnalyticaUI extends Application {
         // 5.2 Register screen event handlers
         createUserButton.setOnAction((event) -> {
             String username = register.getUsernameInput();
-            String password = register.getPasswordInput();
-            
-            register.setUsernameInput("");
-            register.setPasswordInput("");
+            String password = register.getPasswordInput();                        
             
             User newUser = new User(username, password);
             
             if (!this.users.contains(newUser)) {
+                register.setUsernameInput("");
+                register.setPasswordInput("");
                 this.users.add(newUser);
                 stage.setScene(loginScene);
             } else {
@@ -125,6 +126,15 @@ public class AnalyticaUI extends Application {
         backToLoginButton.setOnAction((event) -> {
             register.setReservedUsernameLabel("");
             stage.setScene(loginScene); 
+        });
+        
+        // Logout
+        Menu menu = dashboard.getMenu();
+        Button logoutButton = menu.getLogoutButton();
+        
+        logoutButton.setOnAction((event) -> {
+           stage.setScene(loginScene); 
+           this.user = null;
         });
                  
         // 6. Set initial stage

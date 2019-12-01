@@ -83,6 +83,13 @@ public class StatisticsTest {
     }
     
     @Test
+    public void medianIsCorrect() {
+        double[] array = {1, 3, 2, 9, 7, 3, 5, 10, 9, 6};
+        this.statistics.addValues(array);
+        assertEquals(5, this.statistics.getMedian(), 0.0f);
+    }
+    
+    @Test
     public void sumIsCorrect() {
         int n = 10;
         double[] array = new double[n];
@@ -112,6 +119,31 @@ public class StatisticsTest {
         double sd = Math.sqrt(14.760000000000002);                
         this.statistics.addValues(array);        
         assertEquals(sd, this.statistics.getStandardDeviation(), 0.0f);
+    }
+    
+    @Test 
+    public void sumIsCorrectWithNoValues() {
+        assertEquals(0.0, this.statistics.getSum(), 0.0f);
+    }
+    
+    @Test
+    public void meanIsCorrectWithNoValues() {
+        assertEquals(0.0, this.statistics.getMean(), 0.0f);
+    }
+    
+    @Test
+    public void medianIsCorrectWithNoValues() {
+        assertEquals(0.0, this.statistics.getMedian(), 0.0f);
+    }
+    
+    @Test
+    public void varianceIsCorrectWithNoValues() {
+        assertEquals(0.0, this.statistics.getVariance(), 0.0f);
+    }
+    
+    @Test
+    public void standardDeviationIsCorrectWithNoValues() {
+        assertEquals(0.0, this.statistics.getStandardDeviation(), 0.0f);
     }
     
     @Test

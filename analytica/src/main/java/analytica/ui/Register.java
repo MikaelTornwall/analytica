@@ -69,7 +69,7 @@ public class Register {
         
         inputPaneNewUsername.getChildren().addAll(usernameLabel, usernameInput);        
         inputPaneNewPassword.getChildren().addAll(passwordLabel, passwordInput);                                               
-        registerPane.getChildren().addAll(inputPaneNewUsername, inputPaneNewPassword, createUserButton, backToLoginButton);
+        registerPane.getChildren().addAll(reservedUsername, inputPaneNewUsername, inputPaneNewPassword, createUserButton, backToLoginButton);
         
         BorderPane layout = new BorderPane();
         layout.setTop(registerLabel);

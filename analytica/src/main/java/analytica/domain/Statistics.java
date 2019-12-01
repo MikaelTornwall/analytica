@@ -19,6 +19,10 @@ public class Statistics {
         return this.index;
     }
     
+    public boolean valuesIsEmpty() {
+        return this.index <= 0;
+    }
+    
     public void increaseLength() {
         this.size = (this.size + this.size / 2);
         double[] array = new double[size];
@@ -61,12 +65,23 @@ public class Statistics {
         return array;
     }
     
-    public double getMean() {                        
+    public double getMean() {  
+        if (this.valuesIsEmpty()) return 0.0;
+        
         return this.getSum() / this.index;
     }
     
+    public double getMedian() {
+        if (this.valuesIsEmpty()) return 0.0;
+        
+        double[] array = this.getValues();
+        Arrays.sort(array);
+        int index = (int) Math.floor((this.index - 1) / 2);        
+        return array[index];
+    }
+    
     public double getSum() {
-        double sum = 0;
+        double sum = 0.0;
         
         for (double value : this.values) {
             sum += value;
@@ -76,6 +91,8 @@ public class Statistics {
     }
     
     public double getVariance() {
+        if (this.valuesIsEmpty()) return 0.0;
+        
         double mean = this.getMean();
         double ssd = 0;
         
