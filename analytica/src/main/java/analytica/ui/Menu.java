@@ -5,9 +5,17 @@ import javafx.scene.layout.HBox;
 import javafx.scene.control.Button;
 
 public class Menu {
-    Button dashboardButton = new Button("Dashboard");
-    Button addDataButton = new Button("Add data");    
-    Button logoutButton = new Button("Logout");        
+    private Button dashboardButton;
+    private Button addDataButton;
+    private Button logoutButton;
+    private Parent menu;
+    
+    public Menu() {
+        this.dashboardButton = new Button("Dashboard");
+        this.addDataButton = new Button("Add data");
+        this.logoutButton = new Button("Logout");
+        this.menu = this.createMenu();
+    }
     
     public Button getAddDataButton() {
         return this.addDataButton;
@@ -22,6 +30,10 @@ public class Menu {
     }
     
     public Parent getMenu() {
+        return this.menu;
+    }
+    
+    public Parent createMenu() {
         HBox menuPane = new HBox();
         menuPane.getChildren().addAll(dashboardButton, addDataButton, logoutButton);
         

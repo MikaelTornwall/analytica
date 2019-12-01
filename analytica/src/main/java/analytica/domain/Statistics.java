@@ -1,6 +1,8 @@
 package analytica.domain;
 
 import java.util.Arrays;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -78,6 +80,35 @@ public class Statistics {
         Arrays.sort(array);
         int index = (int) Math.floor((this.index - 1) / 2);        
         return array[index];
+    }
+    
+    public double getMode() {
+        if (this.valuesIsEmpty()) return  0.0;
+        
+        double[] array = this.getValues();
+        Arrays.sort(array);
+        double result = array[0];
+        int max = 1;
+        int current = 1;
+        
+        for (int i = 1; i < this.index; i++) {
+            if (array[i] == array[i - 1]) {
+                current++;
+            } else {
+                if (current > max) {
+                    max = current;
+                    result = array[i - 1];
+                }
+                current = 1;
+            }
+        }
+        
+        if (current > max) {
+            max = current;
+            result = array[this.index - 1];
+        }
+        
+        return result;                
     }
     
     public double getSum() {

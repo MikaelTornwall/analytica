@@ -23,9 +23,11 @@ public class AnalyticaUI extends Application {
     private final int WIDTH = 1000;
     private final int HEIGHT = 700;
     
+    private Menu menu;
+    
     private Scene loginScene;
     private Scene registerScene;
-    private Scene dashboardScene;        
+    private Scene loggedInScene;      
     
     // Currently logged user
     private User user;
@@ -35,7 +37,8 @@ public class AnalyticaUI extends Application {
     
     public void init() {
         this.user = null;        
-        this.users = new HashSet<>();
+        this.users = new HashSet<>();        
+        this.menu = new Menu();
         User current = new User("Chill", "Pill");
         users.add(current);
     }
@@ -50,19 +53,28 @@ public class AnalyticaUI extends Application {
         // 2.1 Login layout
         Login login = new Login();        
         BorderPane loginLayout = (BorderPane) login.getLogin();
-        
+                        
         // 2.2 New user layout
         Register register = new Register();
         BorderPane registerLayout = (BorderPane) register.getRegister();
         
         // 2.3 Dashboard layout
-        Dashboard dashboard = new Dashboard();
-        BorderPane dashboardLayout = (BorderPane) dashboard.getDashboard();        
+        Dashboard dashboard = new Dashboard();        
+        
+        // 2.4 AddData layout
+        AddData addData = new AddData();        
+        
+        BorderPane loggedInLayout = new BorderPane();
+        loggedInLayout.setTop(menu.getMenu());
+        loggedInLayout.setCenter((BorderPane) dashboard.getDashboard());
         
         // 3. Create scenes
         loginScene = new Scene(loginLayout, 700, 500);
-        registerScene = new Scene(registerLayout, 700, 500);            
-        dashboardScene = new Scene(dashboardLayout, 700, 500);
+        registerScene = new Scene(registerLayout, 700, 500);                                                   
+        loggedInScene = new Scene(loggedInLayout, 700, 500);
+        
+        //dashboardScene = new Scene(dashboardLayout, 700, 500);
+        //addDataScene = new Scene(addDataLayout, 700, 500);
                 
         // 4. Get components required for event handling
         // 4.1 Login
@@ -91,7 +103,7 @@ public class AnalyticaUI extends Application {
                         if (user.checkPassword(password)) {
                             this.user = user;
                             login.setUnsuccessfulLoginLabel(""); 
-                            stage.setScene(dashboardScene);                                                       
+                            stage.setScene(loggedInScene);                                                       
                         }
                     }
                 });
@@ -128,9 +140,23 @@ public class AnalyticaUI extends Application {
             stage.setScene(loginScene); 
         });
         
-        // Logout
-        Menu menu = dashboard.getMenu();
-        Button logoutButton = menu.getLogoutButton();
+        // Menu button event handlers        
+        Button dashboardButton = menu.getDashboardButton();
+        
+        // Dashboard view
+        dashboardButton.setOnAction((event) -> {
+            loggedInLayout.setCenter(dashboard.getDashboard());            
+        });
+        
+        // Add data view
+        Button addDataButton = menu.getAddDataButton();
+        
+        addDataButton.setOnAction((event) -> {
+            loggedInLayout.setCenter(addData.getAddData());            
+        });
+                
+        // Logout        
+        Button logoutButton = this.menu.getLogoutButton();
         
         logoutButton.setOnAction((event) -> {
            stage.setScene(loginScene); 

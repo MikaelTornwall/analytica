@@ -9,25 +9,21 @@ import javafx.scene.layout.HBox;
 
 public class Dashboard {
     private final int WIDTH;
-    private final int HEIGHT;
-    private Menu menu;
+    private final int HEIGHT;    
+    private Parent dashboard;
     
     public Dashboard() {
         this.WIDTH = 700;
-        this.HEIGHT = 500;
-        this.menu = new Menu();
-    }
-    
-    public Menu getMenu() {
-        return this.menu;
-    }
+        this.HEIGHT = 500;                       
+        this.dashboard = this.createDashboard();
+    }        
     
     public Parent getDashboard() {
-        // Dashboard screen
-        
-        // Get menu        
-        HBox menuPane = (HBox) menu.getMenu();
-        
+        return this.dashboard;
+    }        
+    
+    public Parent createDashboard() {
+        // Dashboard screens                        
         // Create components
         Label label = new Label("Dashboard");
         
@@ -37,9 +33,8 @@ public class Dashboard {
         // Add components
         flowpane.getChildren().add(label);
         
-        BorderPane layout = new BorderPane();
-        layout.setTop(menuPane);
-        layout.setCenter(flowpane);
+        BorderPane layout = new BorderPane();          
+        layout.setCenter(flowpane);       
         
         return layout;
     }

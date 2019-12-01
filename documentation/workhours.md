@@ -8,4 +8,6 @@
 | 21.11 | 0.5      | UI planning and restructuring |
 | 22.11 | 3        | More UI planning and restructuring,  class diagram, checkstyle |
 | 24.11 | 5        | Update statistics and regression classes and tests, update class diagram, update requirements.md |
-| total | 14.5     |       |
+| 30.11 | 2        | Update UI, create menu |
+| 1.12  | 5        | More statistics methods and tests, new UI components, UI restructuring |
+| total | 21.5     |       |

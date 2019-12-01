@@ -66,6 +66,22 @@ public class StatisticsTest {
     }
     
     @Test
+    public void sumIsCorrect() {
+        int n = 10;
+        double[] array = new double[n];
+        double sum = 0.0;
+                
+        for (int i = 1; i <= 10; i++) {
+            array[i - 1] = i;
+            sum += i;
+        }
+        
+        this.statistics.addValues(array);
+        
+        assertEquals(sum, this.statistics.getSum(), 0.0f);
+    }
+    
+    @Test
     public void meanIsCorrect() {
         int n = 10;
         double[] array = new double[n];
@@ -87,22 +103,13 @@ public class StatisticsTest {
         double[] array = {1, 3, 2, 9, 7, 3, 5, 10, 9, 6};
         this.statistics.addValues(array);
         assertEquals(5, this.statistics.getMedian(), 0.0f);
-    }
+    }        
     
     @Test
-    public void sumIsCorrect() {
-        int n = 10;
-        double[] array = new double[n];
-        double sum = 0.0;
-                
-        for (int i = 1; i <= 10; i++) {
-            array[i - 1] = i;
-            sum += i;
-        }
-        
+    public void modeIsCorrect() {
+        double[] array = {1, 2, 8, 1, 3, 4, 2, 10, 2};
         this.statistics.addValues(array);
-        
-        assertEquals(sum, this.statistics.getSum(), 0.0f);
+        assertEquals(2.0, this.statistics.getMode(), 0.0f);
     }
     
     @Test
@@ -137,6 +144,11 @@ public class StatisticsTest {
     }
     
     @Test
+    public void modeIsCorrectWithNoValues() {
+        assertEquals(0.0, this.statistics.getMode(), 0.0f); 
+    }
+    
+    @Test
     public void varianceIsCorrectWithNoValues() {
         assertEquals(0.0, this.statistics.getVariance(), 0.0f);
     }
@@ -144,7 +156,7 @@ public class StatisticsTest {
     @Test
     public void standardDeviationIsCorrectWithNoValues() {
         assertEquals(0.0, this.statistics.getStandardDeviation(), 0.0f);
-    }
+    }    
     
     @Test
     public void modelCanBeCleared() {
