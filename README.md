@@ -57,3 +57,7 @@ Then navigate to target and run the following command:
 `open analytica-1.0-SNAPSHOT.jar`
 
 _Notice: the name of the generated .jar file may be different. Navigate to /target/ and select the file with the filename extension .jar_  
+
+## 3 Releases
+
+[Week 5](https://github.com/MikaelTornwall/ot-harjoitustyo/releases)
