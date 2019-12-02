@@ -1,6 +1,7 @@
 package analytica.ui;
 
 import analytica.domain.User;
+import analytica.domain.AnalyticaService;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Set;
@@ -29,18 +30,13 @@ public class AnalyticaUI extends Application {
     private Scene registerScene;
     private Scene loggedInScene;      
     
-    // Currently logged user
-    private User user;
-    
-    // Temporary solution before DB
-    private Set<User> users;
+    // Application logic
+    AnalyticaService service;
+    // Currently logged user    
     
     public void init() {
-        this.user = null;        
-        this.users = new HashSet<>();        
-        this.menu = new Menu();
-        User current = new User("Chill", "Pill");
-        users.add(current);
+        this.service = new AnalyticaService();                          
+        this.menu = new Menu();        
     }
     
     @Override
@@ -96,22 +92,13 @@ public class AnalyticaUI extends Application {
             
             System.out.println("Username: " + username);
             System.out.println("Password: " + password);
-                                    
-            if (!this.users.isEmpty()) {
-                users.stream().forEach(user -> {
-                    if (user.getUsername().equals(username)) {
-                        if (user.checkPassword(password)) {
-                            this.user = user;
-                            login.setUnsuccessfulLoginLabel(""); 
-                            stage.setScene(loggedInScene);                                                       
-                        }
-                    }
-                });
-            }            
-                        
-            if (this.user == null) {
+            
+            if (service.login(username, password)) {
+                login.setUnsuccessfulLoginLabel(""); 
+                stage.setScene(loggedInScene);                                                       
+            } else {
                 login.setUnsuccessfulLoginLabel("Invalid username or password.");
-            }
+            }                                                                  
         });
                 
         createButton.setOnAction((event) -> {            
@@ -123,16 +110,13 @@ public class AnalyticaUI extends Application {
             String username = register.getUsernameInput();
             String password = register.getPasswordInput();                        
             
-            User newUser = new User(username, password);
-            
-            if (!this.users.contains(newUser)) {
+            if (service.createUser(username, password)) {
                 register.setUsernameInput("");
-                register.setPasswordInput("");
-                this.users.add(newUser);
+                register.setPasswordInput("");                
                 stage.setScene(loginScene);
             } else {
                 register.setReservedUsernameLabel("This username is already in use. Choose another one.");
-            }                                    
+            }                       
         });
         
         backToLoginButton.setOnAction((event) -> {
@@ -160,7 +144,7 @@ public class AnalyticaUI extends Application {
         
         logoutButton.setOnAction((event) -> {
            stage.setScene(loginScene); 
-           this.user = null;
+           service.setUser(null);
         });
                  
         // 6. Set initial stage

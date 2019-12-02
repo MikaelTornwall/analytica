@@ -10,4 +10,5 @@
 | 24.11 | 5        | Update statistics and regression classes and tests, update class diagram, update requirements.md |
 | 30.11 | 2        | Update UI, create menu |
 | 1.12  | 5        | More statistics methods and tests, new UI components, UI restructuring |
-| total | 21.5     |       |
+| 2.12 | 3        | Create application logic class AnalyticaService, restructure code, create sequence diagram for create user |
+| total | 24.5     |       |
