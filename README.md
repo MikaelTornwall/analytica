@@ -20,19 +20,19 @@ It provides an interface for collecting and analyzing data that is most relevant
 
 ### 2.2 Run the application
 
-Type the following to your command line
+Run the following command:
 
 `mvn compile exec:java -Dexec.mainClass=analytica.Main`
 
 ### 2.3. Run the tests
 
-Type the following to your command line
+Run the following command:
 
 `mvn test`
 
 ### 2.4. Create and view the test report
 
-Type the following to your command line
+Run the following command:
 
 `mvn test jacoco:report`
 
@@ -40,6 +40,20 @@ After creating the test report, you can view it by opening the following file in
 
 ### 2.5 Checkstyle
 
-Run the following command `mvn jxr:jxr checkstyle:checkstyle`
+Run the following command:
+
+`mvn jxr:jxr checkstyle:checkstyle`
 
 Then open file _target/site/checkstyle.html_ in your browser to see the results
+
+### 2.6 Generate and open .jar file
+
+Run the following command:
+
+`mvn package`
+
+Then navigate to target and run the following command:
+
+`open analytica-1.0-SNAPSHOT.jar`
+
+_Notice: the name of the generated .jar file may be different. Navigate to /target/ and select the file with the filename extension .jar_  

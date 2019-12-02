@@ -1,3 +1,5 @@
+# Application architecture
+
 ## Class diagrams
 
 ### Basic class structure

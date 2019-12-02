@@ -24,22 +24,25 @@ Currently the application is intended only for the internal use within the compa
 
 __Before logging in__
 
-- User can register
+- [x] User can register
   - Required information is
-    - Username (length at least 6 characters)
-    - Password (length at least 8 characters and must include both letters and numbers)
-- User can log in
-  - If login is successful user will be directed to the application
-  - If login is unsuccessful user will receive a notification and can try again
+    - [ ] Username (length at least 6 characters)
+    - [ ] Password (length at least 8 characters and must include both letters and numbers)
+- [x] User can log in
+  - [x] If login is successful user will be directed to the application
+  - [x] If login is unsuccessful user will receive a notification and can try again
 
   __After logging in__
 
   Application includes the following views:
 
-  _Dashboard_
+  - [x] User select preferred view from the menu
 
-  - User select preferred view from the menu
-  - User will see a summary
+  _Dashboard_  
+  - [ ] User will see a summary
+
+  _CSV file form_
+  - [ ] User can write comma separated values into a form and save them
 
   _Input form_
 
@@ -53,8 +56,10 @@ __Before logging in__
       - [x] Add values      
       - [x] Sum
       - [x] Mean
+      - [x] Median
+      - [x] Mode
       - [x] Variance
-      - [x] Standard error  
+      - [x] Standard error        
 
     __Regression__      
       - [x] Add value pairs
