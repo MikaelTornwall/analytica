@@ -44,17 +44,21 @@ public class AnalyticaService {
     
     public boolean login(String username, String password) {
         
-        if (this.usersIsEmpty()) return false;
+        if (this.usersIsEmpty()) {
+            return false;
+        }
         
         this.users.stream().forEach(user -> {
-                    if (user.getUsername().equals(username)) {
-                        if (user.checkPassword(password)) {
-                            this.setUser(user);
-                        }
-                    }
-                });
+            if (user.getUsername().equals(username)) {
+                if (user.checkPassword(password)) {
+                    this.setUser(user);
+                }
+            }
+        });
         
-        if (this.user == null) return false;
+        if (this.user == null) {
+            return false;
+        }
         
         return true;
     }
@@ -62,7 +66,9 @@ public class AnalyticaService {
     public boolean createUser(String username, String password) {
         User newUser = new User(username, password);
         
-        if (this.userExists(newUser)) return false;
+        if (this.userExists(newUser)) {
+            return false;
+        }
                         
         this.addUser(newUser);              
         

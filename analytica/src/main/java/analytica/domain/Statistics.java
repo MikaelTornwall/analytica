@@ -67,26 +67,38 @@ public class Statistics {
         return array;
     }
     
+    public double[] getSortedValues() {
+        double[] array = this.getValues();
+        Arrays.sort(array);
+        return array;
+    }
+    
     public double getMean() {  
-        if (this.valuesIsEmpty()) return 0.0;
+        if (this.valuesIsEmpty()) {
+            return 0.0;
+        }
         
         return this.getSum() / this.index;
     }
     
     public double getMedian() {
-        if (this.valuesIsEmpty()) return 0.0;
+        if (this.valuesIsEmpty()) {
+            return 0.0;
+        }
         
         double[] array = this.getValues();
         Arrays.sort(array);
         int index = (int) Math.floor((this.index - 1) / 2);        
         return array[index];
-    }
+    }   
     
     public double getMode() {
-        if (this.valuesIsEmpty()) return  0.0;
+        if (this.valuesIsEmpty()) {
+            return  0.0;
+        }
         
-        double[] array = this.getValues();
-        Arrays.sort(array);
+        double[] array = this.getSortedValues();
+        
         double result = array[0];
         int max = 1;
         int current = 1;
@@ -122,7 +134,9 @@ public class Statistics {
     }
     
     public double getVariance() {
-        if (this.valuesIsEmpty()) return 0.0;
+        if (this.valuesIsEmpty()) {
+            return 0.0;
+        }
         
         double mean = this.getMean();
         double ssd = 0;
