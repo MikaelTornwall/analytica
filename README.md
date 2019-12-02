@@ -18,7 +18,7 @@ It provides an interface for collecting and analyzing data that is most relevant
 1. Clone the project to your local machine
 2. Navigate to "analytica" folder
 
-### 2.2 Run the application
+### 2.2. Run the application
 
 Run the following command:
 
@@ -38,7 +38,7 @@ Run the following command:
 
 After creating the test report, you can view it by opening the following file in your browser _target/site/jacoco/index.html_
 
-### 2.5 Checkstyle
+### 2.5. Checkstyle
 
 Run the following command:
 
@@ -46,7 +46,7 @@ Run the following command:
 
 Then open file _target/site/checkstyle.html_ in your browser to see the results
 
-### 2.6 Generate and open .jar file
+### 2.6. Generate and open .jar file
 
 Run the following command:
 
@@ -58,6 +58,6 @@ Then navigate to target and run the following command:
 
 _Notice: the name of the generated .jar file may be different. Navigate to /target/ and select the file with the filename extension .jar_  
 
-## 3 Releases
+## 3. Releases
 
 [Week 5](https://github.com/MikaelTornwall/ot-harjoitustyo/releases)
