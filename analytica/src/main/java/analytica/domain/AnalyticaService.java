@@ -13,7 +13,7 @@ public class AnalyticaService {
     public AnalyticaService() {
         this.user = null;
         this.users = new HashSet<>();
-        this.users.add(new User("Test", "User"));
+        // this.users.add(new User("User", "Test"));
     }
     
     public User getUser() {

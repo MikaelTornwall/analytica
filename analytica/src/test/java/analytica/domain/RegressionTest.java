@@ -58,6 +58,13 @@ public class RegressionTest {
     }
     
     @Test
+    public void correlationIsCorrect() {
+        double[][] data = {{1,2}, {2, 3}, {3, 7}, {4, 7}, {6, 2}, {9, 9}};
+        regression.addData(data);
+        assertEquals(0.5632097394614726, regression.getCorrelation(), 0.0f);
+    }
+    
+    @Test
     public void slopeIsCorrect() {
         double[][] data = {{1,10}, {2,12}, {3,14}, {8, 11}, {7, 2}, {9, 19}};
         regression.addData(data);

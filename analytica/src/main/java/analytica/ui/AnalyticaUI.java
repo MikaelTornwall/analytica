@@ -31,8 +31,7 @@ public class AnalyticaUI extends Application {
     private Scene loggedInScene;      
     
     // Application logic
-    AnalyticaService service;
-    // Currently logged user    
+    AnalyticaService service;    
     
     public void init() {
         this.service = new AnalyticaService();                          

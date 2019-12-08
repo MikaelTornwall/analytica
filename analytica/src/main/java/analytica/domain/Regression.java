@@ -79,6 +79,13 @@ public class Regression {
         return sumOfProducts / index;        
     }
     
+    public double getCorrelation() {
+        double xSd = xStatistics.getStandardDeviation();
+        double ySd = yStatistics.getStandardDeviation();
+        
+        return this.getCovariance() / (xSd * ySd);
+    }
+    
     public double getSlope() {        
         double covariance = this.getCovariance();
         double variance = this.xStatistics.getVariance();
