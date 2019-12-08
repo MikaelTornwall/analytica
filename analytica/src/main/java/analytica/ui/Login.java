@@ -1,6 +1,6 @@
 package analytica.ui;
 
-import analytica.domain.User;
+import analytica.domain.Account;
 import java.util.List;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;

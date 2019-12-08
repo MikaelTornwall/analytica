@@ -9,14 +9,14 @@ import static org.junit.Assert.*;
 
 public class UserTest {
     
-    private User user;
+    private Account user;
             
     @Before
     public void setUp() {
         String username = "username";
         String password = "password";
         
-        this.user = new User(username, password);
+        this.user = new Account(username, password);
     }
     
     @Test
@@ -33,13 +33,13 @@ public class UserTest {
     
     @Test
     public void usersAreEqualWithSameUsername() {
-        User newUser = new User("username", "secret");
+        Account newUser = new Account("username", "secret");
         assertTrue(this.user.equals(newUser));
     }
     
     @Test
     public void usersAreNotEqualWithDifferentUsername() {
-        User notUser = new User("notUser", "password");
+        Account notUser = new Account("notUser", "password");
         assertFalse(this.user.equals(notUser));
     }
 }

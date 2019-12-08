@@ -1,76 +1,73 @@
 package analytica.domain;
 
-import java.util.Set;
-import java.util.HashSet;
+import java.util.List;
+
+import analytica.dao.AccountDAO;
+import java.sql.SQLException;
 
 public class AnalyticaService {
     
-    private User user;
+    private Account user;
+    private AccountDAO accountDAO;
     
     // Temporary solution before DB
-    private Set<User> users;
+    // private Set<Account> users;
     
-    public AnalyticaService() {
+    public AnalyticaService(AccountDAO accountDAO) {
         this.user = null;
-        this.users = new HashSet<>();
-        // this.users.add(new User("User", "Test"));
+        // this.users = new HashSet<>();
+        this.accountDAO = accountDAO;
+        // this.users.add(new Account("Account", "Test"));
     }
     
-    public User getUser() {
+    public Account getUser() {
         return this.user;
     }
     
-    public void setUser(User user) {
+    public void setUser(Account user) {
         this.user = user;
     }
     
-    public Set<User> getUsers() {
-        return this.users;
+    public List<Account> getUsers() throws SQLException {
+        return this.accountDAO.getUsers();
     }
     
-    public void addUser(User user) {
-        if (!this.users.contains(user)) {
-            this.users.add(user);
-        }        
+    public void addUser(Account user) {
+//        if (!this.users.contains(user)) {
+//            this.users.add(user);
+//        }        
     }
     
     public boolean usersIsEmpty() {
-        return this.users.isEmpty();
+//        return this.users.isEmpty();
+          return false;
     }
     
-    public boolean userExists(User user) {
-        return this.users.contains(user);
+    public boolean userExists(Account user) {
+        // return this.users.contains(user);
+        return false;
     }
     
-    public boolean login(String username, String password) {
+    public boolean login(String username, String password) throws SQLException {
         
-        if (this.usersIsEmpty()) {
+        Account account = accountDAO.getAccountByUsername(username);
+        
+        if (account == null) {
             return false;
         }
         
-        this.users.stream().forEach(user -> {
-            if (user.getUsername().equals(username)) {
-                if (user.checkPassword(password)) {
-                    this.setUser(user);
-                }
-            }
-        });
-        
-        if (this.user == null) {
+        if (!account.checkPassword(password)) {
             return false;
         }
+        
+        this.setUser(account);
         
         return true;
     }
     
-    public boolean createUser(String username, String password) {
-        User newUser = new User(username, password);
+    public boolean createUser(Account account) throws SQLException {        
         
-        if (this.userExists(newUser)) {
-            return false;
-        }
-                        
-        this.addUser(newUser);              
+        this.accountDAO.create(account);                                                
         
         return true;
     }

@@ -2,13 +2,19 @@ package analytica.domain;
 
 import java.util.Objects;
 
-public class User {
+public class Account {
+    private int id;
     private String username;
     private String password;
     
-    public User(String username, String password) {
+    public Account(int id, String username, String password) {
+        this.id = id;
         this.username = username;
         this.password = password;
+    }
+    
+    public Account(String username, String password) {
+        this(-1, username, password);
     }
     
     public String getUsername() {
@@ -45,7 +51,7 @@ public class User {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final User other = (User) obj;
+        final Account other = (Account) obj;
         if (!Objects.equals(this.username, other.username)) {
             return false;
         }

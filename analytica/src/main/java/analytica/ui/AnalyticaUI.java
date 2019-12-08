@@ -1,11 +1,13 @@
 package analytica.ui;
 
-import analytica.domain.User;
+import analytica.domain.Account;
 import analytica.domain.AnalyticaService;
+import analytica.dao.AccountDAO;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashSet;
+import java.sql.SQLException;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -23,7 +25,7 @@ public class AnalyticaUI extends Application {
     private final int SPACING = 10;    
     private final int WIDTH = 1000;
     private final int HEIGHT = 700;
-    
+        
     private Menu menu;
     
     private Scene loginScene;
@@ -33,16 +35,19 @@ public class AnalyticaUI extends Application {
     // Application logic
     AnalyticaService service;    
     
-    public void init() {
-        this.service = new AnalyticaService();                          
-        this.menu = new Menu();        
+    public void init(String path) {
+        this.service = new AnalyticaService(new AccountDAO(path));                          
+        this.menu = new Menu();                
     }
     
     @Override
-    public void start(Stage stage) {
+    public void start(Stage stage) throws SQLException {
         
         // 1. Initialization
-        this.init();                                     
+        // Database path
+        String path = "jdbc:h2:./analytica_db";
+        
+        this.init(path);                                     
                                      
         // 2. Create layouts        
         // 2.1 Login layout
@@ -109,13 +114,17 @@ public class AnalyticaUI extends Application {
             String username = register.getUsernameInput();
             String password = register.getPasswordInput();                        
             
-            if (service.createUser(username, password)) {
+            Account account = new Account(username, password);
+            
+            try {
+                service.createUser(account);
                 register.setUsernameInput("");
                 register.setPasswordInput("");                
                 stage.setScene(loginScene);
-            } else {
+            } catch (SQLException e) {
                 register.setReservedUsernameLabel("This username is already in use. Choose another one.");
-            }                       
+                System.out.println(e);
+            }            
         });
         
         backToLoginButton.setOnAction((event) -> {
