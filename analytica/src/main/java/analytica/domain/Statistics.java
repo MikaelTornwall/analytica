@@ -1,7 +1,7 @@
 package analytica.domain;
 
 /**
- * Class contains statistical methods for data analysis
+ * Statistics class contains statistical methods for data analysis
  * 
  * @author Mikael Törnwall
  */
@@ -73,7 +73,7 @@ public class Statistics {
     /**
      * Method allows adding an array of values to the model
      * 
-     * @param an array of values that will be added to the model
+     * @param values is an array of values that will be added to the model
      */
     
     public void addValues(double[] values) {
@@ -85,7 +85,7 @@ public class Statistics {
     /**
      * Method allows adding a list of values to the model
      * 
-     * @param list of values that will be added to the model
+     * @param values is a list of values that will be added to the model
      */
     
     public void addValues(List<Double> values) {

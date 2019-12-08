@@ -25,7 +25,9 @@ public class AccountDAO {
     /**
      * Method creates a new account instance in the database
      * 
-     * @param Method takes an account object as a parameter     
+     * @throws SQLException exception is thrown if try fails
+     * 
+     * @param account class as a parameter
      */
     
     public void create(Account account) throws SQLException {
@@ -40,7 +42,9 @@ public class AccountDAO {
     /**
      * Method fetches an account from the database if it matches the username
      * 
-     * @param Method takes a username string as a parameter
+     * @param username string as a parameter
+     * 
+     * @throws SQLException exception is thrown if try fails
      * 
      * @return method returns an account object if username finds database match, null otherwise
      */
@@ -67,6 +71,8 @@ public class AccountDAO {
     
     /**
      * Method fetches all the accounts from the database
+     * 
+     * @throws SQLException exception is thrown if try fails
      * 
      * @return list of account objects
      */

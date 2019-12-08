@@ -11,5 +11,5 @@
 | 30.11 | 2        | Update UI, create menu |
 | 1.12  | 5        | More statistics methods and tests, new UI components, UI restructuring |
 | 2.12  | 4        | Create application logic class AnalyticaService, restructure code, create sequence diagram for create user |
-| 8.12  | 8        | Add database, refactor and update code to accommodate db, create AccountDAO class |
-| total | 33.5     |       |
+| 8.12  | 9        | Add database, refactor and update code to accommodate db, create AccountDAO class, first javadoc descriptions |
+| total | 34.5     |       |

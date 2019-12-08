@@ -1,7 +1,7 @@
 package analytica.ui;
 
 /**
- * Class is responsible for creating a menu UI component
+ * Menu class is responsible for creating a menu UI component
  * 
  * @author Mikael Törnwall
  */

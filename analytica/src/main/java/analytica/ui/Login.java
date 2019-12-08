@@ -1,7 +1,7 @@
 package analytica.ui;
 
 /**
- * Class is responsible for creating login component for the applicaton UI
+ * Login class is responsible for creating login component for the applicaton UI
  * 
  * @author Mikael Törnwall
  */
@@ -65,6 +65,8 @@ public class Login {
     
     /**
      * Method allows setting username input string
+     * 
+     * @param text that will be set as the input value
      */
     
     public void setUsernameInput(String text) {
@@ -83,6 +85,8 @@ public class Login {
     
     /**
      * Method allows setting password input string
+     * 
+     * @param text that will be set as the input value
      */
     
     public void setPasswordInput(String text) {
@@ -91,6 +95,8 @@ public class Login {
     
     /**
      * Method allows setting unsuccessful login label string
+     * 
+     * @param text that will be set as the input value
      */
     
     public void setUnsuccessfulLoginLabel(String text) {

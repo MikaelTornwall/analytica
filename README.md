@@ -58,6 +58,14 @@ Then navigate to target and run the following command:
 
 _Notice: the name of the generated .jar file may be different. Navigate to /target/ and select the file with the filename extension .jar_  
 
+### 2.7. JavaDoc
+
+Run the following command:
+
+`mvn javadoc:javadoc`
+
+Then open file _target/site/apidocs/index.html_ in your browser to see the results
+
 ## 3. Releases
 
 [Week 5](https://github.com/MikaelTornwall/ot-harjoitustyo/releases)
