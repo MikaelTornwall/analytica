@@ -8,16 +8,11 @@ import java.sql.SQLException;
 public class AnalyticaService {
     
     private Account user;
-    private AccountDAO accountDAO;
-    
-    // Temporary solution before DB
-    // private Set<Account> users;
+    private AccountDAO accountDAO;        
     
     public AnalyticaService(AccountDAO accountDAO) {
-        this.user = null;
-        // this.users = new HashSet<>();
-        this.accountDAO = accountDAO;
-        // this.users.add(new Account("Account", "Test"));
+        this.user = null;        
+        this.accountDAO = accountDAO;        
     }
     
     public Account getUser() {
@@ -30,22 +25,13 @@ public class AnalyticaService {
     
     public List<Account> getUsers() throws SQLException {
         return this.accountDAO.getUsers();
-    }
+    }  
     
-    public void addUser(Account user) {
-//        if (!this.users.contains(user)) {
-//            this.users.add(user);
-//        }        
-    }
-    
-    public boolean usersIsEmpty() {
-//        return this.users.isEmpty();
-          return false;
-    }
-    
-    public boolean userExists(Account user) {
-        // return this.users.contains(user);
-        return false;
+    public boolean userExists(Account account) throws SQLException {
+        if (accountDAO.getAccountByUsername(account.getUsername()) == null) {
+            return false;
+        }
+        return true;
     }
     
     public boolean login(String username, String password) throws SQLException {
@@ -66,6 +52,10 @@ public class AnalyticaService {
     }
     
     public boolean createUser(Account account) throws SQLException {        
+        
+        if (userExists(account)) {
+            return false;
+        }
         
         this.accountDAO.create(account);                                                
         

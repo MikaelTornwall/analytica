@@ -97,12 +97,16 @@ public class AnalyticaUI extends Application {
             System.out.println("Username: " + username);
             System.out.println("Password: " + password);
             
-            if (service.login(username, password)) {
-                login.setUnsuccessfulLoginLabel(""); 
-                stage.setScene(loggedInScene);                                                       
-            } else {
-                login.setUnsuccessfulLoginLabel("Invalid username or password.");
-            }                                                                  
+            try {
+                if (service.login(username, password)) {
+                    login.setUnsuccessfulLoginLabel(""); 
+                    stage.setScene(loggedInScene);                                                       
+                } else {
+                    login.setUnsuccessfulLoginLabel("Invalid username or password.");
+                }                
+            } catch (SQLException e) {                
+                System.out.println(e);
+            }            
         });
                 
         createButton.setOnAction((event) -> {            
@@ -117,12 +121,14 @@ public class AnalyticaUI extends Application {
             Account account = new Account(username, password);
             
             try {
-                service.createUser(account);
-                register.setUsernameInput("");
-                register.setPasswordInput("");                
-                stage.setScene(loginScene);
-            } catch (SQLException e) {
-                register.setReservedUsernameLabel("This username is already in use. Choose another one.");
+                if (service.createUser(account)) {
+                    register.setUsernameInput("");
+                    register.setPasswordInput("");                
+                    stage.setScene(loginScene);
+                } else {
+                    register.setReservedUsernameLabel("This username is already in use. Choose another one.");
+                }                               
+            } catch (SQLException e) {                
                 System.out.println(e);
             }            
         });

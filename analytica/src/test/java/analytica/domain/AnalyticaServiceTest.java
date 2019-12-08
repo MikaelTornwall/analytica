@@ -20,19 +20,7 @@ public class AnalyticaServiceTest {
     @Test
     public void userIsNullByDefault() {
         assertEquals(null, this.service.getUser());
-    }
-    
-    @Test
-    public void ifNoUsersUsersIsEmpty() {
-        assertTrue(this.service.usersIsEmpty());
-    }
-    
-    @Test
-    public void ifUsersThenUsersNotEmpty() {
-        Account user = new Account("Test", "User");
-        this.service.addUser(user);
-        assertFalse(this.service.usersIsEmpty());
-    }
+    }        
     
     @Test
     public void userCanBeSet() {
