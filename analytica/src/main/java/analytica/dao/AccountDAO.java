@@ -71,8 +71,7 @@ public class AccountDAO {
         
         try {
             connection.prepareStatement("CREATE TABLE Account (id int auto_increment primary key, username varchar(255), password varchar(255))").execute();
-        } catch (SQLException t) {
-            System.out.println(t);
+        } catch (SQLException t) {            
         }
 
         return connection;

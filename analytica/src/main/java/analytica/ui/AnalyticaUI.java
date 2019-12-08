@@ -43,32 +43,32 @@ public class AnalyticaUI extends Application {
     @Override
     public void start(Stage stage) throws SQLException {
         
-        // 1. Initialization
+        // Initialization
         // Database path
         String path = "jdbc:h2:./analytica_db";
         
         this.init(path);                                     
                                      
-        // 2. Create layouts        
-        // 2.1 Login layout
+        // Create layouts        
+        // Login layout
         Login login = new Login();        
         BorderPane loginLayout = (BorderPane) login.getLogin();
                         
-        // 2.2 New user layout
+        // New user layout
         Register register = new Register();
         BorderPane registerLayout = (BorderPane) register.getRegister();
         
-        // 2.3 Dashboard layout
+        // Dashboard layout
         Dashboard dashboard = new Dashboard();        
         
-        // 2.4 AddData layout
-        AddData addData = new AddData();        
+        // NewEvent layout
+        NewEvent addData = new NewEvent();        
         
         BorderPane loggedInLayout = new BorderPane();
         loggedInLayout.setTop(menu.getMenu());
         loggedInLayout.setCenter((BorderPane) dashboard.getDashboard());
         
-        // 3. Create scenes
+        // Create scenes
         loginScene = new Scene(loginLayout, 700, 500);
         registerScene = new Scene(registerLayout, 700, 500);                                                   
         loggedInScene = new Scene(loggedInLayout, 700, 500);
@@ -76,17 +76,17 @@ public class AnalyticaUI extends Application {
         //dashboardScene = new Scene(dashboardLayout, 700, 500);
         //addDataScene = new Scene(addDataLayout, 700, 500);
                 
-        // 4. Get components required for event handling
-        // 4.1 Login
+        // Get components required for event handling
+        // Login
         Button loginButton = login.getLoginButton();
         Button createButton = login.getCreateButton();
         
-        // 4.2 Register
+        // Register
         Button createUserButton = register.getCreateButton();
         Button backToLoginButton = register.getBackButton();
         
-        // 5. Event handlers
-        // 5.1 Login screen event handlers
+        // Event handlers
+        // Login screen event handlers
         loginButton.setOnAction((event) -> {
             String username = login.getUsernameInput();
             String password = login.getPasswordInput();
@@ -113,7 +113,7 @@ public class AnalyticaUI extends Application {
             stage.setScene(registerScene);
         });
                 
-        // 5.2 Register screen event handlers
+        // Register screen event handlers
         createUserButton.setOnAction((event) -> {
             String username = register.getUsernameInput();
             String password = register.getPasswordInput();                        
@@ -161,7 +161,7 @@ public class AnalyticaUI extends Application {
            service.setUser(null);
         });
                  
-        // 6. Set initial stage
+        // Set initial stage
         stage.setWidth(WIDTH);
         stage.setHeight(HEIGHT);        
         stage.setScene(loginScene);
