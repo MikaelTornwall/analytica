@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package analytica.dao;
 
 /**
- *
- * @author Duuni
+ * AccountDAO class is responsible for the account class related database queries
+ * 
+ * @author Mikael Törnwall
  */
 
 import java.util.List;
@@ -26,6 +22,12 @@ public class AccountDAO {
         this.path = path;
     }
     
+    /**
+     * Method creates a new account instance in the database
+     * 
+     * @param Method takes an account object as a parameter     
+     */
+    
     public void create(Account account) throws SQLException {
         try (Connection connection = createAndConnectDatabase()) {
             PreparedStatement stmt = connection.prepareStatement("INSERT INTO Account (username, password) VALUES (?, ?)");
@@ -34,6 +36,14 @@ public class AccountDAO {
             stmt.executeUpdate();
         }
     }
+    
+    /**
+     * Method fetches an account from the database if it matches the username
+     * 
+     * @param Method takes a username string as a parameter
+     * 
+     * @return method returns an account object if username finds database match, null otherwise
+     */
     
     public Account getAccountByUsername(String username) throws SQLException {        
         Account account = null;
@@ -54,6 +64,12 @@ public class AccountDAO {
         
         return account;
     }
+    
+    /**
+     * Method fetches all the accounts from the database
+     * 
+     * @return list of account objects
+     */
     
     public List<Account> getUsers() throws SQLException {
         List<Account> accounts = new ArrayList<>();

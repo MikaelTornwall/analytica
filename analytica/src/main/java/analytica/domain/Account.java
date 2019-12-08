@@ -2,6 +2,12 @@ package analytica.domain;
 
 import java.util.Objects;
 
+/**
+ * Account class
+ * 
+ * @author Mikael Törnwall
+ */
+
 public class Account {
     private int id;
     private String username;
@@ -28,6 +34,14 @@ public class Account {
     public void setPassword(String password) {
         this.password = password;
     }
+    
+    /**
+     * Method checks if a given password matches with the account password
+     * 
+     * @param method receives a password parameter as a string
+     * 
+     * @return method return true if password matches account password, false otherwise
+     */
     
     public boolean checkPassword(String password) {
         return this.password.equals(password);

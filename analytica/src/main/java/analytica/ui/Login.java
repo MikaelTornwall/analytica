@@ -1,7 +1,11 @@
 package analytica.ui;
 
-import analytica.domain.Account;
-import java.util.List;
+/**
+ * Class is responsible for creating login component for the applicaton UI
+ * 
+ * @author Mikael Törnwall
+ */
+
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -29,34 +33,76 @@ public class Login {
         this.unsuccessfulLoginLabel = new Label("");        
     }
     
+    /**
+     * Method returns login button so that event handling can be performed
+     * 
+     * @return JavaFX Button component
+     */
+    
     public Button getLoginButton() {
         return this.loginButton;
     }
+    
+    /**
+     * Method returns create account button so that event handling can be performed
+     * 
+     * @return JavaFX Button component
+     */
     
     public Button getCreateButton() {
         return this.createButton;
     }
     
+    /**
+     * Method returns input data from the username text field
+     * 
+     * @return input data string
+     */
+    
     public String getUsernameInput() {
         return this.usernameInput.getText();
     }
     
+    /**
+     * Method allows setting username input string
+     */
+    
     public void setUsernameInput(String text) {
         this.usernameInput.setText(text);
     }
-           
+     
+    /**
+     * Method returns input data from the password text field
+     * 
+     * @return input data string
+     */
+    
     public String getPasswordInput() {
         return this.passwordInput.getText();
     }
+    
+    /**
+     * Method allows setting password input string
+     */
     
     public void setPasswordInput(String text) {
         this.passwordInput.setText(text);
     }
     
+    /**
+     * Method allows setting unsuccessful login label string
+     */
+    
     public void setUnsuccessfulLoginLabel(String text) {
         this.unsuccessfulLoginLabel.setText(text);
     }
             
+    /**
+     * Method creates a login component
+     * 
+     * @return login component as a Parent object
+     */
+    
     public Parent getLogin() {
         // Login screen       
         // Create login components
