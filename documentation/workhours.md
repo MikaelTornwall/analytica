@@ -12,4 +12,5 @@
 | 1.12  | 5        | More statistics methods and tests, new UI components, UI restructuring |
 | 2.12  | 4        | Create application logic class AnalyticaService, restructure code, create sequence diagram for create user |
 | 8.12  | 9        | Add database, refactor and update code to accommodate db, create AccountDAO class, first javadoc descriptions |
-| total | 34.5     |       |
+| 9.12  | 2        | Write the preliminary architecture document, write the preliminary instructions manual |
+| total | 36.5     |       |
