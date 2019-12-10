@@ -15,5 +15,3 @@
 | 9.12  | 2        | Write the preliminary architecture document, write the preliminary instructions manual |
 | 10.12 | 3        | Add db package and SQLDatabase class, AccountDao interface, rename AccountDao and AnalyticaService, refactor SQLAccountDao and AccountService classes, update AccountService tests and create FakeSQLAccountDao class to test AccountService tests, update javadoc |
 | total | 38.5     |       |
-
-add db package and sqldatabase class, add accountdao interface, rename account dao to sqlaccountdao and analyticaservice to accountservice, refactor sqlaccountdao and accountservice classes, update accountservice tests and create fakesqlaccountdao class to test accountservice tests
