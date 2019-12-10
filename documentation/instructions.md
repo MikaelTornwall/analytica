@@ -1,4 +1,4 @@
-# Instruction manual
+# Instructions
 
 Download the file [analytica.jar](https://github.com/MikaelTornwall/ot-harjoitustyo/releases/tag/week5)
 
@@ -26,11 +26,15 @@ Application dashboard displays the events you have fed into the system. By click
 
 ## Event
 
-Event view shows the event details and statistics that have been calculated from it.
+Event view shows the event details and event details
 
 ## Add event
 
 Add event view allows you to pass event details, which are the name of the event, number of participants, price, number of people who opened an account, number of people who did not open an account, number of male participants and number of female participants.
+
+## Statistics
+
+Linear regression and statistics values from all the events so far.
 
 ## Logout
 

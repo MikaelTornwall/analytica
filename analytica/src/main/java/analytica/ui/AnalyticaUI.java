@@ -1,25 +1,15 @@
 package analytica.ui;
 
 import analytica.domain.Account;
-import analytica.domain.AnalyticaService;
-import analytica.dao.AccountDAO;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Set;
-import java.util.HashSet;
+import analytica.domain.AccountService;
+import analytica.dao.SQLAccountDao;
+import analytica.db.SQLDatabase;
 import java.sql.SQLException;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.control.PasswordField;
-import javafx.geometry.Insets;
 
 public class AnalyticaUI extends Application {
     private final int SPACING = 10;    
@@ -33,10 +23,10 @@ public class AnalyticaUI extends Application {
     private Scene loggedInScene;      
     
     // Application logic
-    AnalyticaService service;    
+    AccountService service;    
     
     public void init(String path) {
-        this.service = new AnalyticaService(new AccountDAO(path));                          
+        this.service = new AccountService(new SQLAccountDao(new SQLDatabase(path)));                                  
         this.menu = new Menu();                
     }
     

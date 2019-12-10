@@ -8,18 +8,18 @@ package analytica.dao;
 
 import java.util.List;
 import analytica.domain.Account;
+import analytica.db.SQLDatabase;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class AccountDAO {
-    private String path;
+public class SQLAccountDao implements AccountDao {    
+    private SQLDatabase database;    
     
-    public AccountDAO(String path) {
-        this.path = path;
+    public SQLAccountDao(SQLDatabase database) {
+        this.database = database;        
     }
     
     /**
@@ -30,12 +30,14 @@ public class AccountDAO {
      * @param account class as a parameter
      */
     
-    public void create(Account account) throws SQLException {
-        try (Connection connection = createAndConnectDatabase()) {
+    public void create(Account account) {
+        try (Connection connection = database.getConnection()) {
             PreparedStatement stmt = connection.prepareStatement("INSERT INTO Account (username, password) VALUES (?, ?)");
             stmt.setString(1, account.getUsername());
             stmt.setString(2, account.getPassword());            
             stmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
     }
     
@@ -49,10 +51,10 @@ public class AccountDAO {
      * @return method returns an account object if username finds database match, null otherwise
      */
     
-    public Account getAccountByUsername(String username) throws SQLException {        
+    public Account getAccountByUsername(String username) {        
         Account account = null;
         
-        try (Connection connection = createAndConnectDatabase()) {
+        try (Connection connection = this.database.getConnection()) {
             PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Account WHERE username = ?");
             stmt.setString(1, username);
             ResultSet res = stmt.executeQuery();            
@@ -60,7 +62,9 @@ public class AccountDAO {
             if (res.next()) {
                 account = new Account(res.getString("username"), res.getString("password"));
             }
-        }                
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
         
         if (account == null) {
             return null;
@@ -77,25 +81,17 @@ public class AccountDAO {
      * @return list of account objects
      */
     
-    public List<Account> getUsers() throws SQLException {
+    public List<Account> getUsers() {
         List<Account> accounts = new ArrayList<>();
-        try (Connection yhteys = createAndConnectDatabase();
+        try (Connection yhteys = this.database.getConnection();
                 ResultSet res = yhteys.prepareStatement("SELECT * FROM Account").executeQuery()) {
             while (res.next()) {
                 accounts.add(new Account(res.getInt("id"), res.getString("username"), res.getString("password")));
             }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
-        return accounts;
-    }
-    
-    private Connection createAndConnectDatabase() throws SQLException {
-        Connection connection = DriverManager.getConnection(this.path, "sa", "");
         
-        try {
-            connection.prepareStatement("CREATE TABLE Account (id int auto_increment primary key, username varchar(255), password varchar(255))").execute();
-        } catch (SQLException t) {            
-        }
-
-        return connection;
-    }
+        return accounts;
+    }        
 }

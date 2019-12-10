@@ -1,20 +1,18 @@
 package analytica.domain;
 
-import org.junit.After;
-import org.junit.AfterClass;
+import analytica.domain.FakeSQLAccountDao;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class AnalyticaServiceTest {
-        
-    private AnalyticaService service;
+     
+    private AccountService service;
     
-    /*
+    
     @Before
     public void setUp() {
-        this.service = new AnalyticaService();
+        this.service = new AccountService(new FakeSQLAccountDao());
     }       
     
     @Test
@@ -32,27 +30,27 @@ public class AnalyticaServiceTest {
     @Test
     public void ifUserExistsUserCanBeFound() {
         Account user = new Account("Test", "User");
-        this.service.addUser(user);
+        this.service.createUser(user);
         assertTrue(this.service.userExists(user));        
     }
     
     @Test
     public void loginReturnsTrueWithCorrectUsernameAndPassword() {
         Account user = new Account("Test", "User");
-        this.service.addUser(user);
+        this.service.createUser(user);
         assertTrue(this.service.login("Test", "User"));
     }       
     
     @Test
     public void newUserCanBeCreated() {
-        assertTrue(this.service.createUser("Test", "User"));
+        assertTrue(this.service.createUser(new Account("Test", "User")));
     }
     
     @Test
     public void duplicateUsernameIsNotAllowed() {
-        this.service.createUser("Test", "User");
-        assertFalse(this.service.createUser("Test", "Password"));
+        this.service.createUser(new Account("Test", "User"));
+        assertFalse(this.service.createUser(new Account("Test", "Password")));
     }
     
-    */
+    
 }

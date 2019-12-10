@@ -1,0 +1,21 @@
+2019-12-10 21:08:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" already exists; SQL statement:
+CREATE TABLE Account (id int auto_increment primary key, username varchar(255), password varchar(255)) [42101-199]
+2019-12-10 21:08:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" already exists; SQL statement:
+CREATE TABLE Account (id int auto_increment primary key, username varchar(255), password varchar(255)) [42101-199]
+2019-12-10 21:08:32 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" already exists; SQL statement:
+CREATE TABLE Account (id int auto_increment primary key, username varchar(255), password varchar(255)) [42101-199]
+2019-12-10 21:08:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" already exists; SQL statement:
+CREATE TABLE Account (id int auto_increment primary key, username varchar(255), password varchar(255)) [42101-199]
+2019-12-10 21:21:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" already exists; SQL statement:
+CREATE TABLE Account (id int auto_increment primary key, username varchar(255), password varchar(255)) [42101-199]
+2019-12-10 21:21:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" already exists; SQL statement:
+CREATE TABLE Account (id int auto_increment primary key, username varchar(255), password varchar(255)) [42101-199]
+2019-12-10 21:21:07 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" already exists; SQL statement:
+CREATE TABLE Account (id int auto_increment primary key, username varchar(255), password varchar(255)) [42101-199]

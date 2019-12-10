@@ -23,6 +23,13 @@ public class Account {
         this(-1, username, password);
     }
     
+    public int getId() {
+        return this.id;
+    }
+    
+    public void setId(int id) {
+        this.id = id;
+    }
     public String getUsername() {
         return this.username;
     }
