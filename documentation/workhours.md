@@ -13,4 +13,7 @@
 | 2.12  | 4        | Create application logic class AnalyticaService, restructure code, create sequence diagram for create user |
 | 8.12  | 9        | Add database, refactor and update code to accommodate db, create AccountDAO class, first javadoc descriptions |
 | 9.12  | 2        | Write the preliminary architecture document, write the preliminary instructions manual |
-| total | 36.5     |       |
+| 10.12 | 2        | Add db package and SQLDatabase class, AccountDao interface, rename AccountDao and AnalyticaService, refactor SQLAccountDao and AccountService classes, update AccountService tests and create FakeSQLAccountDao class to test AccountService tests |
+| total | 38.5     |       |
+
+add db package and sqldatabase class, add accountdao interface, rename account dao to sqlaccountdao and analyticaservice to accountservice, refactor sqlaccountdao and accountservice classes, update accountservice tests and create fakesqlaccountdao class to test accountservice tests
