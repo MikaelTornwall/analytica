@@ -1,7 +1,6 @@
 package analytica.domain;
 
 import java.util.List;
-import analytica.dao.SQLAccountDao;
 import analytica.dao.AccountDao;
 import java.sql.SQLException;
 

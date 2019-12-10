@@ -45,8 +45,7 @@ public class Account {
     /**
      * Method checks if a given password matches with the account password
      * 
-     * @param password string as a parameter
-     * 
+     * @param password string as a parameter     
      * @return method return true if password matches account password, false otherwise
      */
     

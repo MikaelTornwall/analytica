@@ -1,11 +1,5 @@
 package analytica.ui;
 
-/**
- * Login class is responsible for creating login component for the applicaton UI
- * 
- * @author Mikael Törnwall
- */
-
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -15,6 +9,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+
+/**
+ * Login class is responsible for creating login component for the applicaton UI
+ * 
+ * @author Mikael Törnwall
+ */
 
 public class Login {
     

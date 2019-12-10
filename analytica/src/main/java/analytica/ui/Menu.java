@@ -1,14 +1,14 @@
 package analytica.ui;
 
+import javafx.scene.Parent;
+import javafx.scene.layout.HBox;
+import javafx.scene.control.Button;
+
 /**
  * Menu class is responsible for creating a menu UI component
  * 
  * @author Mikael Törnwall
  */
-
-import javafx.scene.Parent;
-import javafx.scene.layout.HBox;
-import javafx.scene.control.Button;
 
 public class Menu {
     private Button dashboardButton;

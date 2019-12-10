@@ -1,13 +1,13 @@
 package analytica.domain;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Statistics class contains statistical methods for data analysis
  * 
  * @author Mikael Törnwall
  */
-
-import java.util.Arrays;
-import java.util.List;
 
 public class Statistics {    
     double[] values;    

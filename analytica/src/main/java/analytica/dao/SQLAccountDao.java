@@ -1,11 +1,5 @@
 package analytica.dao;
 
-/**
- * AccountDAO class is responsible for the account class related database queries
- * 
- * @author Mikael Törnwall
- */
-
 import java.util.List;
 import analytica.domain.Account;
 import analytica.db.SQLDatabase;
@@ -15,6 +9,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * SQLAccountDAO class is responsible for the account related operations and database queries
+ * 
+ * @author Mikael Törnwall
+ */
+
 public class SQLAccountDao implements AccountDao {    
     private SQLDatabase database;    
     
@@ -23,9 +23,7 @@ public class SQLAccountDao implements AccountDao {
     }
     
     /**
-     * Method creates a new account instance in the database
-     * 
-     * @throws SQLException exception is thrown if try fails
+     * Method creates a new account instance in the database    
      * 
      * @param account class as a parameter
      */
@@ -44,10 +42,7 @@ public class SQLAccountDao implements AccountDao {
     /**
      * Method fetches an account from the database if it matches the username
      * 
-     * @param username string as a parameter
-     * 
-     * @throws SQLException exception is thrown if try fails
-     * 
+     * @param username string as a parameter     
      * @return method returns an account object if username finds database match, null otherwise
      */
     
@@ -75,9 +70,7 @@ public class SQLAccountDao implements AccountDao {
     
     /**
      * Method fetches all the accounts from the database
-     * 
-     * @throws SQLException exception is thrown if try fails
-     * 
+     *      
      * @return list of account objects
      */
     
