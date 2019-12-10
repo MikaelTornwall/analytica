@@ -30,26 +30,26 @@ public class AnalyticaServiceTest {
     @Test
     public void ifUserExistsUserCanBeFound() {
         Account user = new Account("Test", "User");
-        this.service.createUser(user);
+        this.service.create(user);
         assertTrue(this.service.userExists(user));        
     }
     
     @Test
     public void loginReturnsTrueWithCorrectUsernameAndPassword() {
         Account user = new Account("Test", "User");
-        this.service.createUser(user);
+        this.service.create(user);
         assertTrue(this.service.login("Test", "User"));
     }       
     
     @Test
     public void newUserCanBeCreated() {
-        assertTrue(this.service.createUser(new Account("Test", "User")));
+        assertTrue(this.service.create(new Account("Test", "User")));
     }
     
     @Test
     public void duplicateUsernameIsNotAllowed() {
-        this.service.createUser(new Account("Test", "User"));
-        assertFalse(this.service.createUser(new Account("Test", "Password")));
+        this.service.create(new Account("Test", "User"));
+        assertFalse(this.service.create(new Account("Test", "Password")));
     }
     
     

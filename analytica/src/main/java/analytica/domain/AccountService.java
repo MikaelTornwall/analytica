@@ -5,6 +5,12 @@ import analytica.dao.SQLAccountDao;
 import analytica.dao.AccountDao;
 import java.sql.SQLException;
 
+/**
+ * AccountService class
+ * 
+ * @author Mikael Törnwall
+ */
+
 public class AccountService {
     
     private Account user;
@@ -15,13 +21,31 @@ public class AccountService {
         this.accountDAO = accountDAO;        
     }
     
+    /**
+     * Method returns the current user
+     * 
+     * @return current user as an Account object
+     */
+    
     public Account getUser() {
         return this.user;
     }
     
+    /**
+     * Method set the current user
+     * 
+     * @param user is an Account object
+     */
+    
     public void setUser(Account user) {
         this.user = user;
     }
+    
+    /**
+     * Method return the list of all users 
+     * 
+     * @return current users as a List object
+     */
     
     public List<Account> getUsers() {        
         try {
@@ -30,6 +54,13 @@ public class AccountService {
             return null;
         }        
     }  
+    
+    /**
+     * Method check is a user exists
+     * 
+     * @param account is an Account object
+     * @return true if user exists in the database, false otherwise
+     */
     
     public boolean userExists(Account account) {
         try {
@@ -42,6 +73,14 @@ public class AccountService {
         
         return true;
     }
+    
+    /**
+     * Method handles login logic, as it checks if password matches
+     * 
+     * @param username as a String
+     * @param password as a String
+     * @return true if login is successful, false otherwise
+     */
     
     public boolean login(String username, String password) {
         Account account = null;
@@ -66,7 +105,14 @@ public class AccountService {
         return true;
     }
     
-    public boolean createUser(Account account) {        
+    /**
+     * Methods creates a new user
+     * 
+     * @param account as an Account object
+     * @return true if username is not taken and operation is successful, false otherwise
+     */
+    
+    public boolean create(Account account) {        
         
         if (userExists(account)) {
             return false;
@@ -77,8 +123,7 @@ public class AccountService {
         } catch(SQLException e) {
             System.out.println(e.getMessage());
         }
-        
-        
+                
         return true;
     }
 }
