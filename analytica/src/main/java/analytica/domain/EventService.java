@@ -65,7 +65,7 @@ public class EventService {
     }
     
     /**
-     * Method returns the list of all events
+     * Method returns a list of all events
      * 
      * @return events as a List object
      */
@@ -74,8 +74,34 @@ public class EventService {
         return this.events;
     }
     
+    /**
+     * Method returns the number of participants in each event
+     * 
+     * @return number of participants in each event as a List object
+     */
+    
     public List<Integer> getParticipantsList() {        
-        return null;
+        return this.eventDao.getParticipantsList();
+    }
+    
+    /**
+     * Method returns prices of each event
+     * 
+     * @return price of each event as a List object
+     */
+    
+    public List<Double> getPricesList() {        
+        return this.eventDao.getPricesList();
+    }
+    
+    /**
+     * Method returns the number of opened accounts in each event
+     * 
+     * @return number opened accounts in each event as a List object
+     */
+    
+    public List<Integer> getOpenedList() {        
+        return this.eventDao.getOpenedList();
     }
     
     /**

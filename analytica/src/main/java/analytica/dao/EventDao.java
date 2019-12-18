@@ -13,4 +13,7 @@ public interface EventDao {
     public Event getByName(String name);
     public void delete(String name);
     public List<Event> getAll();    
+    public List<Integer> getParticipantsList();
+    public List<Double> getPricesList();
+    public List<Integer> getOpenedList();
 }

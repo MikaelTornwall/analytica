@@ -116,30 +116,30 @@ public class SQLEventDao implements EventDao {
     }
     
     public List<Double> getPricesList() {
-        List<Double> participants = new ArrayList<>();
+        List<Double> prices = new ArrayList<>();
         try (Connection connection = this.database.getConnection();
                 ResultSet res = connection.prepareStatement("SELECT price FROM Event").executeQuery()) {
             while (res.next()) {
-                participants.add(res.getDouble("price"));
+                prices.add(res.getDouble("price"));
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
                 
-        return participants;
+        return prices;
     }
     
     public List<Integer> getOpenedList() {
-        List<Integer> participants = new ArrayList<>();
+        List<Integer> opened = new ArrayList<>();
         try (Connection connection = this.database.getConnection();
                 ResultSet res = connection.prepareStatement("SELECT opened FROM Event").executeQuery()) {
             while (res.next()) {
-                participants.add(res.getInt("opened"));
+                opened.add(res.getInt("opened"));
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
                 
-        return participants;
+        return opened;
     }
 }
