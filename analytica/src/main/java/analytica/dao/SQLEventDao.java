@@ -70,7 +70,7 @@ public class SQLEventDao implements EventDao {
     
     public void delete(String name) {
         try (Connection connection = database.getConnection()) {
-            PreparedStatement stmt = connection.prepareStatement("DELETE FROM Event WHERE (name) VALUES (?)");            
+            PreparedStatement stmt = connection.prepareStatement("DELETE FROM Event WHERE name = ?");            
             stmt.setString(1, name);
             stmt.executeUpdate();
         } catch (SQLException e) {
@@ -107,6 +107,34 @@ public class SQLEventDao implements EventDao {
                 ResultSet res = connection.prepareStatement("SELECT participants FROM Event").executeQuery()) {
             while (res.next()) {
                 participants.add(res.getInt("participants"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+                
+        return participants;
+    }
+    
+    public List<Double> getPricesList() {
+        List<Double> participants = new ArrayList<>();
+        try (Connection connection = this.database.getConnection();
+                ResultSet res = connection.prepareStatement("SELECT price FROM Event").executeQuery()) {
+            while (res.next()) {
+                participants.add(res.getDouble("price"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+                
+        return participants;
+    }
+    
+    public List<Integer> getOpenedList() {
+        List<Integer> participants = new ArrayList<>();
+        try (Connection connection = this.database.getConnection();
+                ResultSet res = connection.prepareStatement("SELECT opened FROM Event").executeQuery()) {
+            while (res.next()) {
+                participants.add(res.getInt("opened"));
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
