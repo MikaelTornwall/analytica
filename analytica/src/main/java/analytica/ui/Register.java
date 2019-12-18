@@ -55,14 +55,11 @@ public class Register {
         this.reservedUsername.setText(text);
     }
     
-    public Parent getRegister() {
-        // Create new user screen
-        // Create components
+    public Parent getRegister() {        
         Label registerLabel = new Label("Create new user");                        
         Label usernameLabel = new Label("Username");
         Label passwordLabel = new Label("Password");
-        
-        // Create panes
+                
         VBox registerPane = new VBox(SPACING);
         HBox inputPaneNewUsername = new HBox(SPACING);
         HBox inputPaneNewPassword = new HBox(SPACING);

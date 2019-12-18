@@ -16,6 +16,7 @@ import java.util.ArrayList;
  */
 
 public class SQLAccountDao implements AccountDao {    
+    
     private SQLDatabase database;    
     
     public SQLAccountDao(SQLDatabase database) {
@@ -46,7 +47,7 @@ public class SQLAccountDao implements AccountDao {
      * @return method returns an account object if username finds database match, null otherwise
      */
     
-    public Account getAccountByUsername(String username) {        
+    public Account getByUsername(String username) {        
         Account account = null;
         
         try (Connection connection = this.database.getConnection()) {
@@ -74,7 +75,7 @@ public class SQLAccountDao implements AccountDao {
      * @return list of account objects
      */
     
-    public List<Account> getUsers() {
+    public List<Account> getAll() {
         List<Account> accounts = new ArrayList<>();
         try (Connection yhteys = this.database.getConnection();
                 ResultSet res = yhteys.prepareStatement("SELECT * FROM Account").executeQuery()) {

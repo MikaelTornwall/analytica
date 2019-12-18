@@ -23,10 +23,10 @@ public class AnalyticaUI extends Application {
     private Scene loggedInScene;      
     
     // Application logic
-    AccountService service;    
+    AccountService accountService;    
     
     public void init(String path) {
-        this.service = new AccountService(new SQLAccountDao(new SQLDatabase(path)));                                  
+        this.accountService = new AccountService(new SQLAccountDao(new SQLDatabase(path)));                                  
         this.menu = new Menu();                
     }
     
@@ -35,7 +35,7 @@ public class AnalyticaUI extends Application {
         
         // Initialization
         // Database path
-        String path = "jdbc:h2:./analytica_db";
+        String path = "jdbc:h2:./analytica_db";        
         
         this.init(path);                                     
                                      
@@ -87,7 +87,7 @@ public class AnalyticaUI extends Application {
             System.out.println("Username: " + username);
             System.out.println("Password: " + password);
             
-            if (service.login(username, password)) {
+            if (accountService.login(username, password)) {
                     login.setUnsuccessfulLoginLabel(""); 
                     stage.setScene(loggedInScene);                                                       
                 } else {
@@ -106,7 +106,7 @@ public class AnalyticaUI extends Application {
             
             Account account = new Account(username, password);
             
-            if (service.create(account)) {
+            if (accountService.createAccount(account)) {
                     register.setUsernameInput("");
                     register.setPasswordInput("");                
                     stage.setScene(loginScene);
@@ -140,7 +140,7 @@ public class AnalyticaUI extends Application {
         
         logoutButton.setOnAction((event) -> {
            stage.setScene(loginScene); 
-           service.setUser(null);
+           accountService.setUser(null);
         });
                  
         // Set initial stage

@@ -109,24 +109,19 @@ public class Login {
      * @return login component as a Parent object
      */
     
-    public Parent getLogin() {
-        // Login screen       
-        // Create login components
+    public Parent getLogin() {        
         Label loginLabel = new Label("Login");        
         Label usernameLabel = new Label("Username");
         Label passwordLabel = new Label("Password");                        
-                
-        // Create panes
+                       
         VBox loginPane = new VBox(SPACING);        
         HBox inputPaneUsername = new HBox(SPACING);
         HBox inputPanePassword = new HBox(SPACING);                                
         
-        // Add login components        
         inputPaneUsername.getChildren().addAll(usernameLabel, usernameInput);        
         inputPanePassword.getChildren().addAll(passwordLabel, passwordInput);                                               
         loginPane.getChildren().addAll(unsuccessfulLoginLabel, inputPaneUsername, inputPanePassword, loginButton, createButton);
-        
-        // Styling and spacing
+                
         loginLabel.setPadding(new Insets(SPACING));
         loginPane.setPadding(new Insets(SPACING));     
         

@@ -7,10 +7,9 @@ package analytica.dao;
 
 import analytica.domain.Account;
 import java.util.List;
-import java.sql.SQLException;
 
 public interface AccountDao {
-    void create(Account account) throws SQLException;
-    Account getAccountByUsername(String username) throws SQLException;
-    List<Account> getUsers() throws SQLException;
+    void create(Account account);
+    Account getByUsername(String username);
+    List<Account> getAll();
 }

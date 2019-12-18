@@ -2,7 +2,6 @@ package analytica.domain;
 
 import java.util.List;
 import analytica.dao.AccountDao;
-import java.sql.SQLException;
 
 /**
  * AccountService class
@@ -13,11 +12,11 @@ import java.sql.SQLException;
 public class AccountService {
     
     private Account user;
-    private AccountDao accountDAO;        
+    private AccountDao accountDao;        
     
     public AccountService(AccountDao accountDAO) {
         this.user = null;        
-        this.accountDAO = accountDAO;        
+        this.accountDao = accountDAO;        
     }
     
     /**
@@ -41,17 +40,13 @@ public class AccountService {
     }
     
     /**
-     * Method return the list of all users 
+     * Method returns the list of all users 
      * 
      * @return current users as a List object
      */
     
-    public List<Account> getUsers() {        
-        try {
-            return this.accountDAO.getUsers();
-        } catch (SQLException e) {
-            return null;
-        }        
+    public List<Account> getAccounts() {        
+        return this.accountDao.getAll();
     }  
     
     /**
@@ -61,13 +56,9 @@ public class AccountService {
      * @return true if user exists in the database, false otherwise
      */
     
-    public boolean userExists(Account account) {
-        try {
-            if (accountDAO.getAccountByUsername(account.getUsername()) == null) {
+    public boolean accountExists(Account account) {        
+        if (accountDao.getByUsername(account.getUsername()) == null) {
             return false;
-            } 
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
         }
         
         return true;
@@ -84,12 +75,7 @@ public class AccountService {
     public boolean login(String username, String password) {
         Account account = null;
         
-        try {
-            account = accountDAO.getAccountByUsername(username);
-        } catch(SQLException e) {            
-            
-        }
-        
+        account = accountDao.getByUsername(username);        
         
         if (account == null) {
             return false;
@@ -111,17 +97,12 @@ public class AccountService {
      * @return true if username is not taken and operation is successful, false otherwise
      */
     
-    public boolean create(Account account) {        
-        
-        if (userExists(account)) {
+    public boolean createAccount(Account account) {                
+        if (accountExists(account)) {
             return false;
         }
         
-        try {
-            this.accountDAO.create(account);                                                
-        } catch(SQLException e) {
-            System.out.println(e.getMessage());
-        }
+        this.accountDao.create(account);                                                
                 
         return true;
     }

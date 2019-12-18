@@ -3,6 +3,7 @@ package analytica.domain;
 import java.util.Objects;
 
 public class Event {
+    private int id;
     private String name;
     private double price;
     private int participants;
@@ -11,7 +12,8 @@ public class Event {
     private int males;
     private int females;
 
-    public Event(String name, double price, int participants, int openedAccount, int didNotOpenAccount, int males, int females) {
+    public Event(int id, String name, double price, int participants, int openedAccount, int didNotOpenAccount, int males, int females) {
+        this.id = id;
         this.name = name;
         this.price = price;
         this.participants = participants;
@@ -19,6 +21,10 @@ public class Event {
         this.didNotOpenAccount = didNotOpenAccount;
         this.males = males;
         this.females = females;
+    }
+    
+    public Event(String name, double price, int participants, int openedAccount, int didNotOpenAccount, int males, int females) {
+        this(-1, name, price, participants, openedAccount, didNotOpenAccount, males, females);
     }
 
     public String getName() {

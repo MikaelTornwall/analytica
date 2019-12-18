@@ -11,6 +11,8 @@ It provides an interface for collecting and analyzing data that is most relevant
 
 [Architecture](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/documentation/architecture.md)
 
+[Instructions](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/documentation/instructions.md)
+
 ## 2. How to
 
 ### 2.1. Initialize
@@ -68,4 +70,6 @@ Then open file _target/site/apidocs/index.html_ in your browser to see the resul
 
 ## 3. Releases
 
-[Week 5](https://github.com/MikaelTornwall/ot-harjoitustyo/releases)
+[Week 5](https://github.com/MikaelTornwall/ot-harjoitustyo/releases/tag/week5)
+
+[Week 6](https://github.com/MikaelTornwall/ot-harjoitustyo/releases/tag/week6)

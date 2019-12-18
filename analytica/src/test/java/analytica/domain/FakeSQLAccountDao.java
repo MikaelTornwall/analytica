@@ -13,7 +13,6 @@ package analytica.domain;
 
 import analytica.domain.Account;
 import analytica.dao.AccountDao;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -27,12 +26,12 @@ public class FakeSQLAccountDao implements AccountDao {
         this.id = 0;
     }
     
-    public void create(Account account) throws SQLException {
+    public void create(Account account) {
         account.setId(id++);
         this.accounts.add(account);
     };
     
-    public Account getAccountByUsername(String username) throws SQLException {
+    public Account getByUsername(String username) {
         for (Account account : this.accounts) {
             if (account.getUsername().equals(username)) {
                 return account;
@@ -42,7 +41,7 @@ public class FakeSQLAccountDao implements AccountDao {
         return null;
     };
     
-    public List<Account> getUsers() throws SQLException {
+    public List<Account> getAll() {
         return this.accounts;
     };
 }
