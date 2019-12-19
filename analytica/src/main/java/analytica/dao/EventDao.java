@@ -16,4 +16,7 @@ public interface EventDao {
     public List<Integer> getParticipantsList();
     public List<Double> getPricesList();
     public List<Integer> getOpenedList();
+    public List<Integer> getNotOpenedList();
+    public List<Integer> getMalesList();
+    public List<Integer> getFemalesList();
 }

@@ -27,10 +27,16 @@ public class AccountServiceTest {
     }
     
     @Test
-    public void ifAccountExistsAccountCanBeFound() {
+    public void ifAccountExistsAccountExistsReturnsTrue() {
         Account user = new Account("Test", "User");
         this.service.createAccount(user);
         assertTrue(this.service.accountExists(user));        
+    }
+    
+    @Test
+    public void ifAccountDoesNotExistAccountExistsReturnsFalse() {
+        Account user = new Account("Test", "User");        
+        assertFalse(this.service.accountExists(user));        
     }
     
     @Test

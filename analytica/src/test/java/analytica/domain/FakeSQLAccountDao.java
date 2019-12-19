@@ -1,20 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package analytica.domain;
+
+import analytica.domain.Account;
+import analytica.dao.AccountDao;
+import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Replaces AccountDao class for AnalyticaService tests
  * 
  * @author Mikael Törnwall
  */
-
-import analytica.domain.Account;
-import analytica.dao.AccountDao;
-import java.util.List;
-import java.util.ArrayList;
 
 public class FakeSQLAccountDao implements AccountDao {
     

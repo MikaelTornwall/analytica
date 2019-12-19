@@ -14,4 +14,6 @@
 | 8.12  | 9        | Add database, refactor and update code to accommodate db, create AccountDAO class, first javadoc descriptions |
 | 9.12  | 2        | Write the preliminary architecture document, write the preliminary instructions manual |
 | 10.12 | 3        | Add db package and SQLDatabase class, AccountDao interface, rename AccountDao and AnalyticaService, refactor SQLAccountDao and AccountService classes, update AccountService tests and create FakeSQLAccountDao class to test AccountService tests, update javadoc |
-| total | 38.5     |       |
+| 18.12 | 5        | Refactor code, add EventService, EventDao, event database, EventDao, SQLEventDao, SQLAccountDao tests |
+| 19.12 | 9        | Update regression class and regression tests, create AnalyticaService class and tests, build dashboard and eventlist UIs |
+| total | 52.5     |       |

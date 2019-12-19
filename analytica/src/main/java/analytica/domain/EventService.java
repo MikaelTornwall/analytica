@@ -80,8 +80,15 @@ public class EventService {
      * @return number of participants in each event as a List object
      */
     
-    public List<Integer> getParticipantsList() {        
-        return this.eventDao.getParticipantsList();
+    public List<Double> getParticipantsList() {        
+        List<Integer> participants = this.eventDao.getParticipantsList();
+        List<Double> list = new ArrayList<>();
+        
+        for (Integer value : participants) {
+            list.add((double) value);
+        }
+        
+        return list;
     }
     
     /**
@@ -90,7 +97,7 @@ public class EventService {
      * @return price of each event as a List object
      */
     
-    public List<Double> getPricesList() {        
+    public List<Double> getPricesList() {                        
         return this.eventDao.getPricesList();
     }
     
@@ -100,8 +107,66 @@ public class EventService {
      * @return number opened accounts in each event as a List object
      */
     
-    public List<Integer> getOpenedList() {        
-        return this.eventDao.getOpenedList();
+    public List<Double> getOpenedList() {         
+        List<Integer> opened = this.eventDao.getOpenedList();
+        List<Double> list = new ArrayList<>(); 
+        
+        for (Integer value : opened) {
+            list.add((double) value);
+        }
+        
+        return list;
+    }
+    
+    /**
+     * Method returns the number of opened accounts not opened in each event
+     * 
+     * @return number opened accounts not opened in each event as a List object
+     */
+    
+    public List<Double> getNotOpenedList() {         
+        List<Integer> notOpened = this.eventDao.getNotOpenedList();
+        List<Double> list = new ArrayList<>(); 
+        
+        for (Integer value : notOpened) {
+            list.add((double) value);
+        }
+        
+        return list;
+    }
+    
+    /**
+     * Method returns the number of male participants in each event
+     * 
+     * @return number male participants in each event as a List object
+     */
+    
+    public List<Double> getMalesList() {         
+        List<Integer> males = this.eventDao.getMalesList();
+        List<Double> list = new ArrayList<>(); 
+        
+        for (Integer value : males) {
+            list.add((double) value);
+        }
+        
+        return list;
+    }
+    
+    /**
+     * Method returns the number of female participants in each event
+     * 
+     * @return number female participants in each event as a List object
+     */
+    
+    public List<Double> getFemalesList() {         
+        List<Integer> females = this.eventDao.getFemalesList();
+        List<Double> list = new ArrayList<>(); 
+        
+        for (Integer value : females) {
+            list.add((double) value);
+        }
+        
+        return list;
     }
     
     /**
@@ -110,7 +175,7 @@ public class EventService {
      * @return events as a List object
      */
     
-    public List<Event> getEventsFromDatabase() {
+    private List<Event> getEventsFromDatabase() {
         return this.eventDao.getAll();
     }        
 }

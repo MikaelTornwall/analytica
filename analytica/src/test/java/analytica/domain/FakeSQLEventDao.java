@@ -71,4 +71,35 @@ public class FakeSQLEventDao implements EventDao {
         
         return opened;
     }
+    
+    public List<Integer> getNotOpenedList() {
+        List<Integer> notOpened = new ArrayList<>();
+        
+        for (Event e : this.events) {
+            notOpened.add(e.getDidNotOpenAccount());
+        }
+        
+        return notOpened;
+    }
+    
+    public List<Integer> getMalesList() {
+        List<Integer> males = new ArrayList<>();
+        
+        for (Event e : this.events) {
+            males.add(e.getMales());
+        }
+        
+        return males;
+    }
+    
+    public List<Integer> getFemalesList() {
+        List<Integer> females = new ArrayList<>();
+        
+        for (Event e : this.events) {
+            females.add(e.getFemales());
+        }
+        
+        return females;
+    }
+    
 }

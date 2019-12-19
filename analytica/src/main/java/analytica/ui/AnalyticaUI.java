@@ -2,7 +2,11 @@ package analytica.ui;
 
 import analytica.domain.Account;
 import analytica.domain.AccountService;
+import analytica.domain.Event;
+import analytica.domain.EventService;
+import analytica.domain.AnalyticsService;
 import analytica.dao.SQLAccountDao;
+import analytica.dao.SQLEventDao;
 import analytica.db.SQLDatabase;
 import java.sql.SQLException;
 import javafx.application.Application;
@@ -21,12 +25,15 @@ public class AnalyticaUI extends Application {
     private Scene loginScene;
     private Scene registerScene;
     private Scene loggedInScene;      
-    
-    // Application logic
+       
     AccountService accountService;    
+    EventService eventService;  
+    AnalyticsService analyticsService;
     
     public void init(String path) {
         this.accountService = new AccountService(new SQLAccountDao(new SQLDatabase(path)));                                  
+        this.eventService = new EventService(new SQLEventDao(new SQLDatabase(path)));                                  
+        this.analyticsService = new AnalyticsService(this.eventService);
         this.menu = new Menu();                
     }
     
@@ -35,8 +42,7 @@ public class AnalyticaUI extends Application {
         
         // Initialization
         // Database path
-        String path = "jdbc:h2:./analytica_db";        
-        
+        String path = "jdbc:h2:./analytica_db";                
         this.init(path);                                     
                                      
         // Create layouts        
@@ -49,10 +55,13 @@ public class AnalyticaUI extends Application {
         BorderPane registerLayout = (BorderPane) register.getRegister();
         
         // Dashboard layout
-        Dashboard dashboard = new Dashboard();        
+        Dashboard dashboard = new Dashboard(analyticsService);        
+        
+        // Event list layout
+        EventList eventList = new EventList(eventService);
         
         // NewEvent layout
-        NewEvent addData = new NewEvent();        
+        NewEvent newEvent = new NewEvent(eventService, eventList);        
         
         BorderPane loggedInLayout = new BorderPane();
         loggedInLayout.setTop(menu.getMenu());
@@ -89,6 +98,7 @@ public class AnalyticaUI extends Application {
             
             if (accountService.login(username, password)) {
                     login.setUnsuccessfulLoginLabel(""); 
+                    loggedInLayout.setCenter((BorderPane) dashboard.getDashboard());
                     stage.setScene(loggedInScene);                                                       
                 } else {
                     login.setUnsuccessfulLoginLabel("Invalid username or password.");
@@ -120,19 +130,34 @@ public class AnalyticaUI extends Application {
             stage.setScene(loginScene); 
         });
         
+        
+        
         // Menu button event handlers        
         Button dashboardButton = menu.getDashboardButton();
         
         // Dashboard view
         dashboardButton.setOnAction((event) -> {
             loggedInLayout.setCenter(dashboard.getDashboard());            
-        });
+        });                
         
         // Add data view
         Button addDataButton = menu.getAddDataButton();
         
         addDataButton.setOnAction((event) -> {
-            loggedInLayout.setCenter(addData.getAddData());            
+            loggedInLayout.setCenter(newEvent.getAddData());            
+        });
+        
+        // Events view
+        Button eventButton = menu.getEventsButton();
+        
+        eventButton.setOnAction((event) -> {
+            loggedInLayout.setCenter(eventList.getEventList());
+        });
+         
+        Button newEventButton = newEvent.getAddButton();
+        
+        newEventButton.setOnAction((event) -> {
+            newEvent.addEvent();
         });
                 
         // Logout        

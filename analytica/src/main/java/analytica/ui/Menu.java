@@ -13,11 +13,13 @@ import javafx.scene.control.Button;
 public class Menu {
     private Button dashboardButton;
     private Button addDataButton;
+    private Button eventsButton;
     private Button logoutButton;
     private Parent menu;
     
     public Menu() {
         this.dashboardButton = new Button("Dashboard");
+        this.eventsButton = new Button("Events");
         this.addDataButton = new Button("Add data");
         this.logoutButton = new Button("Logout");
         this.menu = this.createMenu();
@@ -31,6 +33,16 @@ public class Menu {
     
     public Button getAddDataButton() {
         return this.addDataButton;
+    }
+    
+    /**
+     * Method returns events button so that event handling can be performed
+     * 
+     * @return JavaFX Button component
+     */
+    
+    public Button getEventsButton() {
+        return this.eventsButton;
     }
     
     /**
@@ -69,9 +81,9 @@ public class Menu {
      * @return menu component as a JavaFX Parent object
      */
     
-    public Parent createMenu() {
+    private Parent createMenu() {
         HBox menuPane = new HBox();
-        menuPane.getChildren().addAll(dashboardButton, addDataButton, logoutButton);
+        menuPane.getChildren().addAll(dashboardButton, eventsButton, addDataButton, logoutButton);
         
         return menuPane;
     }

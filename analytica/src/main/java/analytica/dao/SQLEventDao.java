@@ -142,4 +142,46 @@ public class SQLEventDao implements EventDao {
                 
         return opened;
     }
+    
+    public List<Integer> getNotOpenedList() {
+        List<Integer> notOpened = new ArrayList<>();
+        try (Connection connection = this.database.getConnection();
+                ResultSet res = connection.prepareStatement("SELECT notopened FROM Event").executeQuery()) {
+            while (res.next()) {
+                notOpened.add(res.getInt("notopened"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        
+        return notOpened;
+    }
+    
+    public List<Integer> getMalesList() {
+        List<Integer> males = new ArrayList<>();
+        try (Connection connection = this.database.getConnection();
+                ResultSet res = connection.prepareStatement("SELECT males FROM Event").executeQuery()) {
+            while (res.next()) {
+                males.add(res.getInt("males"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        
+        return males;
+    }
+    
+    public List<Integer> getFemalesList() {
+        List<Integer> females = new ArrayList<>();
+        try (Connection connection = this.database.getConnection();
+                ResultSet res = connection.prepareStatement("SELECT females FROM Event").executeQuery()) {
+            while (res.next()) {
+                females.add(res.getInt("females"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        
+        return females;
+    }
 }

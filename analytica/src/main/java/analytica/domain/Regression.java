@@ -8,6 +8,7 @@ public class Regression {
     private int size;
     Statistics xStatistics;
     Statistics yStatistics;
+    Statistics statistics;
     
     public Regression() {
         this.xValues = new double[10];
@@ -16,6 +17,7 @@ public class Regression {
         this.size = 10;
         this.xStatistics = new Statistics();
         this.yStatistics = new Statistics();
+        this.statistics = new Statistics();
     }
     
     public void increaseLength() {
@@ -51,7 +53,7 @@ public class Regression {
             }
         }
         return true;
-    }
+    }        
     
     public void addData(double[][] data) {   
         if (!this.checkDataArrayStructure(data)) {
@@ -66,6 +68,54 @@ public class Regression {
     public long getNumberOfValuePairs() {
         return this.index;
     }    
+    
+    public double getProductOfValuePair(double x, double y) {
+        return x * y;
+    }
+    
+    public double getProductOfValuePairs() {
+        for (int i = 0; i < this.index; i++) {            
+            this.statistics.addValue(this.getProductOfValuePair(xValues[i], yValues[i]));
+        }
+        
+        return this.statistics.getSum();
+    }
+    
+    public double getMeanOfProductOfValuePairs() {
+        for (int i = 0; i < this.index; i++) {
+            this.statistics.addValue(this.getProductOfValuePair(xValues[i], yValues[i]));
+        }
+        
+        return this.statistics.getMean();
+    }
+    
+    public double getMedianOfProductOfValuePairs() {
+        for (int i = 0; i < this.index; i++) {
+            this.statistics.addValue(this.getProductOfValuePair(xValues[i], yValues[i]));
+        }
+        
+        return this.statistics.getMedian();
+    }
+    
+    public double getModeOfProductOfValuePairs() {
+        for (int i = 0; i < this.index; i++) {
+            this.statistics.addValue(this.getProductOfValuePair(xValues[i], yValues[i]));
+        }
+        
+        return this.statistics.getMode();
+    }
+    
+    public double getXRate() {
+        double xSum = this.xStatistics.getSum();
+        double totalSum = this.xStatistics.getSum() + this.yStatistics.getSum();
+        return xSum / totalSum;
+    }
+    
+    public double getYRate() {
+        double ySum = this.yStatistics.getSum();
+        double totalSum = this.xStatistics.getSum() + this.yStatistics.getSum();
+        return ySum / totalSum;
+    }
     
     public double getCovariance() {                
         double xMean = xStatistics.getMean();
@@ -106,5 +156,7 @@ public class Regression {
         this.yValues = new double[10];
         this.size = 10;
         this.index = 0;
+        this.xStatistics.clear();
+        this.yStatistics.clear();
     }
 }

@@ -48,11 +48,32 @@ public class RegressionTest {
     }
     
     @Test
+    public void xRateIsCorrect() {
+        double[][] data = {{5, 10}, {2, 4}, {3, 6}, {4, 8}, {1, 2}};
+        regression.addData(data);
+        assertEquals(0.3333333333333333, regression.getXRate(), 0.0f);
+    }
+    
+    @Test
+    public void yRateIsCorrect() {
+        double[][] data = {{5, 10}, {2, 4}, {3, 6}, {4, 8}, {1, 2}};
+        regression.addData(data);
+        assertEquals(0.6666666666666666, regression.getYRate(), 0.0f);
+    }
+    
+    @Test
+    public void productOfValuePairsIsCorrect() {
+        double[][] data = {{1, 2}, {2, 3}, {3, 4}};
+        regression.addData(data);
+        assertEquals(20, regression.getProductOfValuePairs(), 0.0f);
+    }
+    
+    @Test
     public void covarianceIsCorrect() {
         double[][] data = {{1,10}, {2,12}, {3,14}, {8, 11}, {7, 2}, {9, 19}};
         regression.addData(data);
         assertEquals(1.5, regression.getCovariance(), 0.0f);
-    }
+    }       
     
     @Test
     public void correlationIsCorrect() {

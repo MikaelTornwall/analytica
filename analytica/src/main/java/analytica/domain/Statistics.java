@@ -204,7 +204,7 @@ public class Statistics {
         }
         
         return sum;
-    }
+    }        
     
     /**
      * Method calculates the variance of the model values
