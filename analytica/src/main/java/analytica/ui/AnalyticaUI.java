@@ -46,11 +46,11 @@ public class AnalyticaUI extends Application {
                                      
         // Create layouts        
         // Login layout
-        Login login = new Login();        
+        Login login = new Login(accountService);        
         BorderPane loginLayout = (BorderPane) login.getLogin();
                         
         // New user layout
-        Register register = new Register();
+        Register register = new Register(accountService);
         BorderPane registerLayout = (BorderPane) register.getRegister();
         
         // Dashboard layout
@@ -87,22 +87,10 @@ public class AnalyticaUI extends Application {
         // Event handlers
         // Login screen event handlers
         loginButton.setOnAction((event) -> {
-            String username = login.getUsernameInput();
-            String password = login.getPasswordInput();
-            
-            login.setUsernameInput("");
-            login.setPasswordInput("");
-            
-            System.out.println("Username: " + username);
-            System.out.println("Password: " + password);
-            
-            if (accountService.login(username, password)) {
-                    login.setUnsuccessfulLoginLabel(""); 
-                    loggedInLayout.setCenter((BorderPane) dashboard.getDashboard());
-                    stage.setScene(loggedInScene);                                                       
-                } else {
-                    login.setUnsuccessfulLoginLabel("Invalid username or password.");
-                }                    
+            if (login.login()) {                
+                loggedInLayout.setCenter((BorderPane) dashboard.getDashboard());
+                stage.setScene(loggedInScene);                                                       
+            }             
         });
                 
         createButton.setOnAction((event) -> {            
@@ -110,23 +98,14 @@ public class AnalyticaUI extends Application {
         });
                 
         // Register screen event handlers
-        createUserButton.setOnAction((event) -> {
-            String username = register.getUsernameInput();
-            String password = register.getPasswordInput();                        
-            
-            Account account = new Account(username, password);
-            
-            if (accountService.createAccount(account)) {
-                    register.setUsernameInput("");
-                    register.setPasswordInput("");                
-                    stage.setScene(loginScene);
-                } else {
-                    register.setReservedUsernameLabel("This username is already in use. Choose another one.");
-                }                               
+        createUserButton.setOnAction((event) -> {                                                                       
+            if (register.createAccount()) {
+                stage.setScene(loginScene); 
+            }             
         });
         
         backToLoginButton.setOnAction((event) -> {
-            register.setReservedUsernameLabel("");
+            register.setErrorLabel("");
             stage.setScene(loginScene); 
         });
                 
@@ -136,6 +115,7 @@ public class AnalyticaUI extends Application {
         // Dashboard view
         dashboardButton.setOnAction((event) -> {
             loggedInLayout.setCenter(dashboard.getDashboard());            
+            dashboard.defaultTextList();
         });                
         
         // Add data view

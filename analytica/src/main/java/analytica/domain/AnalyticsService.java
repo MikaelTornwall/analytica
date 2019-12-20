@@ -116,19 +116,19 @@ public class AnalyticsService {
     }
     
     public double getMalesRate() {            
-        return Math.round(createRegressionModelForMalesAndFemales().getXRate() * 1000) / 10;
+        return Math.round(createRegressionModelForMalesAndFemales().getXRate() * 100);
     }
     
     public double getFemalesRate() {        
-        return Math.round(createRegressionModelForMalesAndFemales().getYRate() * 1000) / 10;
+        return Math.round(createRegressionModelForMalesAndFemales().getYRate() * 100);
     }    
     
     public double getAverageRevenue() {                
-        return this.createRegressionModelForPricesAndParticipants().getMeanOfProductOfValuePairs();
+        return Math.round(this.createRegressionModelForPricesAndParticipants().getMeanOfProductOfValuePairs());
     }
     
     public double getMedianRevenue() {        
-        return this.createRegressionModelForPricesAndParticipants().getMedianOfProductOfValuePairs();        
+        return Math.round(this.createRegressionModelForPricesAndParticipants().getMedianOfProductOfValuePairs());        
     }
     
     public double getModeRevenue() {
@@ -140,18 +140,18 @@ public class AnalyticsService {
     }        
     
     public double predictPriceByParticipants(Integer x) {
-        return this.createRegressionModelForParticipantsAndPrices().predict(x);
+        return Math.round(this.createRegressionModelForParticipantsAndPrices().predict(x));
     }
     
     public double predictParticipantsByPrice(Double x) {
-        return this.createRegressionModelForPricesAndParticipants().predict(x);        
+        return Math.round(this.createRegressionModelForPricesAndParticipants().predict(x));        
     }
     
     public double predictRevenueByParticipants(Integer x) {        
-        return this.createRegressionModelForParticipantsAndPrices().predict(x) * x;
+        return Math.round(this.createRegressionModelForParticipantsAndPrices().predict(x) * x);
     }
     
     public double predictRevenueByPrice(Double x) {        
-        return this.createRegressionModelForPricesAndParticipants().predict(x) * x;        
+        return Math.round(this.createRegressionModelForPricesAndParticipants().predict(x) * x);        
     }
 }

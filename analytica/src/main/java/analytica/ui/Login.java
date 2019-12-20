@@ -1,5 +1,6 @@
 package analytica.ui;
 
+import analytica.domain.AccountService;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -19,13 +20,15 @@ import javafx.scene.layout.VBox;
 public class Login {
     
     private final int SPACING = 10;
+    private AccountService accountService;
     private Button loginButton;
     private Button createButton;
     private TextField usernameInput;
     private TextField passwordInput;
     private Label unsuccessfulLoginLabel;        
     
-    public Login() {
+    public Login(AccountService accountService) {
+        this.accountService = accountService;
         this.loginButton = new Button("Login");
         this.createButton = new Button("Create new user");   
         this.usernameInput = new TextField();      
@@ -101,6 +104,21 @@ public class Login {
     
     public void setUnsuccessfulLoginLabel(String text) {
         this.unsuccessfulLoginLabel.setText(text);
+    }    
+    
+    public boolean login() {
+        String username = getUsernameInput();
+        String password = getPasswordInput();                    
+                
+        if (accountService.login(username, password)) {
+            setUsernameInput("");
+            setPasswordInput("");
+            return true;
+        }
+        
+        setUnsuccessfulLoginLabel("Invalid username or password.");
+        
+        return false;
     }
             
     /**
@@ -120,7 +138,7 @@ public class Login {
         
         inputPaneUsername.getChildren().addAll(usernameLabel, usernameInput);        
         inputPanePassword.getChildren().addAll(passwordLabel, passwordInput);                                               
-        loginPane.getChildren().addAll(unsuccessfulLoginLabel, inputPaneUsername, inputPanePassword, loginButton, createButton);
+        loginPane.getChildren().addAll(inputPaneUsername, inputPanePassword, loginButton, createButton, unsuccessfulLoginLabel);
                 
         loginLabel.setPadding(new Insets(SPACING));
         loginPane.setPadding(new Insets(SPACING));     

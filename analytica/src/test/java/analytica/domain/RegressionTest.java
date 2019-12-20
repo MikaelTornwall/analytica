@@ -20,7 +20,7 @@ public class RegressionTest {
 
         regression.addData(x, y);
 
-        assertEquals(1L, regression.getNumberOfValuePairs());
+        assertEquals(1, regression.getNumberOfValuePairs());
     }
     
     @Test
@@ -29,7 +29,7 @@ public class RegressionTest {
 
         regression.addData(data);
 
-        assertEquals(6L, regression.getNumberOfValuePairs());
+        assertEquals(6, regression.getNumberOfValuePairs());
     }
     
     @Test
@@ -37,14 +37,21 @@ public class RegressionTest {
         double[][] data = {{1,10}, {2,12}, {3,14}, {8, 11}, {7, 2}, {9, 19}};
         regression.addData(data);
         regression.clear();
-        assertEquals(0L, regression.getNumberOfValuePairs());
+        assertEquals(0, regression.getNumberOfValuePairs());
     }
     
     @Test
     public void invalidArrayOfValuePairsIsNotAdded() {
         double[][] data = {{1,10}, {2,12}, {3,14}, {8}, {7, 2}, {9, 19}};
         regression.addData(data);
-        assertEquals(0L, regression.getNumberOfValuePairs());
+        assertEquals(0, regression.getNumberOfValuePairs());
+    }
+    
+    @Test
+    public void numberOfValuePairsIsCorrect() {
+        double[][] data = {{1,10}, {2,12}, {3,14}, {8, 11}, {7, 2}, {9, 19}};
+        regression.addData(data);
+        assertEquals(6, regression.getNumberOfValuePairs());
     }
     
     @Test
@@ -62,10 +69,29 @@ public class RegressionTest {
     }
     
     @Test
+    public void productOfValuePairIsCorrect() {
+        assertEquals(8, regression.getProductOfValuePair(2, 4), 0.0f);
+    }
+    
+    @Test
     public void productOfValuePairsIsCorrect() {
         double[][] data = {{1, 2}, {2, 3}, {3, 4}};
         regression.addData(data);
         assertEquals(20, regression.getProductOfValuePairs(), 0.0f);
+    }
+    
+    @Test
+    public void meanOfProductOfValuePairsIsCorrect() {
+        double[][] data = {{5, 10}, {2, 4}, {3, 6}, {4, 8}, {1, 2}};
+        regression.addData(data);
+        assertEquals(22.0, regression.getMeanOfProductOfValuePairs(), 0.0f);
+    }
+    
+    @Test
+    public void medianOfProductOfValuePairsIsCorrect() {
+        double[][] data = {{5, 10}, {2, 4}, {3, 6}, {4, 8}, {1, 2}};
+        regression.addData(data);
+        assertEquals(18.0, regression.getMedianOfProductOfValuePairs(), 0.0f);
     }
     
     @Test
@@ -87,5 +113,19 @@ public class RegressionTest {
         double[][] data = {{1,10}, {2,12}, {3,14}, {8, 11}, {7, 2}, {9, 19}};
         regression.addData(data);
         assertEquals(0.15517241379310345, regression.getSlope(), 0.0f);
+    }
+    
+    @Test
+    public void interceptIsCorrect() {
+        double[][] data = {{1,10}, {2,12}, {3,14}, {8, 11}, {7, 2}, {9, 19}};
+        regression.addData(data);
+        assertEquals(10.557471264367816, regression.getIntercept(), 0.0f);
+    }
+    
+    @Test
+    public void predictIsCorrect() {
+        double[][] data = {{1,10}, {2,12}, {3,14}, {8, 11}, {7, 2}, {9, 19}};
+        regression.addData(data);
+        assertEquals(11.333333333333334, regression.predict(5), 0.0f);
     }
 }

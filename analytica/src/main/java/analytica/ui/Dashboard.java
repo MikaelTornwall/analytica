@@ -1,5 +1,7 @@
 package analytica.ui;
 
+import java.util.List;
+import java.util.ArrayList;
 import analytica.domain.AnalyticsService;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
@@ -15,6 +17,7 @@ import javafx.scene.text.Text;
 public class Dashboard {     
     private Parent dashboard;
     private AnalyticsService analyticsService;
+    private List<Text> textList;
     private Button predictRevenueByParticipantsButton;
     private Button predictRevenueByPriceButton;
     private Button predictPriceByParticipantsButton;
@@ -30,7 +33,8 @@ public class Dashboard {
     
     
     public Dashboard(AnalyticsService analyticsService) {
-        this.analyticsService = analyticsService;                              
+        this.analyticsService = analyticsService;          
+        this.textList = new ArrayList();
         this.predictRevenueByParticipantsButton = new Button("Predict");
         this.predictRevenueByPriceButton = new Button("Predict");
         this.predictPriceByParticipantsButton = new Button("Predict");
@@ -43,7 +47,8 @@ public class Dashboard {
         this.predictRevenueByPriceText = new Text("-");
         this.predictPriceByParticipantsText = new Text("-");
         this.predictParticipantsByPriceText = new Text("-");
-        this.dashboard = this.createDashboard();        
+        this.dashboard = this.createDashboard();  
+        this.initTextList();
     }        
     
     public Parent getDashboard() {
@@ -54,24 +59,68 @@ public class Dashboard {
         this.dashboard = this.createDashboard();
     }
     
+    public void initTextList() {
+        this.textList.add(predictRevenueByParticipantsText);
+        this.textList.add(predictRevenueByPriceText);
+        this.textList.add(predictPriceByParticipantsText);
+        this.textList.add(predictParticipantsByPriceText);
+    }
+    
+    public void defaultTextList() {
+        for (Text text : this.textList) {
+            text.setText("-");
+        }
+    }
+    
+    public boolean checkIfNumber(String value) {
+        if (value.matches("[0-9]+")) {
+            return true;
+        }
+        return false;
+    }
+    
     public void predictPriceByParticipants() {
-        Double prediction = analyticsService.predictPriceByParticipants(Integer.valueOf(this.predictPriceByParticipantsField.getText()));
-        this.predictPriceByParticipantsText.setText(Double.toString(prediction));
+        if (!this.checkIfNumber(this.predictPriceByParticipantsField.getText())) {
+            this.predictPriceByParticipantsText.setText("Please input numeric value!");
+        } else if (Integer.valueOf(this.predictPriceByParticipantsField.getText()) > 10000) {
+            this.predictPriceByParticipantsText.setText("Please input smaller value!");
+        } else {
+            Double prediction = analyticsService.predictPriceByParticipants(Integer.valueOf(this.predictPriceByParticipantsField.getText()));
+            this.predictPriceByParticipantsText.setText(Double.toString(prediction));            
+        } 
     }
     
     public void predictParticipantsByPrice() {
-        Double prediction = analyticsService.predictParticipantsByPrice(Double.valueOf(this.predictParticipantsByPriceField.getText()));
-        this.predictParticipantsByPriceText.setText(Double.toString(prediction));
+        if (!this.checkIfNumber(this.predictParticipantsByPriceField.getText())) {
+            this.predictParticipantsByPriceText.setText("Please input numeric value!");
+        } else if (Double.valueOf(this.predictParticipantsByPriceField.getText()) > 500) {
+            this.predictParticipantsByPriceText.setText("Please input smaller value!");
+        } else {
+            Double prediction = analyticsService.predictParticipantsByPrice(Double.valueOf(this.predictParticipantsByPriceField.getText()));
+            this.predictParticipantsByPriceText.setText(Double.toString(prediction));            
+        }        
     }
     
     public void predictRevenueByParticipants() {
-        Double prediction = analyticsService.predictRevenueByParticipants(Integer.valueOf(this.predictRevenueByParticipantsField.getText()));
-        this.predictRevenueByParticipantsText.setText(Double.toString(prediction));
+        if (!this.checkIfNumber(this.predictRevenueByParticipantsField.getText())) {
+            this.predictRevenueByParticipantsText.setText("Please input numeric value!");
+        } else if (Integer.valueOf(this.predictRevenueByParticipantsField.getText()) > 10000) {
+            this.predictRevenueByParticipantsText.setText("Please input smaller value!");
+        } else {
+            Double prediction = analyticsService.predictRevenueByParticipants(Integer.valueOf(this.predictRevenueByParticipantsField.getText()));
+            this.predictRevenueByParticipantsText.setText(Double.toString(prediction));
+        }        
     }
     
     public void predictRevenueByPrice() {
-        Double prediction = analyticsService.predictRevenueByPrice(Double.valueOf(this.predictRevenueByPriceField.getText()));
-        this.predictRevenueByPriceText.setText(Double.toString(prediction));
+        if (!this.checkIfNumber(this.predictRevenueByPriceField.getText())) {
+            this.predictRevenueByPriceText.setText("Please input numeric value!");
+        } else if (Double.valueOf(this.predictRevenueByPriceField.getText()) > 500) {
+            this.predictRevenueByPriceText.setText("Please input smaller value!");
+        } else {
+            Double prediction = analyticsService.predictRevenueByPrice(Double.valueOf(this.predictRevenueByPriceField.getText()));
+            this.predictRevenueByPriceText.setText(Double.toString(prediction));            
+        }        
     }
    
     public Button getPredictPriceButton() {

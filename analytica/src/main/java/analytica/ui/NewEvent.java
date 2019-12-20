@@ -20,13 +20,14 @@ public class NewEvent {
     private Dashboard dashboard;
     private EventList eventList;
     private List<TextField> textFields;
+    private List<Label> errorLabelList;
     private Label nameLabel;
     private Label participantsLabel;
     private Label priceLabel;
     private Label openedLabel;    
     private Label malesLabel;
     private Label femalesLabel;
-    private Label errorLabel;
+    private Label errorLabel;    
     private TextField name;
     private TextField participants;
     private TextField price;
@@ -41,13 +42,14 @@ public class NewEvent {
         this.eventList = eventList;
         this.dashboard = dashboard;
         this.textFields = new ArrayList<>();
+        this.errorLabelList = new ArrayList<>();
         this.nameLabel = new Label("Event name");
         this.priceLabel = new Label("Price of the event");
         this.participantsLabel = new Label("Number of participants");
         this.openedLabel = new Label("Number of participants who opened an account");        
         this.malesLabel = new Label("Number of male participants");
         this.femalesLabel = new Label("Number of female participants");    
-        this.errorLabel = new Label();
+        this.errorLabel = new Label();        
         this.name = new TextField();
         this.price = new TextField();
         this.participants = new TextField();
@@ -56,7 +58,7 @@ public class NewEvent {
         this.females = new TextField();
         this.addButton = new Button("Add event");        
         this.addData = this.createAddData();
-        this.initTextFieldsList();
+        this.initTextFieldsList();        
     }        
     
     public void initTextFieldsList() {
@@ -66,6 +68,36 @@ public class NewEvent {
         this.textFields.add(this.opened);
         this.textFields.add(this.males);
         this.textFields.add(this.females);
+    }
+       
+    public boolean checkInputFormat() {
+        if (getNameInput().length() > 20 || getNameInput().isEmpty()) {
+            this.errorLabel.setText("Event name should me 1-20 characters long! ");
+            return false;
+        } else if (!checkNumericFields()) {
+            return false;
+        } else if ((getMalesInput() + getFemalesInput()) != getParticipantsInput()) {
+            this.errorLabel.setText("Number of males and females should sum up to the total number of participants!");
+            return false;
+        } else if (getOpenedInput() > getParticipantsInput()) {
+            this.errorLabel.setText("Please make sure that the number of opened accounts is not bigger than the number of participants!");
+            return false;
+        }
+        
+        return true;
+    }
+    
+    public boolean checkNumericFields() {
+        for (int i = 1; i < this.textFields.size(); i++) {
+            if (!this.textFields.get(i).getText().matches("[0-9]+")) {                
+                this.errorLabel.setText("Please enter numeric value for a numeric field! ");
+                return false;
+            } else if (Double.valueOf(this.textFields.get(i).getText()) > 10000) {
+                this.errorLabel.setText("Please enter smaller value! ");
+                return false;   
+            }
+        }
+        return true;
     }
     
     public String getNameInput() {
@@ -125,7 +157,11 @@ public class NewEvent {
     }        
     
     public void addEvent() {
-        this.errorLabel.setText("");
+        this.errorLabel.setText("");    
+        
+        if (!this.checkInputFormat()) {
+            return;
+        }
         
         Event event = new Event(
                 getNameInput(), 
@@ -169,7 +205,7 @@ public class NewEvent {
         grid.add(femalesLabel, 0, 6);
         grid.add(females, 1, 6);
         grid.add(addButton, 0, 7);
-        grid.add(errorLabel, 0, 8);
+        grid.add(errorLabel, 0, 8, 3, 1);
         
         BorderPane layout = new BorderPane();        
         layout.setCenter(grid);

@@ -1,7 +1,6 @@
 package analytica.ui;
 
 import java.util.List;
-import java.util.ArrayList;
 import analytica.domain.Event;
 import analytica.domain.EventService;
 import javafx.scene.Parent;
@@ -67,8 +66,18 @@ public class EventList {
         pane.add(males, 5, 1);
         pane.add(females, 6, 1);
         
-        
-        for (int i = 0; i < events.size(); i++) {
+        if (this.events.size() <= 20) {
+            for (int i = 0; i < events.size(); i++) {
+            pane.add(new Text(events.get(i).getName()), 0, i + 2);
+            pane.add(new Text(Double.toString(events.get(i).getPrice())), 1, i + 2);            
+            pane.add(new Text(Integer.toString(events.get(i).getParticipants())), 2, i + 2);            
+            pane.add(new Text(Integer.toString(events.get(i).getOpenedAccount())), 3, i + 2);            
+            pane.add(new Text(Integer.toString(events.get(i).getDidNotOpenAccount())), 4, i + 2);            
+            pane.add(new Text(Integer.toString(events.get(i).getMales())), 5, i + 2);            
+            pane.add(new Text(Integer.toString(events.get(i).getFemales())), 6, i + 2);            
+            }
+        } else {
+            for (int i = this.events.size() - 20; i < this.events.size(); i++) {
             pane.add(new Text(events.get(i).getName()), 0, i + 2);
             pane.add(new Text(Double.toString(events.get(i).getPrice())), 1, i + 2);            
             pane.add(new Text(Integer.toString(events.get(i).getParticipants())), 2, i + 2);            
@@ -77,6 +86,8 @@ public class EventList {
             pane.add(new Text(Integer.toString(events.get(i).getMales())), 5, i + 2);            
             pane.add(new Text(Integer.toString(events.get(i).getFemales())), 6, i + 2);            
         }
+        }
+        
         
         pane.setVgap(10);
         pane.setHgap(15);

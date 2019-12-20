@@ -65,7 +65,7 @@ public class Regression {
         }                
     }
     
-    public long getNumberOfValuePairs() {
+    public int getNumberOfValuePairs() {
         return this.index;
     }    
     

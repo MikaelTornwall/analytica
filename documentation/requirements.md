@@ -5,18 +5,17 @@
 Application is intended for the use of an imaginary company that organizes investment events.
 It provides an interface for collecting and analyzing data that is most relevant to their core business.
 
-For each event they can
-- Record how many people demonstrated their interest towards participating in the event in social media
-- How many people bought tickets to the event (and the ticket price)
-- How many participated in the event
+For each event they can record
+- What was the ticket price
+- How many people participated in the event
 - How many of the participants opened an investment portfolio at the event
 etc.
 
-With this information they can calculate event specific (and for example month specific) key figures that will help the company in data-driven future business planning.
+With this information they can calculate key figures that will help the company in data-driven future business planning.
 
 ## Users
 
-Currently the application is intended only for the internal use within the company, so only one user role is required. Later maybe a superuser will be added.
+Currently the application is intended only for the internal use within the company, so only one user role is required. Each user is also able to access all the data, since all the event information is relevant to everyone.
 
 ## User interface draft
 
@@ -26,8 +25,8 @@ __Before logging in__
 
 - [x] User can register
   - Required information is
-    - [ ] Username (length at least 6 characters)
-    - [ ] Password (length at least 8 characters and must include both letters and numbers)
+    - [x] Username (length 6-15 characters)
+    - [x] Password (length 8-15 characters)
 - [x] User can log in
   - [x] If login is successful user will be directed to the application
   - [x] If login is unsuccessful user will receive a notification and can try again
@@ -36,21 +35,25 @@ __Before logging in__
 
   Application includes the following views:
 
-  - [x] User select preferred view from the menu
+  - [x] User can select preferred view from the menu
 
   _Dashboard_  
-  - [ ] User will see a summary
-
-  _CSV file form_
-  - [ ] User can write comma separated values into a form and save them
+  - [x] User will see a summary and key KPIs calculated from the event data. These include
+    - Total revenue
+    - Total participants
+    - Total opened accounts
+    - Average ticket price
+    - Average revenue KPIs
+    - Correlation between number of participants and number of opened accounts
+    - Field for predicting future ticket prices, number of participants and revenue by participants or ticket price
 
   _Input form_
 
-  - User can input event specific information
+  - [x] User can input event details
 
-  _Analysis_
+  _Events_
 
-  - User can select a preferred analysis method and select preferred data and receive the results for the analysis
+  - [x] User can view at most 20 latest events with their specific details (older event details are not important to view, but the data is relevant for calculations)
 
     __Statistics__
       - [x] Add values      
@@ -65,6 +68,7 @@ __Before logging in__
       - [x] Add value pairs
       - [x] Covariance
       - [x] Slope, intercept and predict
+      - [x]
 
   _Graphs_
   - User can view graphs
