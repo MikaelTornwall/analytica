@@ -2,7 +2,6 @@ package analytica.ui;
 
 import analytica.domain.Account;
 import analytica.domain.AccountService;
-import analytica.domain.Event;
 import analytica.domain.EventService;
 import analytica.domain.AnalyticsService;
 import analytica.dao.SQLAccountDao;
@@ -14,11 +13,11 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.control.Button;
+import javafx.geometry.Insets;
 
-public class AnalyticaUI extends Application {
-    private final int SPACING = 10;    
-    private final int WIDTH = 1000;
-    private final int HEIGHT = 700;
+public class AnalyticaUI extends Application {     
+    private final int WIDTH = 1100;
+    private final int HEIGHT = 600;
         
     private Menu menu;
     
@@ -26,9 +25,9 @@ public class AnalyticaUI extends Application {
     private Scene registerScene;
     private Scene loggedInScene;      
        
-    AccountService accountService;    
-    EventService eventService;  
-    AnalyticsService analyticsService;
+    private AccountService accountService;    
+    private EventService eventService;  
+    private AnalyticsService analyticsService;
     
     public void init(String path) {
         this.accountService = new AccountService(new SQLAccountDao(new SQLDatabase(path)));                                  
@@ -61,16 +60,17 @@ public class AnalyticaUI extends Application {
         EventList eventList = new EventList(eventService);
         
         // NewEvent layout
-        NewEvent newEvent = new NewEvent(eventService, eventList);        
+        NewEvent newEvent = new NewEvent(eventService, eventList, dashboard);        
         
         BorderPane loggedInLayout = new BorderPane();
         loggedInLayout.setTop(menu.getMenu());
         loggedInLayout.setCenter((BorderPane) dashboard.getDashboard());
+        loggedInLayout.setPadding(new Insets(10, 10, 10, 10));
         
         // Create scenes
-        loginScene = new Scene(loginLayout, 700, 500);
-        registerScene = new Scene(registerLayout, 700, 500);                                                   
-        loggedInScene = new Scene(loggedInLayout, 700, 500);
+        loginScene = new Scene(loginLayout, WIDTH, HEIGHT);
+        registerScene = new Scene(registerLayout, WIDTH, HEIGHT);                                                   
+        loggedInScene = new Scene(loggedInLayout, WIDTH, HEIGHT);
         
         //dashboardScene = new Scene(dashboardLayout, 700, 500);
         //addDataScene = new Scene(addDataLayout, 700, 500);
@@ -129,9 +129,7 @@ public class AnalyticaUI extends Application {
             register.setReservedUsernameLabel("");
             stage.setScene(loginScene); 
         });
-        
-        
-        
+                
         // Menu button event handlers        
         Button dashboardButton = menu.getDashboardButton();
         
@@ -145,6 +143,28 @@ public class AnalyticaUI extends Application {
         
         addDataButton.setOnAction((event) -> {
             loggedInLayout.setCenter(newEvent.getAddData());            
+        });
+        
+        //Dashboard view
+        Button predictPriceByParticipantsButton = dashboard.getPredictPriceButton();
+        Button predictParticipantsByPriceButton = dashboard.getPredictParticipantsButton();
+        Button predictParticipantsButton = dashboard.getPredictRevenueParticipantsButton();
+        Button predictPricesButton = dashboard.getPredictRevenuePriceButton();
+        
+        predictPriceByParticipantsButton.setOnAction((event) -> {
+            dashboard.predictPriceByParticipants();
+        });
+        
+        predictParticipantsByPriceButton.setOnAction((event) -> {
+            dashboard.predictParticipantsByPrice();
+        });
+        
+        predictParticipantsButton.setOnAction((event) -> {
+            dashboard.predictRevenueByParticipants();
+        });
+        
+        predictPricesButton.setOnAction((event) -> {
+            dashboard.predictRevenueByPrice();
         });
         
         // Events view

@@ -2,10 +2,7 @@ package analytica.domain;
 
 import java.util.List;
 import java.util.ArrayList;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -62,7 +59,7 @@ public class StatisticsTest {
     public void numberOfAddedValuesIsCorrect() {
         double[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9};
         this.statistics.addValues(array);
-        assertEquals(9L, this.statistics.getNumberOfValues());
+        assertEquals(9, this.statistics.getNumberOfValues());
     }
     
     @Test
@@ -163,6 +160,6 @@ public class StatisticsTest {
         double[] array = {2, 7, 8, 9, 10, 10, 11, 11, 12, 18};
         this.statistics.addValues(array);
         this.statistics.clear();
-        assertEquals(0L, this.statistics.getNumberOfValues());
+        assertEquals(0, this.statistics.getNumberOfValues());
     }
 }

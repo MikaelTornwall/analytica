@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import analytica.domain.Event;
 import analytica.domain.EventService;
 import javafx.scene.Parent;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.control.TextField;
@@ -18,6 +17,7 @@ import javafx.geometry.Insets;
 
 public class NewEvent {
     private EventService eventService;
+    private Dashboard dashboard;
     private EventList eventList;
     private List<TextField> textFields;
     private Label nameLabel;
@@ -36,9 +36,10 @@ public class NewEvent {
     private Button addButton;    
     private Parent addData;
     
-    public NewEvent(EventService eventService, EventList eventList) {
+    public NewEvent(EventService eventService, EventList eventList, Dashboard dashboard) {
         this.eventService = eventService;
         this.eventList = eventList;
+        this.dashboard = dashboard;
         this.textFields = new ArrayList<>();
         this.nameLabel = new Label("Event name");
         this.priceLabel = new Label("Price of the event");
@@ -100,7 +101,7 @@ public class NewEvent {
     }
     
     public Integer getMalesInput() {
-        return Integer.valueOf(this.opened.getText());
+        return Integer.valueOf(this.males.getText());
     }
     
     public void setMales(String value) {
@@ -140,6 +141,7 @@ public class NewEvent {
                 field.setText("");                
             }
             this.eventList.updateList();
+            this.dashboard.updateDashboard();
         } else {
             this.errorLabel.setText("Event with name '" + this.getNameInput() + "' already exists.");
         }

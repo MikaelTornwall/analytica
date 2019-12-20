@@ -5,13 +5,7 @@ import java.util.ArrayList;
 import analytica.domain.Event;
 import analytica.domain.EventService;
 import javafx.scene.Parent;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -84,8 +78,8 @@ public class EventList {
             pane.add(new Text(Integer.toString(events.get(i).getFemales())), 6, i + 2);            
         }
         
-        pane.setVgap(5);
-        pane.setHgap(5);
+        pane.setVgap(10);
+        pane.setHgap(15);
         
         return pane;
     }

@@ -9,7 +9,7 @@ import java.util.List;
 
 public class AnalyticsService {
     
-    private EventService eventService;          
+    private final EventService eventService;          
     
     public AnalyticsService(EventService eventService) {
         this.eventService = eventService;                
@@ -34,17 +34,32 @@ public class AnalyticsService {
         return array;
     }
     
+    public Regression createRegressionModelForPricesAndParticipants() {
+        Regression regression = new Regression();
+        List<Double> prices = this.eventService.getPricesList();
+        List<Double> participants = this.eventService.getParticipantsList();
+        
+        regression.addData(this.createValuePairs(prices, participants));
+        
+        return regression;
+    }
+    
+    public Regression createRegressionModelForParticipantsAndPrices() {
+        Regression regression = new Regression();
+        List<Double> participants = this.eventService.getParticipantsList();
+        List<Double> prices = this.eventService.getPricesList();
+        
+        regression.addData(this.createValuePairs(participants, prices));
+        
+        return regression;
+    }
+    
     public Integer getNumberOfEvents() {
         return this.eventService.getEvents().size();
     }
     
-    public double getTotalRevenue() {    
-        Regression regression = new Regression();
-        List<Double> prices = this.eventService.getPricesList();
-        List<Double> participants = this.eventService.getParticipantsList();
-        regression.addData(this.createValuePairs(prices, participants));                        
-        
-        return regression.getProductOfValuePairs();
+    public double getTotalRevenue() {            
+        return this.createRegressionModelForPricesAndParticipants().getProductOfValuePairs();
     }
      
     public Integer getTotalParticipants() {
@@ -62,83 +77,81 @@ public class AnalyticsService {
     public Double getAverageParticipants() {
         Statistics statistics = new Statistics();
         statistics.addValues(this.eventService.getParticipantsList());
-        return statistics.getMean();
+        return (double) Math.round(statistics.getMean());
     }        
         
     public Double getAveragePrice() {
         Statistics statistics = new Statistics();
         statistics.addValues(this.eventService.getPricesList());
-        return statistics.getMean();
+        return (double) Math.round(statistics.getMean());
     }
     
-    public double getOpenedRate() {
+    public Regression createRegressionModelForOpenedAndNotOpened() {
         Regression regression = new Regression();
         List<Double> opened = this.eventService.getOpenedList();
         List<Double> notOpened = this.eventService.getNotOpenedList();
         
         regression.addData(this.createValuePairs(opened, notOpened));
         
-        return Math.round(regression.getXRate() * 1000) / 10;
+        return regression;
     }
+    
+    public double getOpenedRate() {                
+        return Math.round(createRegressionModelForOpenedAndNotOpened().getXRate() * 1000) / 10;
+    }        
     
     public double getNotOpenedRate() {
-        return 100.0 - getOpenedRate();
+        return Math.round(createRegressionModelForOpenedAndNotOpened().getYRate() * 1000) / 10;
     }
     
-    public double getMalesRate() {
+    public Regression createRegressionModelForMalesAndFemales() {
         Regression regression = new Regression();
         List<Double> males = this.eventService.getMalesList();
         List<Double> females = this.eventService.getFemalesList();
         
         regression.addData(this.createValuePairs(males, females));
+    
         
-        return Math.round(regression.getXRate() * 1000) / 10;
+        return regression;
     }
     
-    public double getFemalesRate() {
-        return 100.0 - getMalesRate();
-    }
-
-    public double getAverageRevenue() {
-        Regression regression = new Regression();
-        List<Double> prices = this.eventService.getPricesList();
-        List<Double> participants = this.eventService.getParticipantsList();
-        
-        regression.addData(this.createValuePairs(prices, participants));
-        
-        return regression.getMeanOfProductOfValuePairs();
+    public double getMalesRate() {            
+        return Math.round(createRegressionModelForMalesAndFemales().getXRate() * 1000) / 10;
     }
     
-    public double getMedianRevenue() {
-        Regression regression = new Regression();
-        List<Double> prices = this.eventService.getPricesList();
-        List<Double> participants = this.eventService.getParticipantsList();
-        
-        regression.addData(this.createValuePairs(prices, participants));
-        
-        return regression.getMedianOfProductOfValuePairs();        
+    public double getFemalesRate() {        
+        return Math.round(createRegressionModelForMalesAndFemales().getYRate() * 1000) / 10;
+    }    
+    
+    public double getAverageRevenue() {                
+        return this.createRegressionModelForPricesAndParticipants().getMeanOfProductOfValuePairs();
+    }
+    
+    public double getMedianRevenue() {        
+        return this.createRegressionModelForPricesAndParticipants().getMedianOfProductOfValuePairs();        
     }
     
     public double getModeRevenue() {
-        Regression regression = new Regression();
-        List<Double> prices = this.eventService.getPricesList();
-        List<Double> participants = this.eventService.getParticipantsList();
-        
-        regression.addData(this.createValuePairs(prices, participants));
-        
-        return regression.getModeOfProductOfValuePairs();        
+        return this.createRegressionModelForPricesAndParticipants().getModeOfProductOfValuePairs();        
     }
     
     public double getCorrelationBetweenParticipantsAndOpenedAccounts() {
-        
-        return 0.0;
+        return this.createRegressionModelForPricesAndParticipants().getCorrelation();
     }        
     
-    public double predictRevenueByParticipants() {
-        return 0.0;
+    public double predictPriceByParticipants(Integer x) {
+        return this.createRegressionModelForParticipantsAndPrices().predict(x);
     }
     
-    public double predictRevenueByPrice() {
-        return 0.0;
+    public double predictParticipantsByPrice(Double x) {
+        return this.createRegressionModelForPricesAndParticipants().predict(x);        
+    }
+    
+    public double predictRevenueByParticipants(Integer x) {        
+        return this.createRegressionModelForParticipantsAndPrices().predict(x) * x;
+    }
+    
+    public double predictRevenueByPrice(Double x) {        
+        return this.createRegressionModelForPricesAndParticipants().predict(x) * x;        
     }
 }

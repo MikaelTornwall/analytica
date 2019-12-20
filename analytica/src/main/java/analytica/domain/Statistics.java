@@ -26,7 +26,7 @@ public class Statistics {
     * @return number of values within the model
     */
     
-    public long getNumberOfValues() {
+    public int getNumberOfValues() {
         return this.index;
     }
     

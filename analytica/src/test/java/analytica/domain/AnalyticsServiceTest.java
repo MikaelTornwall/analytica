@@ -59,7 +59,7 @@ public class AnalyticsServiceTest {
         this.eventService.createEvent(new Event("Test1", 10.0, 10, 5, 5, 0, 0));
         this.eventService.createEvent(new Event("Test2", 20.0, 10, 5, 5, 0, 0));
         this.eventService.createEvent(new Event("Test3", 30.0, 10, 0, 10, 0, 0));
-        assertEquals(0.3333333333333333, this.analyticsService.getOpenedRate(), 0.0f);
+        assertEquals(33.0, this.analyticsService.getOpenedRate(), 0.0f);
     }
 
 }

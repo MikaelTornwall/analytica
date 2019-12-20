@@ -3,6 +3,7 @@ package analytica.ui;
 import javafx.scene.Parent;
 import javafx.scene.layout.HBox;
 import javafx.scene.control.Button;
+import javafx.geometry.Insets;
 
 /**
  * Menu class is responsible for creating a menu UI component
@@ -84,6 +85,8 @@ public class Menu {
     private Parent createMenu() {
         HBox menuPane = new HBox();
         menuPane.getChildren().addAll(dashboardButton, eventsButton, addDataButton, logoutButton);
+        menuPane.setPadding(new Insets(0, 0, 20, 0));
+        menuPane.setSpacing(10);
         
         return menuPane;
     }
