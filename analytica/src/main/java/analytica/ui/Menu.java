@@ -12,11 +12,11 @@ import javafx.geometry.Insets;
  */
 
 public class Menu {
-    private Button dashboardButton;
-    private Button addDataButton;
-    private Button eventsButton;
-    private Button logoutButton;
-    private Parent menu;
+    private final Button dashboardButton;
+    private final Button addDataButton;
+    private final Button eventsButton;
+    private final Button logoutButton;
+    private final Parent menu;
     
     public Menu() {
         this.dashboardButton = new Button("Dashboard");

@@ -12,30 +12,34 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 import javafx.scene.text.Font;
-import javafx.geometry.Insets;
 
+/**
+ * NewEvent class is responsible for generating and managing the new event component
+ *
+ * @author Mikael Törnwall
+ */
 
 public class NewEvent {
-    private EventService eventService;
-    private Dashboard dashboard;
-    private EventList eventList;
-    private List<TextField> textFields;
-    private List<Label> errorLabelList;
-    private Label nameLabel;
-    private Label participantsLabel;
-    private Label priceLabel;
-    private Label openedLabel;    
-    private Label malesLabel;
-    private Label femalesLabel;
-    private Label errorLabel;    
-    private TextField name;
-    private TextField participants;
-    private TextField price;
-    private TextField opened;    
-    private TextField males;
-    private TextField females;       
-    private Button addButton;    
-    private Parent addData;
+    private final EventService eventService;
+    private final Dashboard dashboard;
+    private final EventList eventList;
+    private final List<TextField> textFields;
+    private final List<Label> errorLabelList;
+    private final Label nameLabel;
+    private final Label participantsLabel;
+    private final Label priceLabel;
+    private final Label openedLabel;    
+    private final Label malesLabel;
+    private final Label femalesLabel;
+    private final Label errorLabel;    
+    private final TextField name;
+    private final TextField participants;
+    private final TextField price;
+    private final TextField opened;    
+    private final TextField males;
+    private final TextField females;       
+    private final Button addButton;    
+    private final Parent addData;
     
     public NewEvent(EventService eventService, EventList eventList, Dashboard dashboard) {
         this.eventService = eventService;
@@ -61,7 +65,7 @@ public class NewEvent {
         this.initTextFieldsList();        
     }        
     
-    public void initTextFieldsList() {
+    private final void initTextFieldsList() {
         this.textFields.add(this.name);
         this.textFields.add(this.price);
         this.textFields.add(this.participants);
@@ -125,8 +129,8 @@ public class NewEvent {
     public Parent getAddData() {
         return this.addData;
     }        
-    
-    public boolean checkInputFormat() {
+            
+    private boolean checkInputFormat() {
         if (getNameInput().length() > 20 || getNameInput().isEmpty()) {
             this.errorLabel.setText("Event name should me 1-20 characters long! ");
             return false;
@@ -141,9 +145,9 @@ public class NewEvent {
         }
         
         return true;
-    }
+    }        
     
-    public boolean checkNumericFields() {
+    private boolean checkNumericFields() {
         if (!this.textFields.get(1).getText().matches("[0-9]+|[0-9]+.[0-9]+")) {
             this.errorLabel.setText("Please enter numeric value for price (e.g 12.5)");
             return false;
@@ -159,6 +163,11 @@ public class NewEvent {
         }
         return true;
     }
+    
+    /**
+     * Method creates a new Event object and passes it to event service for following actions
+     *     
+     */
     
     public void addEvent() {
         this.errorLabel.setText("");    

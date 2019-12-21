@@ -21,7 +21,7 @@ public class EventService {
     }                    
     
     /**
-     * Method check is an event exists
+     * Method checks if an event exists
      * 
      * @param event is an Event object
      * @return true if event exists in the database, false otherwise
@@ -52,18 +52,7 @@ public class EventService {
         this.events = this.getEventsFromDatabase();
         
         return true;        
-    }
-    
-    /**
-     * Method deletes an event that matches and updates the events list
-     * 
-     * @param event as an Event object
-     */
-    
-    public void deleteEvent(Event event) {
-        this.eventDao.delete(event.getName());        
-        this.events = this.getEventsFromDatabase();
-    }
+    }        
     
     /**
      * Method returns a list of all events

@@ -14,16 +14,22 @@ import javafx.scene.text.Text;
 import javafx.scene.text.Font;
 import javafx.geometry.Insets;
 
+/**
+ * Register class is responsible for generating and managing register component
+ * 
+ * @return true if input data is ok, otherwise false
+ */
+
 public class Register {
     
     final int SPACING = 10;
     
-    private AccountService accountService;
-    private Label errorLabel;    
-    private TextField usernameInput;
-    private TextField passwordInput;   
-    private Button createUserButton;
-    private Button backToLoginButton;
+    private final AccountService accountService;
+    private final Label errorLabel;    
+    private final TextField usernameInput;
+    private final TextField passwordInput;   
+    private final Button createUserButton;
+    private final Button backToLoginButton;
     
     public Register(AccountService accountService) {
         this.accountService = accountService;
@@ -73,6 +79,12 @@ public class Register {
         
         return true;
     }
+    
+    /**
+     * Method creates a new Account object and delivers it for account service for following actions
+     * 
+     * @return true if account was created successfully, otherwise false
+     */
     
     public boolean createAccount() {        
         String username = getUsernameInput();

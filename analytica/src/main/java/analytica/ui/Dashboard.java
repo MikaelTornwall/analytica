@@ -14,6 +14,11 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.geometry.Insets;
 
+    /**
+     * Dashboard is responsible for generating and managing the dashboard component
+     * 
+     * @author Mikael Törnwall
+     */
 
 public class Dashboard {     
     private Parent dashboard;
@@ -30,8 +35,7 @@ public class Dashboard {
     private final Text predictRevenueByParticipantsText;
     private final Text predictRevenueByPriceText;
     private final Text predictPriceByParticipantsText;
-    private final Text predictParticipantsByPriceText;
-    
+    private final Text predictParticipantsByPriceText;    
     
     public Dashboard(AnalyticsService analyticsService) {
         this.analyticsService = analyticsService;          
@@ -50,9 +54,9 @@ public class Dashboard {
         this.predictParticipantsByPriceText = new Text("-");
         this.dashboard = this.createDashboard();  
         this.initTextList();
-    }        
+    }                
     
-    public final void initTextList() {
+    private final void initTextList() {
         this.textList.add(predictRevenueByParticipantsText);
         this.textList.add(predictRevenueByPriceText);
         this.textList.add(predictPriceByParticipantsText);
@@ -61,11 +65,7 @@ public class Dashboard {
     
     public Parent getDashboard() {
         return this.dashboard;
-    }      
-    
-    public void updateDashboard() {
-        this.dashboard = this.createDashboard();
-    }        
+    }                
    
     public Button getPredictPriceButton() {
         return this.predictPriceByParticipantsButton;
@@ -83,11 +83,32 @@ public class Dashboard {
         return this.predictRevenueByPriceButton;
     }
     
+    /**
+     * Method creates a new dashboard and assigns it to dashboard variable
+     * 
+     */
+    
+    public void updateDashboard() {
+        this.dashboard = this.createDashboard();
+    }      
+    
+    /**
+     * Method sets all Text objects text into "-"
+     *           
+     */
+    
     public void defaultTextList() {
         for (Text text : this.textList) {
             text.setText("-");
         }
     }
+    
+    /**
+     * Method checks if the given string contains an integer or a decimal value
+     *           
+     * @param value as a String
+     * @return true is parameter string matches the condition, othwerwise false
+     */
     
     private boolean checkIfNumber(String value) {
         if (value.matches("[0-9]+|[0-9]+.[0-9]+")) {
@@ -95,6 +116,11 @@ public class Dashboard {
         }
         return false;
     }
+    
+    /**
+     * Method gets price prediction for a given input field value 
+     *                
+     */
     
     public void predictPriceByParticipants() {
         if (!this.checkIfNumber(this.predictPriceByParticipantsField.getText())) {
@@ -107,6 +133,11 @@ public class Dashboard {
         } 
     }
     
+    /**
+     * Method gets participants prediction for a given input field value 
+     *                
+     */
+    
     public void predictParticipantsByPrice() {
         if (!this.checkIfNumber(this.predictParticipantsByPriceField.getText())) {
             this.predictParticipantsByPriceText.setText("Please input numeric value!");
@@ -117,6 +148,11 @@ public class Dashboard {
             this.predictParticipantsByPriceText.setText(Double.toString(prediction) + " participants");            
         }        
     }
+    
+    /**
+     * Method gets revenue prediction for a given input field value 
+     *                
+     */
     
     public void predictRevenueByParticipants() {
         if (!this.checkIfNumber(this.predictRevenueByParticipantsField.getText())) {
@@ -129,6 +165,11 @@ public class Dashboard {
         }        
     }
     
+    /**
+     * Method gets revenue prediction for a given input field value 
+     *                
+     */
+    
     public void predictRevenueByPrice() {
         if (!this.checkIfNumber(this.predictRevenueByPriceField.getText())) {
             this.predictRevenueByPriceText.setText("Please input numeric value!");
@@ -139,6 +180,12 @@ public class Dashboard {
             this.predictRevenueByPriceText.setText(Double.toString(prediction) + " €");            
         }        
     }
+    
+    /**
+     * Method creates the dashboard
+     *                
+     * @return Parent object
+     */
     
     private Parent createDashboard() {        
         Text title = new Text("Dashboard");             
@@ -292,6 +339,5 @@ public class Dashboard {
         layout.setCenter(pane);        
         
         return layout;
-    }
-    
+    }    
 }

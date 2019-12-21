@@ -25,15 +25,7 @@ public class EventServiceTest {
         Event event = new Event("Test", 0.0, 0, 0, 0, 0, 0);
         this.service.createEvent(event);
         assertTrue(this.service.eventExists(event));
-    }
-        
-    @Test
-    public void eventCanBeDeleted() {
-        Event event = new Event("Test", 0.0, 0, 0, 0, 0, 0);
-        this.service.createEvent(event);
-        this.service.deleteEvent(event);
-        assertFalse(this.service.eventExists(event));
-    }        
+    }            
     
     @Test
     public void ifEventExistsEventExistsReturnsTrue() {

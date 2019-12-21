@@ -1,7 +1,8 @@
 package analytica.dao;
 
 /**
- * Interface for account dao 
+ * Interface for Account dao 
+ * 
  * @author Mikael Törnwall
  */
 

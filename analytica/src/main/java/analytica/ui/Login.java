@@ -22,12 +22,12 @@ import javafx.scene.text.Font;
 public class Login {
     
     private final int SPACING = 10;
-    private AccountService accountService;
-    private Button loginButton;
-    private Button createButton;
-    private TextField usernameInput;
-    private TextField passwordInput;
-    private Label unsuccessfulLoginLabel;        
+    private final AccountService accountService;
+    private final Button loginButton;
+    private final Button createButton;
+    private final TextField usernameInput;
+    private final TextField passwordInput;
+    private final Label unsuccessfulLoginLabel;        
     
     public Login(AccountService accountService) {
         this.accountService = accountService;

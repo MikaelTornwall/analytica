@@ -21,6 +21,17 @@ public class Statistics {
     }       
     
     /**
+     * Method replaces the values array with an empty array
+     * 
+     */
+    
+    public void clear() {        
+        this.values = new double[10];
+        this.size = 10;
+        this.index = 0;
+    }
+    
+    /**
     * Method tells how many values are within the statistics model
     *
     * @return number of values within the model
@@ -97,7 +108,7 @@ public class Statistics {
     /**
      * Method allows getting the values from the model
      * 
-     * @return an array of model values
+     * @return an array of model double values
      */
     
     public double[] getValues() {
@@ -113,7 +124,7 @@ public class Statistics {
     /**
      * Method allows getting the sorted values from the model
      * 
-     * @return an array of sorted model values
+     * @return an array of sorted model double values
      */
     
     public double[] getSortedValues() {
@@ -139,7 +150,7 @@ public class Statistics {
     /**
      * Method calculates the median of the model values
      * 
-     * @return median value of model values as a decimal number
+     * @return median value of model values as a double
      */
     
     public double getMedian() {
@@ -151,18 +162,12 @@ public class Statistics {
         Arrays.sort(array);
         int index = (int) Math.floor((this.index - 1) / 2);        
         return array[index];
-    }   
-    
-    /**
-     * Method calculates the mode of the model values
-     * 
-     * @return mode value of model values as a decimal number
-     */
+    }           
         
     /**
      * Method calculates the sum of the model values
      * 
-     * @return sum of model values as a decimal number
+     * @return sum of model values as a double
      */
     
     public double getSum() {
@@ -178,7 +183,7 @@ public class Statistics {
     /**
      * Method calculates the variance of the model values
      * 
-     * @return variance of model values as a decimal number
+     * @return variance of model values as a double
      */
     
     public double getVariance() {
@@ -198,25 +203,10 @@ public class Statistics {
     /**
      * Method calculates the standard deviation of the model values
      * 
-     * @return standard deviation of model values as a decimal number
+     * @return standard deviation of model values as a double
      */
     
     public double getStandardDeviation() {
         return Math.sqrt(this.getVariance());
-    }
-    
-    /**
-     * Method replaces the values array with an empty array
-     */
-    
-    public void clear() {        
-        this.values = new double[10];
-        this.size = 10;
-        this.index = 0;
-    }
-        
-    @Override
-    public String toString() {
-        return Arrays.toString(this.getValues());
-    }
+    }                    
 }

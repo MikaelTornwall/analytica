@@ -8,16 +8,16 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import javafx.geometry.Insets;
 
 /**
- *
+ * EventList class is responsible for generating and managing the event list component
+ * 
  * @author Mikael Törnwall
  */
 
 public class EventList {
     
-    private EventService eventService;
+    private final EventService eventService;
     private List<Event> events;
     private Parent eventList;    
     
@@ -31,10 +31,15 @@ public class EventList {
         return this.eventList;
     }
     
+    /**
+     * Method gets the updated event information and recreates the event list
+     * 
+     */
+    
     public void updateList() {
         this.events = this.eventService.getEvents();
         this.eventList = createEventList();
-    }
+    }        
     
     private Parent createEventList() {
         Text title = new Text("Events");        
@@ -92,8 +97,5 @@ public class EventList {
         pane.setHgap(15);
         
         return pane;
-    }
-    
-    
-    
+    }   
 }

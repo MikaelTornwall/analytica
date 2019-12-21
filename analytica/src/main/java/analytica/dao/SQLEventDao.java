@@ -1,16 +1,17 @@
 package analytica.dao;
 
-import analytica.db.SQLDatabase;
-import analytica.domain.Event;
+import java.util.ArrayList;
+import java.util.List;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import analytica.db.SQLDatabase;
+import analytica.domain.Event;
 
 /**
- *
+ * SQLEventDao class is responsible for the Event related database operations and queries
+ * 
  * @author Mikael Törnwall
  */
 
@@ -21,6 +22,12 @@ public class SQLEventDao implements EventDao {
     public SQLEventDao(SQLDatabase database) {
         this.database = database;        
     }
+    
+    /**
+     * Method creates a new event instance in the database    
+     * 
+     * @param event object as a parameter
+     */    
     
     public void create(Event event) {
         try (Connection connection = database.getConnection()) {
@@ -37,6 +44,13 @@ public class SQLEventDao implements EventDao {
             System.out.println(e.getMessage());
         }
     }
+    
+    /**
+     * Method fetches an event from the database if it matches the event name
+     * 
+     * @param name string as a parameter     
+     * @return an event object if name finds database match, null otherwise
+     */
     
     public Event getByName(String name) {        
         Event event = null;
@@ -58,17 +72,13 @@ public class SQLEventDao implements EventDao {
         }
         
         return event;
-    }
+    }        
     
-    public void delete(String name) {
-        try (Connection connection = database.getConnection()) {
-            PreparedStatement stmt = connection.prepareStatement("DELETE FROM Event WHERE name = ?");            
-            stmt.setString(1, name);
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-    }    
+    /**
+     * Method fetches an all events from the database
+     * 
+     * @return a list of Event objects
+     */
     
     public List<Event> getAll() {
         List<Event> events = new ArrayList<>();
@@ -82,7 +92,13 @@ public class SQLEventDao implements EventDao {
         }
                 
         return events;
-    }   
+    } 
+    
+    /**
+     * Method fetches the number of participants for each event from the database
+     * 
+     * @return list of integer values
+     */
     
     public List<Integer> getParticipantsList() {
         List<Integer> participants = new ArrayList<>();
@@ -98,6 +114,12 @@ public class SQLEventDao implements EventDao {
         return participants;
     }
     
+    /**
+     * Method fetches prices for each event from the database
+     * 
+     * @return list of double values
+     */
+    
     public List<Double> getPricesList() {
         List<Double> prices = new ArrayList<>();
         try (Connection connection = this.database.getConnection();
@@ -111,6 +133,12 @@ public class SQLEventDao implements EventDao {
                 
         return prices;
     }
+    
+    /**
+     * Method fetches the number of opened accounts for each event from the database
+     * 
+     * @return list of integer values
+     */
     
     public List<Integer> getOpenedList() {
         List<Integer> opened = new ArrayList<>();
@@ -126,6 +154,12 @@ public class SQLEventDao implements EventDao {
         return opened;
     }
     
+    /**
+     * Method fetches the number of not opened accounts for each event from the database
+     * 
+     * @return list of integer values
+     */
+    
     public List<Integer> getNotOpenedList() {
         List<Integer> notOpened = new ArrayList<>();
         try (Connection connection = this.database.getConnection();
@@ -140,6 +174,12 @@ public class SQLEventDao implements EventDao {
         return notOpened;
     }
     
+    /**
+     * Method fetches the number of males in each event from the database
+     * 
+     * @return list of integer values
+     */
+    
     public List<Integer> getMalesList() {
         List<Integer> males = new ArrayList<>();
         try (Connection connection = this.database.getConnection();
@@ -153,6 +193,12 @@ public class SQLEventDao implements EventDao {
         
         return males;
     }
+    
+    /**
+     * Method fetches the number of females in each event from the database
+     * 
+     * @return list of integer values
+     */
     
     public List<Integer> getFemalesList() {
         List<Integer> females = new ArrayList<>();

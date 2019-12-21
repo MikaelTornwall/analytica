@@ -39,15 +39,7 @@ public class SQLEventDaoTest {
         Event event = new Event("Test", 30.0, 10, 10, 10, 10, 10); 
         this.eventDao.create(event);
         assertEquals(event, eventDao.getByName("Test"));
-    }
-    
-    @Test
-    public void eventCanBeDeleted() {
-        Event event = new Event("Test", 30.0, 10, 10, 10, 10, 10); 
-        this.eventDao.create(event);
-        this.eventDao.delete(event.getName());
-        assertEquals(0, eventDao.getAll().size());
-    }
+    }        
     
     @Test
     public void databaseCanBeCleared() {

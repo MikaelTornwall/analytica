@@ -19,6 +19,11 @@ public class SQLDatabase {
         this.createTables();
     }
     
+    /**
+     * Method creates an account table into database if it does not exist
+     *   
+     */
+    
     private void createAccountTable() {
         try (Connection connection = this.createAndConnectDatabase()) {
             connection.prepareStatement("CREATE TABLE Account ("
@@ -29,6 +34,11 @@ public class SQLDatabase {
         } catch (SQLException e) {         
         }
     }
+    
+    /**
+     * Method creates an event table into database if it does not exist
+     *   
+     */
     
     private void createEventTable() {
         try (Connection connection = this.createAndConnectDatabase()) {            
@@ -46,6 +56,11 @@ public class SQLDatabase {
         }
     }
     
+    /**
+     * Method drops an account table from the database if one exists
+     *   
+     */
+    
     private void dropAccountTable() {
         try (Connection connection = this.createAndConnectDatabase()) {
             connection.prepareStatement("DROP TABLE Account").execute();            
@@ -53,6 +68,11 @@ public class SQLDatabase {
             System.out.println(e.getMessage());
         }    
     }
+    
+    /**
+     * Method drops an event table from the database if one exists
+     *   
+     */
     
     private void dropEventTable() {
         try (Connection connection = this.createAndConnectDatabase()) {
@@ -62,17 +82,33 @@ public class SQLDatabase {
         }    
     }
     
+    /**
+     * Method clears the database by dropping existing tables and creating new ones
+     *   
+     */
+    
     public void clearDatabase() {
         this.dropAccountTable();
         this.dropEventTable();
         this.createTables();
     }
     
+    /**
+     * Method creates new database tables
+     *   
+     */
+    
     private void createTables() {
         this.createAccountTable();
         this.createEventTable();
         
     }        
+    
+    /**
+     * Method provides the database connection
+     *   
+     * @return Connection object
+     */
     
     public Connection getConnection() {
         return this.createAndConnectDatabase();
