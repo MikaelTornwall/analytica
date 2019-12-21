@@ -59,15 +59,15 @@ __Before logging in__
 
 __Dashboard__
 
-![Dashboard draft](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/documentation/images/dashboard.png?raw=true)
+![dashboard draft](https://github.com/MikaelTornwall/ot-harjoitustyo/blob/master/documentation/images/dashboard.png?raw=true)
 
 __Events__
 
-![Event list draft](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/documentation/images/events.png?raw=true)
+![event list draft](https://github.com/MikaelTornwall/ot-harjoitustyo/blob/master/documentation/images/events.png?raw=true)
 
 __New event__
 
-![New event draft](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/documentation/images/newevent.png?raw=true)
+![new event draft](https://github.com/MikaelTornwall/ot-harjoitustyo/blob/master/documentation/images/newevent.png?raw=true)
 
 ## Further development ideas
 
