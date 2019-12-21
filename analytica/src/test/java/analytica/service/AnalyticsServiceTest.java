@@ -1,5 +1,7 @@
-package analytica.domain;
+package analytica.service;
 
+import analytica.domain.Event;
+import analytica.domain.Regression;
 import analytica.service.EventService;
 import analytica.service.AnalyticsService;
 import java.util.List;
@@ -166,7 +168,7 @@ public class AnalyticsServiceTest {
     
     @Test
     public void predictPriceByParticipantsProvidesAccuratePrediction() {
-        assertEquals(17.0, this.analyticsService.predictPriceByParticipants(65), 0.0f);
+        assertEquals(17.0, this.analyticsService.predictPriceByParticipants(65.0), 0.0f);
     }
     
     @Test
@@ -176,7 +178,7 @@ public class AnalyticsServiceTest {
 
     @Test
     public void predictRevenueByParticipantsProvidesAccuratePrediction() {
-        assertEquals(961.0, this.analyticsService.predictRevenueByParticipants(62), 0.0f);
+        assertEquals(961.0, this.analyticsService.predictRevenueByParticipants(62.0), 0.0f);
     }
     
     @Test

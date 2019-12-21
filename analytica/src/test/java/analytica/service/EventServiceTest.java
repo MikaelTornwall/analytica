@@ -1,5 +1,6 @@
-package analytica.domain;
+package analytica.service;
 
+import analytica.domain.Event;
 import analytica.service.EventService;
 import org.junit.Before;
 import org.junit.Test;

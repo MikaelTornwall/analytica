@@ -1,7 +1,7 @@
-package analytica.domain;
+package analytica.service;
 
-import analytica.domain.Account;
 import analytica.dao.AccountDao;
+import analytica.domain.Account;
 import java.util.List;
 import java.util.ArrayList;
 

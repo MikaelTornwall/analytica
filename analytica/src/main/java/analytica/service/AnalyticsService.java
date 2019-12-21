@@ -149,7 +149,7 @@ public class AnalyticsService {
         return correlation / 10000;
     }        
     
-    public double predictPriceByParticipants(Integer x) {
+    public double predictPriceByParticipants(Double x) {
         return Math.round(this.createRegressionModelForParticipantsAndPrices().predict(x));
     }
     
@@ -157,7 +157,7 @@ public class AnalyticsService {
         return Math.round(this.createRegressionModelForPricesAndParticipants().predict(x));        
     }
     
-    public double predictRevenueByParticipants(Integer x) {        
+    public double predictRevenueByParticipants(Double x) {        
         return Math.round(this.createRegressionModelForParticipantsAndPrices().predict(x) * x);
     }
     

@@ -150,7 +150,13 @@ public class Regression {
     }
 
     public double predict(double x) {
-        return this.getIntercept() + this.getSlope() * x;
+        double prediction = this.getIntercept() + this.getSlope() * x;
+        
+        if (prediction < 0) {
+            return 0.0;
+        }
+        
+        return prediction;
     }
     
     public void clear() {

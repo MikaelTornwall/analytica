@@ -35,7 +35,7 @@ public class Dashboard {
     
     public Dashboard(AnalyticsService analyticsService) {
         this.analyticsService = analyticsService;          
-        this.textList = new ArrayList();
+        this.textList = new ArrayList<>();
         this.predictRevenueByParticipantsButton = new Button("Predict");
         this.predictRevenueByPriceButton = new Button("Predict");
         this.predictPriceByParticipantsButton = new Button("Predict");
@@ -90,7 +90,7 @@ public class Dashboard {
     }
     
     private boolean checkIfNumber(String value) {
-        if (value.matches("[0-9]+")) {
+        if (value.matches("[0-9]+|[0-9]+.[0-9]+")) {
             return true;
         }
         return false;
@@ -99,11 +99,11 @@ public class Dashboard {
     public void predictPriceByParticipants() {
         if (!this.checkIfNumber(this.predictPriceByParticipantsField.getText())) {
             this.predictPriceByParticipantsText.setText("Please input numeric value!");
-        } else if (Integer.valueOf(this.predictPriceByParticipantsField.getText()) > 10000) {
+        } else if (Double.valueOf(this.predictPriceByParticipantsField.getText()) > 10000) {
             this.predictPriceByParticipantsText.setText("Please input smaller value!");
         } else {
-            Double prediction = analyticsService.predictPriceByParticipants(Integer.valueOf(this.predictPriceByParticipantsField.getText()));
-            this.predictPriceByParticipantsText.setText(Double.toString(prediction));            
+            Double prediction = analyticsService.predictPriceByParticipants(Double.valueOf(this.predictPriceByParticipantsField.getText()));
+            this.predictPriceByParticipantsText.setText(Double.toString(prediction) + " €");            
         } 
     }
     
@@ -114,18 +114,18 @@ public class Dashboard {
             this.predictParticipantsByPriceText.setText("Please input smaller value!");
         } else {
             Double prediction = analyticsService.predictParticipantsByPrice(Double.valueOf(this.predictParticipantsByPriceField.getText()));
-            this.predictParticipantsByPriceText.setText(Double.toString(prediction));            
+            this.predictParticipantsByPriceText.setText(Double.toString(prediction) + " participants");            
         }        
     }
     
     public void predictRevenueByParticipants() {
         if (!this.checkIfNumber(this.predictRevenueByParticipantsField.getText())) {
             this.predictRevenueByParticipantsText.setText("Please input numeric value!");
-        } else if (Integer.valueOf(this.predictRevenueByParticipantsField.getText()) > 10000) {
+        } else if (Double.valueOf(this.predictRevenueByParticipantsField.getText()) > 10000) {
             this.predictRevenueByParticipantsText.setText("Please input smaller value!");
         } else {
-            Double prediction = analyticsService.predictRevenueByParticipants(Integer.valueOf(this.predictRevenueByParticipantsField.getText()));
-            this.predictRevenueByParticipantsText.setText(Double.toString(prediction));
+            Double prediction = analyticsService.predictRevenueByParticipants(Double.valueOf(this.predictRevenueByParticipantsField.getText()));
+            this.predictRevenueByParticipantsText.setText(Double.toString(prediction) + " €");
         }        
     }
     
@@ -136,7 +136,7 @@ public class Dashboard {
             this.predictRevenueByPriceText.setText("Please input smaller value!");
         } else {
             Double prediction = analyticsService.predictRevenueByPrice(Double.valueOf(this.predictRevenueByPriceField.getText()));
-            this.predictRevenueByPriceText.setText(Double.toString(prediction));            
+            this.predictRevenueByPriceText.setText(Double.toString(prediction) + " €");            
         }        
     }
     
@@ -190,7 +190,7 @@ public class Dashboard {
         Text generalParticipants = new Text("Total no. of participants: ");
         Text generalOpened = new Text("Total no. of opened accounts: ");
         Text generalAverageParticipants = new Text("Average no. of participants: ");
-        Text generalPrice = new Text("Average price per event: ");
+        Text generalPrice = new Text("Average price per event (€): ");
         
         Text events = new Text(Integer.toString(analyticsService.getNumberOfEvents()));
         Text revenue = new Text(Double.toString(analyticsService.getTotalRevenue()));

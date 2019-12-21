@@ -136,4 +136,11 @@ public class RegressionTest {
         regression.addData(data);
         assertEquals(11.333333333333334, regression.predict(5), 0.0f);
     }
+    
+    @Test
+    public void predictionIsZeroWhenItWouldBeBelowZero() {
+        double[][] data = {{10, 1}, {20, 7}, {30, 20}};
+        regression.addData(data);
+        assertEquals(0.0, regression.predict(1), 0.0f);
+    }
 }

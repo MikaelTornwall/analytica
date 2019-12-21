@@ -144,9 +144,13 @@ public class NewEvent {
     }
     
     public boolean checkNumericFields() {
-        for (int i = 1; i < this.textFields.size(); i++) {
+        if (!this.textFields.get(1).getText().matches("[0-9]+|[0-9]+.[0-9]+")) {
+            this.errorLabel.setText("Please enter numeric value for price (e.g 12.5)");
+            return false;
+        }
+        for (int i = 2; i < this.textFields.size(); i++) {
             if (!this.textFields.get(i).getText().matches("[0-9]+")) {                
-                this.errorLabel.setText("Please enter numeric value for a numeric field! ");
+                this.errorLabel.setText("Please enter numeric value for a numeric field! Only positive integers are allowed");
                 return false;
             } else if (Double.valueOf(this.textFields.get(i).getText()) > 10000) {
                 this.errorLabel.setText("Please enter smaller value! ");
