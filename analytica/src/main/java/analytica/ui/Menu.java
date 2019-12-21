@@ -21,7 +21,7 @@ public class Menu {
     public Menu() {
         this.dashboardButton = new Button("Dashboard");
         this.eventsButton = new Button("Events");
-        this.addDataButton = new Button("Add data");
+        this.addDataButton = new Button("New event");
         this.logoutButton = new Button("Logout");
         this.menu = this.createMenu();
     }

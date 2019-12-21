@@ -7,11 +7,11 @@ It provides an interface for collecting and analyzing data that is most relevant
 
 [Requirements](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/documentation/requirements.md)
 
-[Work hour log](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/documentation/workhours.md)
-
 [Architecture](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/documentation/architecture.md)
 
 [Instructions](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/documentation/instructions.md)
+
+[Work hour log](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/documentation/workhours.md)
 
 ## 2. How to
 

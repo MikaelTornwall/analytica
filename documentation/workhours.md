@@ -16,4 +16,6 @@
 | 10.12 | 3        | Add db package and SQLDatabase class, AccountDao interface, rename AccountDao and AnalyticaService, refactor SQLAccountDao and AccountService classes, update AccountService tests and create FakeSQLAccountDao class to test AccountService tests, update javadoc |
 | 18.12 | 5        | Refactor code, add EventService, EventDao, event database, EventDao, SQLEventDao, SQLAccountDao tests |
 | 19.12 | 9        | Update regression class and regression tests, create AnalyticaService class and tests, build dashboard and eventlist UIs |
-| total | 52.5     |       |
+| 20.12 | 6        | Create dashboard and event list UIs, update AnalyticsService |
+| 21.12 | 8        | Update UI and related methods in AnalyticsService (most of UI event handling) and input validation, more tests, instructions and requirements |
+| total | 67.5     |       |

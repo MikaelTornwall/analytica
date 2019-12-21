@@ -1,81 +1,85 @@
-# Requirement spesification
+# Requirement specification
 
 ## Description
 
 Application is intended for the use of an imaginary company that organizes investment events.
-It provides an interface for collecting and analyzing data that is most relevant to their core business.
+It provides an interface for collecting and analyzing data that is most relevant for their core business.
 
 For each event they can record
-- What was the ticket price
+- Event name
+- Ticket price
 - How many people participated in the event
-- How many of the participants opened an investment portfolio at the event
-etc.
+- How many of the participants opened an investment portfolio account at the event
+- How many male and female participants were in the event
 
 With this information they can calculate key figures that will help the company in data-driven future business planning.
 
 ## Users
 
-Currently the application is intended only for the internal use within the company, so only one user role is required. Each user is also able to access all the data, since all the event information is relevant to everyone.
-
-## User interface draft
+Currently the application is intended only for the internal use within the company, so only one user role is required. Each user is able to access all the data, since all the event information is relevant to everyone within the company.
 
 ## Features
+
+Application includes the following features:
 
 __Before logging in__
 
 - [x] User can register
-  - Required information is
+  - Input validation
     - [x] Username (length 6-15 characters)
     - [x] Password (length 8-15 characters)
 - [x] User can log in
   - [x] If login is successful user will be directed to the application
   - [x] If login is unsuccessful user will receive a notification and can try again
 
-  __After logging in__
-
-  Application includes the following views:
+  __After logging in__  
 
   - [x] User can select preferred view from the menu
 
   _Dashboard_  
-  - [x] User will see a summary and key KPIs calculated from the event data. These include
+  - [x] User will see a summary and key KPIs calculated from the event data and can predict future values. E.g.
     - Total revenue
     - Total participants
     - Total opened accounts
     - Average ticket price
     - Average revenue KPIs
     - Correlation between number of participants and number of opened accounts
-    - Field for predicting future ticket prices, number of participants and revenue by participants or ticket price
+    - Field for predicting future ticket prices, number of participants and revenue by participants or by ticket price
 
-  _Input form_
+  _New event_
 
   - [x] User can input event details
+  - [x] User can create new event
 
   _Events_
 
   - [x] User can view at most 20 latest events with their specific details (older event details are not important to view, but the data is relevant for calculations)
 
-    __Statistics__
-      - [x] Add values      
-      - [x] Sum
-      - [x] Mean
-      - [x] Median
-      - [x] Mode
-      - [x] Variance
-      - [x] Standard error        
+## User interface
 
-    __Regression__      
-      - [x] Add value pairs
-      - [x] Covariance
-      - [x] Slope, intercept and predict
-      - [x]
+__Dashboard__
 
-  _Graphs_
-  - User can view graphs
+![Dashboard draft](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/documentation/images/dashboard.png)
+
+__Events__
+
+![Event list draft](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/documentation/images/events.png)
+
+__New event__
+
+![New event draft](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/documentation/images/newevent.png)
 
 ## Further development ideas
-- Superuser
+
+- Super user
+  - Super user could manage events and accounts
+- Extending the tool for the use of several organizations
+  - User can access only the data of the company one belongs to
+- More data, such as the number of people interested in the event in events social media page
 - More tools
+  - These tools include multivariable linear regression and non-linear estimators
+- Graphs from data
+- Features for sorting and analyzing data between certain timelines
 
 ## Environmental constrains
 

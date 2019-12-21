@@ -25,7 +25,7 @@ The user interface is built within the class [analytica.ui.analyticaUI](https://
 
 ### Basic class structure
 
-![class diagram](https://github.com/MikaelTornwall/ot-harjoitustyo/blob/master/documentation/analytica_class.png?raw=true)
+![class diagram](https://github.com/MikaelTornwall/ot-harjoitustyo/blob/master/documentation/images/analytica_class.png?raw=true)
 
 Account and Event classes are responsible for the logical data modeling within the application. Statistics and Regression classes are responsible for making models and calculations from the event data.
 
@@ -37,7 +37,7 @@ AccountService class is responsible for the functional application logic related
 
 User can be created by clicking the Create New User button on the application login page and then feeding in username and password. After the user clicks the Add button, the following actions are going to be executed:
 
-![class diagram](https://github.com/MikaelTornwall/ot-harjoitustyo/blob/master/documentation/analytica_sequence.png?raw=true)
+![class diagram](https://github.com/MikaelTornwall/ot-harjoitustyo/blob/master/documentation/images/analytica_sequence.png?raw=true)
 
 After this the user will be directed to the login scene, where they can use their newly created credential to access the tool.
 
