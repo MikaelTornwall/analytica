@@ -12,7 +12,7 @@ import java.sql.SQLException;
 
 public class SQLDatabase {    
     
-    private String path;
+    private final String path;
     
     public SQLDatabase(String path) {
         this.path = path;
@@ -31,7 +31,7 @@ public class SQLDatabase {
     }
     
     private void createEventTable() {
-         try (Connection connection = this.createAndConnectDatabase()) {            
+        try (Connection connection = this.createAndConnectDatabase()) {            
             connection.prepareStatement("CREATE TABLE Event ("
                     + "id int auto_increment primary key, "
                     + "name varchar(255), "

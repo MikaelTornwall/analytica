@@ -1,7 +1,7 @@
 package analytica.ui;
 
 import analytica.domain.Account;
-import analytica.domain.AccountService;
+import analytica.service.AccountService;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -10,6 +10,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.scene.text.Font;
+import javafx.geometry.Insets;
 
 public class Register {
     
@@ -90,7 +93,8 @@ public class Register {
     }
     
     public Parent getRegister() {        
-        Label registerLabel = new Label("Create new user");                        
+        Text registerText = new Text("Create new user");                        
+        registerText.setFont(Font.font(20));
         Label usernameLabel = new Label("Username");
         Label passwordLabel = new Label("Password");
                 
@@ -103,8 +107,10 @@ public class Register {
         registerPane.getChildren().addAll(inputPaneNewUsername, inputPaneNewPassword, createUserButton, backToLoginButton, errorLabel);
         
         BorderPane layout = new BorderPane();
-        layout.setTop(registerLabel);
+        layout.setTop(registerText);
         layout.setCenter(registerPane);
+        layout.setPadding(new Insets(SPACING, 0, 0, SPACING));
+        layout.setMargin(registerText, new Insets(0, 0, SPACING, 0));
         
         return layout;
     }

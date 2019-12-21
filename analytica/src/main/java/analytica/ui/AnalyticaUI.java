@@ -1,9 +1,8 @@
 package analytica.ui;
 
-import analytica.domain.Account;
-import analytica.domain.AccountService;
-import analytica.domain.EventService;
-import analytica.domain.AnalyticsService;
+import analytica.service.AccountService;
+import analytica.service.EventService;
+import analytica.service.AnalyticsService;
 import analytica.dao.SQLAccountDao;
 import analytica.dao.SQLEventDao;
 import analytica.db.SQLDatabase;

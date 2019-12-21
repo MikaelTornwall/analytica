@@ -1,7 +1,8 @@
-package analytica.domain;
+package analytica.service;
 
 import java.util.List;
 import analytica.dao.AccountDao;
+import analytica.domain.Account;
 
 /**
  * AccountService class

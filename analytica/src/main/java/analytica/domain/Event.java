@@ -110,22 +110,7 @@ public class Event {
         final Event other = (Event) obj;
         if (Double.doubleToLongBits(this.price) != Double.doubleToLongBits(other.price)) {
             return false;
-        }
-        if (this.participants != other.participants) {
-            return false;
-        }
-        if (this.openedAccount != other.openedAccount) {
-            return false;
-        }
-        if (this.didNotOpenAccount != other.didNotOpenAccount) {
-            return false;
-        }
-        if (this.males != other.males) {
-            return false;
-        }
-        if (this.females != other.females) {
-            return false;
-        }
+        }        
         if (!Objects.equals(this.name, other.name)) {
             return false;
         }

@@ -1,6 +1,6 @@
 package analytica.ui;
 
-import analytica.domain.AccountService;
+import analytica.service.AccountService;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -10,6 +10,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.scene.text.Font;
 
 /**
  * Login class is responsible for creating login component for the applicaton UI
@@ -106,6 +108,12 @@ public class Login {
         this.unsuccessfulLoginLabel.setText(text);
     }    
     
+    /**
+     * Method takes login input information and delivers it to AccountService for user authentication
+     * 
+     * @return true if username and password match with the one found from the database, false otherwise
+     */
+    
     public boolean login() {
         String username = getUsernameInput();
         String password = getPasswordInput();                    
@@ -128,7 +136,8 @@ public class Login {
      */
     
     public Parent getLogin() {        
-        Label loginLabel = new Label("Login");        
+        Text loginText = new Text("Login");   
+        loginText.setFont(Font.font(20));
         Label usernameLabel = new Label("Username");
         Label passwordLabel = new Label("Password");                        
                        
@@ -138,14 +147,13 @@ public class Login {
         
         inputPaneUsername.getChildren().addAll(usernameLabel, usernameInput);        
         inputPanePassword.getChildren().addAll(passwordLabel, passwordInput);                                               
-        loginPane.getChildren().addAll(inputPaneUsername, inputPanePassword, loginButton, createButton, unsuccessfulLoginLabel);
-                
-        loginLabel.setPadding(new Insets(SPACING));
-        loginPane.setPadding(new Insets(SPACING));     
+        loginPane.getChildren().addAll(inputPaneUsername, inputPanePassword, loginButton, createButton, unsuccessfulLoginLabel);                                
         
         BorderPane layout = new BorderPane();
-        layout.setTop(loginLabel);
+        layout.setTop(loginText);
         layout.setCenter(loginPane);
+        layout.setPadding(new Insets(SPACING));     
+        layout.setMargin(loginText, new Insets(0, 0, SPACING, 0));        
                         
         return layout;
     }

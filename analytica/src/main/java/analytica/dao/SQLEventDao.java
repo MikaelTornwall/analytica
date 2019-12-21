@@ -47,15 +47,7 @@ public class SQLEventDao implements EventDao {
             ResultSet res = stmt.executeQuery();            
             
             if (res.next()) {
-                event = new Event(
-                        res.getInt("id"), 
-                        res.getString("name"), 
-                        res.getDouble("price"),
-                        res.getInt("participants"),
-                        res.getInt("opened"),
-                        res.getInt("notopened"),
-                        res.getInt("males"),
-                        res.getInt("females"));
+                event = new Event(res.getInt("id"), res.getString("name"), res.getDouble("price"), res.getInt("participants"), res.getInt("opened"), res.getInt("notopened"), res.getInt("males"), res.getInt("females"));
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -83,16 +75,7 @@ public class SQLEventDao implements EventDao {
         try (Connection connection = this.database.getConnection();
                 ResultSet res = connection.prepareStatement("SELECT * FROM Event").executeQuery()) {
             while (res.next()) {
-                events.add(new Event(
-                        res.getInt("id"), 
-                        res.getString("name"), 
-                        res.getDouble("price"),
-                        res.getInt("participants"),
-                        res.getInt("opened"),
-                        res.getInt("notopened"),
-                        res.getInt("males"),
-                        res.getInt("females")
-                ));
+                events.add(new Event(res.getInt("id"), res.getString("name"), res.getDouble("price"), res.getInt("participants"), res.getInt("opened"), res.getInt("notopened"), res.getInt("males"), res.getInt("females")));
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());

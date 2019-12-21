@@ -3,7 +3,7 @@ package analytica.ui;
 import java.util.List;
 import java.util.ArrayList;
 import analytica.domain.Event;
-import analytica.domain.EventService;
+import analytica.service.EventService;
 import javafx.scene.Parent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.BorderPane;
@@ -68,37 +68,7 @@ public class NewEvent {
         this.textFields.add(this.opened);
         this.textFields.add(this.males);
         this.textFields.add(this.females);
-    }
-       
-    public boolean checkInputFormat() {
-        if (getNameInput().length() > 20 || getNameInput().isEmpty()) {
-            this.errorLabel.setText("Event name should me 1-20 characters long! ");
-            return false;
-        } else if (!checkNumericFields()) {
-            return false;
-        } else if ((getMalesInput() + getFemalesInput()) != getParticipantsInput()) {
-            this.errorLabel.setText("Number of males and females should sum up to the total number of participants!");
-            return false;
-        } else if (getOpenedInput() > getParticipantsInput()) {
-            this.errorLabel.setText("Please make sure that the number of opened accounts is not bigger than the number of participants!");
-            return false;
-        }
-        
-        return true;
-    }
-    
-    public boolean checkNumericFields() {
-        for (int i = 1; i < this.textFields.size(); i++) {
-            if (!this.textFields.get(i).getText().matches("[0-9]+")) {                
-                this.errorLabel.setText("Please enter numeric value for a numeric field! ");
-                return false;
-            } else if (Double.valueOf(this.textFields.get(i).getText()) > 10000) {
-                this.errorLabel.setText("Please enter smaller value! ");
-                return false;   
-            }
-        }
-        return true;
-    }
+    }           
     
     public String getNameInput() {
         return this.name.getText();
@@ -155,6 +125,36 @@ public class NewEvent {
     public Parent getAddData() {
         return this.addData;
     }        
+    
+    public boolean checkInputFormat() {
+        if (getNameInput().length() > 20 || getNameInput().isEmpty()) {
+            this.errorLabel.setText("Event name should me 1-20 characters long! ");
+            return false;
+        } else if (!checkNumericFields()) {
+            return false;
+        } else if ((getMalesInput() + getFemalesInput()) != getParticipantsInput()) {
+            this.errorLabel.setText("Number of males and females should sum up to the total number of participants!");
+            return false;
+        } else if (getOpenedInput() > getParticipantsInput()) {
+            this.errorLabel.setText("Please make sure that the number of opened accounts is not bigger than the number of participants!");
+            return false;
+        }
+        
+        return true;
+    }
+    
+    public boolean checkNumericFields() {
+        for (int i = 1; i < this.textFields.size(); i++) {
+            if (!this.textFields.get(i).getText().matches("[0-9]+")) {                
+                this.errorLabel.setText("Please enter numeric value for a numeric field! ");
+                return false;
+            } else if (Double.valueOf(this.textFields.get(i).getText()) > 10000) {
+                this.errorLabel.setText("Please enter smaller value! ");
+                return false;   
+            }
+        }
+        return true;
+    }
     
     public void addEvent() {
         this.errorLabel.setText("");    

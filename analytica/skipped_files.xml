@@ -9,4 +9,7 @@
     <suppress files="analytica.ui.Login.java" checks="[a-zA-Z0-9]*"/>
     <suppress files="analytica.ui.Dashboard.java" checks="[a-zA-Z0-9]*"/>
     <suppress files="analytica.ui.Register.java" checks="[a-zA-Z0-9]*"/>    
+    <suppress files="analytica.ui.Menu.java" checks="[a-zA-Z0-9]*"/>    
+    <suppress files="analytica.ui.EventList.java" checks="[a-zA-Z0-9]*"/>    
+    <suppress files="analytica.ui.NewEvent.java" checks="[a-zA-Z0-9]*"/>    
 </suppressions>

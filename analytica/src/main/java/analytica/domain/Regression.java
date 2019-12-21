@@ -34,6 +34,16 @@ public class Regression {
         this.yValues = yArray;        
     }
     
+    public double[][] getValuePairs() {
+        double data[][] = new double[this.index][2];
+        for (int i = 0; i < this.index; i++) {
+            data[i][0] = this.xValues[i];
+            data[i][1] = this.yValues[i];
+        }
+        
+        return data;
+    }
+    
     public void addData(double x, double y) {
         if (this.index >= this.size) {
             this.increaseLength();
@@ -95,15 +105,7 @@ public class Regression {
         }
         
         return this.statistics.getMedian();
-    }
-    
-    public double getModeOfProductOfValuePairs() {
-        for (int i = 0; i < this.index; i++) {
-            this.statistics.addValue(this.getProductOfValuePair(xValues[i], yValues[i]));
-        }
-        
-        return this.statistics.getMode();
-    }
+    }        
     
     public double getXRate() {
         double xSum = this.xStatistics.getSum();

@@ -2,7 +2,7 @@ package analytica.ui;
 
 import java.util.List;
 import java.util.ArrayList;
-import analytica.domain.AnalyticsService;
+import analytica.service.AnalyticsService;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
@@ -12,24 +12,25 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.geometry.Insets;
 
 
 public class Dashboard {     
     private Parent dashboard;
-    private AnalyticsService analyticsService;
-    private List<Text> textList;
-    private Button predictRevenueByParticipantsButton;
-    private Button predictRevenueByPriceButton;
-    private Button predictPriceByParticipantsButton;
-    private Button predictParticipantsByPriceButton;
-    private TextField predictRevenueByParticipantsField;
-    private TextField predictRevenueByPriceField;
-    private TextField predictPriceByParticipantsField;
-    private TextField predictParticipantsByPriceField;
-    private Text predictRevenueByParticipantsText;
-    private Text predictRevenueByPriceText;
-    private Text predictPriceByParticipantsText;
-    private Text predictParticipantsByPriceText;
+    private final AnalyticsService analyticsService;
+    private final List<Text> textList;
+    private final Button predictRevenueByParticipantsButton;
+    private final Button predictRevenueByPriceButton;
+    private final Button predictPriceByParticipantsButton;
+    private final Button predictParticipantsByPriceButton;
+    private final TextField predictRevenueByParticipantsField;
+    private final TextField predictRevenueByPriceField;
+    private final TextField predictPriceByParticipantsField;
+    private final TextField predictParticipantsByPriceField;
+    private final Text predictRevenueByParticipantsText;
+    private final Text predictRevenueByPriceText;
+    private final Text predictPriceByParticipantsText;
+    private final Text predictParticipantsByPriceText;
     
     
     public Dashboard(AnalyticsService analyticsService) {
@@ -51,19 +52,35 @@ public class Dashboard {
         this.initTextList();
     }        
     
+    public final void initTextList() {
+        this.textList.add(predictRevenueByParticipantsText);
+        this.textList.add(predictRevenueByPriceText);
+        this.textList.add(predictPriceByParticipantsText);
+        this.textList.add(predictParticipantsByPriceText);
+    }
+    
     public Parent getDashboard() {
         return this.dashboard;
     }      
     
     public void updateDashboard() {
         this.dashboard = this.createDashboard();
+    }        
+   
+    public Button getPredictPriceButton() {
+        return this.predictPriceByParticipantsButton;
     }
     
-    public void initTextList() {
-        this.textList.add(predictRevenueByParticipantsText);
-        this.textList.add(predictRevenueByPriceText);
-        this.textList.add(predictPriceByParticipantsText);
-        this.textList.add(predictParticipantsByPriceText);
+    public Button getPredictParticipantsButton() {
+        return this.predictParticipantsByPriceButton;
+    }
+    
+    public Button getPredictRevenueParticipantsButton() {
+        return this.predictRevenueByParticipantsButton;
+    }
+    
+    public Button getPredictRevenuePriceButton() {
+        return this.predictRevenueByPriceButton;
     }
     
     public void defaultTextList() {
@@ -72,7 +89,7 @@ public class Dashboard {
         }
     }
     
-    public boolean checkIfNumber(String value) {
+    private boolean checkIfNumber(String value) {
         if (value.matches("[0-9]+")) {
             return true;
         }
@@ -122,22 +139,6 @@ public class Dashboard {
             this.predictRevenueByPriceText.setText(Double.toString(prediction));            
         }        
     }
-   
-    public Button getPredictPriceButton() {
-        return this.predictPriceByParticipantsButton;
-    }
-    
-    public Button getPredictParticipantsButton() {
-        return this.predictParticipantsByPriceButton;
-    }
-    
-    public Button getPredictRevenueParticipantsButton() {
-        return this.predictRevenueByParticipantsButton;
-    }
-    
-    public Button getPredictRevenuePriceButton() {
-        return this.predictRevenueByPriceButton;
-    }
     
     private Parent createDashboard() {        
         Text title = new Text("Dashboard");             
@@ -145,6 +146,7 @@ public class Dashboard {
         
         BorderPane layout = new BorderPane();
         layout.setTop(title);
+        layout.setMargin(title, new Insets(0, 0, 10, 0));
         
         Text generalText = new Text("General");
         Text ratesText = new Text("Rates");
@@ -153,12 +155,12 @@ public class Dashboard {
         Text predictOneText = new Text("Below you can price by no. of participants and no. of participants by price");
         Text predictTwoText = new Text("Below you can predict future revenues by no. of participants or by price");
         
-        generalText.setFont(Font.font("Tahoma", FontWeight.BOLD, 14));
-        ratesText.setFont(Font.font("Tahoma", FontWeight.BOLD, 14));
-        revenueText.setFont(Font.font("Tahoma", FontWeight.BOLD, 14));
-        correlationText.setFont(Font.font("Tahoma", FontWeight.BOLD, 14));
-        predictOneText.setFont(Font.font("Tahoma", FontWeight.BOLD, 14));
-        predictTwoText.setFont(Font.font("Tahoma", FontWeight.BOLD, 14));
+        generalText.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+        ratesText.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+        revenueText.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+        correlationText.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+        predictOneText.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+        predictTwoText.setFont(Font.font("Arial", FontWeight.BOLD, 14));
         
         GridPane pane = new GridPane();
         pane.setVgap(20);
@@ -197,8 +199,7 @@ public class Dashboard {
         Text averageParticipants = new Text(Double.toString(analyticsService.getAverageParticipants()));
         Text averagePrice = new Text(Double.toString(analyticsService.getAveragePrice()));
         
-        generalPane.add(generalText, 0, 0, 2, 1);  
-        
+        generalPane.add(generalText, 0, 0, 2, 1);          
         generalPane.add(generalEvents, 0, 1);        
         generalPane.add(events, 1, 1);
         generalPane.add(generalRevenue, 0, 2);
@@ -257,32 +258,28 @@ public class Dashboard {
         Label predictRevenueByParticipantsLabel = new Label("Revenue by participants: ");         
         Label predictRevenueByPriceLabel = new Label("Revenue by price: ");
         
-        predictPaneOne.add(predictOneText, 0, 0, 2, 1);        
+        predictPaneOne.add(predictOneText, 0, 0, 2, 1);    
         
         predictPaneOne.add(predictPriceByParticipantsLabel, 0, 1);
         predictPaneOne.add(predictPriceByParticipantsField, 1, 1);
         predictPaneOne.add(predictPriceByParticipantsButton, 2, 1);
-        
-        predictPaneOne.add(predictPriceByParticipantsText, 0, 2);
+        predictPaneOne.add(predictPriceByParticipantsText, 0, 2);        
         
         predictPaneOne.add(predictParticipantsByPriceLabel, 0, 3);
         predictPaneOne.add(predictParticipantsByPriceField, 1, 3);
-        predictPaneOne.add(predictParticipantsByPriceButton, 2, 3);
-        
+        predictPaneOne.add(predictParticipantsByPriceButton, 2, 3);        
         predictPaneOne.add(predictParticipantsByPriceText, 0, 4);
         
         predictPaneTwo.add(predictTwoText, 0, 0, 2, 1);
         
         predictPaneTwo.add(predictRevenueByParticipantsLabel, 0, 1);
         predictPaneTwo.add(predictRevenueByParticipantsField, 1, 1);
-        predictPaneTwo.add(predictRevenueByParticipantsButton, 2, 1);
-        
+        predictPaneTwo.add(predictRevenueByParticipantsButton, 2, 1);        
         predictPaneTwo.add(predictRevenueByParticipantsText, 0, 2);
         
         predictPaneTwo.add(predictRevenueByPriceLabel, 0, 3);
         predictPaneTwo.add(predictRevenueByPriceField, 1, 3);
-        predictPaneTwo.add(predictRevenueByPriceButton, 2, 3);
-        
+        predictPaneTwo.add(predictRevenueByPriceButton, 2, 3);        
         predictPaneTwo.add(predictRevenueByPriceText, 0, 4);
         
         pane.add(generalPane, 0, 0);

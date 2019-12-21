@@ -1,8 +1,9 @@
-package analytica.domain;
+package analytica.service;
 
 import java.util.List;
 import java.util.ArrayList;
 import analytica.dao.EventDao;
+import analytica.domain.Event;
 
 /**
  *

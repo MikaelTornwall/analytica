@@ -103,13 +103,6 @@ public class StatisticsTest {
     }        
     
     @Test
-    public void modeIsCorrect() {
-        double[] array = {1, 2, 8, 1, 3, 4, 2, 10, 2};
-        this.statistics.addValues(array);
-        assertEquals(2.0, this.statistics.getMode(), 0.0f);
-    }
-    
-    @Test
     public void varianceIsCorrect() {
         double[] array = {2, 7, 8, 9, 10, 10, 11, 11, 12, 18};        
         double variance = 14.760000000000002;                
@@ -138,11 +131,6 @@ public class StatisticsTest {
     @Test
     public void medianIsCorrectWithNoValues() {
         assertEquals(0.0, this.statistics.getMedian(), 0.0f);
-    }
-    
-    @Test
-    public void modeIsCorrectWithNoValues() {
-        assertEquals(0.0, this.statistics.getMode(), 0.0f); 
     }
     
     @Test

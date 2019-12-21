@@ -158,38 +158,7 @@ public class Statistics {
      * 
      * @return mode value of model values as a decimal number
      */
-    
-    public double getMode() {
-        if (this.valuesIsEmpty()) {
-            return  0.0;
-        }
         
-        double[] array = this.getSortedValues();
-        
-        double result = array[0];
-        int max = 1;
-        int current = 1;
-        
-        for (int i = 1; i < this.index; i++) {
-            if (array[i] == array[i - 1]) {
-                current++;
-            } else {
-                if (current > max) {
-                    max = current;
-                    result = array[i - 1];
-                }
-                current = 1;
-            }
-        }
-        
-        if (current > max) {
-            max = current;
-            result = array[this.index - 1];
-        }
-        
-        return result;                
-    }
-    
     /**
      * Method calculates the sum of the model values
      * 

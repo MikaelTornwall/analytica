@@ -1,5 +1,6 @@
 package analytica.domain;
 
+import java.util.Arrays;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -52,6 +53,13 @@ public class RegressionTest {
         double[][] data = {{1,10}, {2,12}, {3,14}, {8, 11}, {7, 2}, {9, 19}};
         regression.addData(data);
         assertEquals(6, regression.getNumberOfValuePairs());
+    }
+    
+    @Test
+    public void correctValuePairsAreReturned() {
+        double[][] data = {{1, 2}, {3, 4}, {5, 6}};
+        regression.addData(data);
+        assertTrue(Arrays.deepEquals(data, regression.getValuePairs()));
     }
     
     @Test

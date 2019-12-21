@@ -1,5 +1,7 @@
-package analytica.domain;
+package analytica.service;
 
+import analytica.domain.Regression;
+import analytica.domain.Statistics;
 import java.util.List;
 
 /**
@@ -54,36 +56,14 @@ public class AnalyticsService {
         return regression;
     }
     
-    public Integer getNumberOfEvents() {
-        return this.eventService.getEvents().size();
-    }
-    
-    public double getTotalRevenue() {            
-        return this.createRegressionModelForPricesAndParticipants().getProductOfValuePairs();
-    }
-     
-    public Integer getTotalParticipants() {
-        Statistics statistics = new Statistics();
-        statistics.addValues(this.eventService.getParticipantsList());
-        return (int) statistics.getSum();
-    }
-    
-    public Integer getTotalOpened() {
-        Statistics statistics = new Statistics();
-        statistics.addValues(this.eventService.getOpenedList());
-        return (int) statistics.getSum();
-    }        
-    
-    public Double getAverageParticipants() {
-        Statistics statistics = new Statistics();
-        statistics.addValues(this.eventService.getParticipantsList());
-        return (double) Math.round(statistics.getMean());
-    }        
+    public Regression createRegressionModelForParticipantsAndOpenedAccounts() {
+        Regression regression = new Regression();
+        List<Double> participants = this.eventService.getParticipantsList();
+        List<Double> opened = this.eventService.getOpenedList();
         
-    public Double getAveragePrice() {
-        Statistics statistics = new Statistics();
-        statistics.addValues(this.eventService.getPricesList());
-        return (double) Math.round(statistics.getMean());
+        regression.addData(this.createValuePairs(participants, opened));
+        
+        return regression;
     }
     
     public Regression createRegressionModelForOpenedAndNotOpened() {
@@ -96,14 +76,6 @@ public class AnalyticsService {
         return regression;
     }
     
-    public double getOpenedRate() {                
-        return Math.round(createRegressionModelForOpenedAndNotOpened().getXRate() * 1000) / 10;
-    }        
-    
-    public double getNotOpenedRate() {
-        return Math.round(createRegressionModelForOpenedAndNotOpened().getYRate() * 1000) / 10;
-    }
-    
     public Regression createRegressionModelForMalesAndFemales() {
         Regression regression = new Regression();
         List<Double> males = this.eventService.getMalesList();
@@ -114,6 +86,46 @@ public class AnalyticsService {
         
         return regression;
     }
+    
+    public int getNumberOfEvents() {
+        return this.eventService.getEvents().size();
+    }
+    
+    public double getTotalRevenue() {            
+        return this.createRegressionModelForPricesAndParticipants().getProductOfValuePairs();
+    }
+     
+    public int getTotalParticipants() {
+        Statistics statistics = new Statistics();
+        statistics.addValues(this.eventService.getParticipantsList());
+        return (int) statistics.getSum();
+    }
+    
+    public int getTotalOpened() {
+        Statistics statistics = new Statistics();
+        statistics.addValues(this.eventService.getOpenedList());
+        return (int) statistics.getSum();
+    }        
+    
+    public double getAverageParticipants() {
+        Statistics statistics = new Statistics();
+        statistics.addValues(this.eventService.getParticipantsList());
+        return (double) Math.round(statistics.getMean());
+    }        
+        
+    public double getAveragePrice() {
+        Statistics statistics = new Statistics();
+        statistics.addValues(this.eventService.getPricesList());
+        return (double) Math.round(statistics.getMean());
+    }        
+    
+    public double getOpenedRate() {                
+        return Math.round(createRegressionModelForOpenedAndNotOpened().getXRate() * 100);
+    }        
+    
+    public double getNotOpenedRate() {
+        return Math.round(createRegressionModelForOpenedAndNotOpened().getYRate() * 100);
+    }        
     
     public double getMalesRate() {            
         return Math.round(createRegressionModelForMalesAndFemales().getXRate() * 100);
@@ -129,14 +141,12 @@ public class AnalyticsService {
     
     public double getMedianRevenue() {        
         return Math.round(this.createRegressionModelForPricesAndParticipants().getMedianOfProductOfValuePairs());        
-    }
-    
-    public double getModeRevenue() {
-        return this.createRegressionModelForPricesAndParticipants().getModeOfProductOfValuePairs();        
-    }
+    }        
     
     public double getCorrelationBetweenParticipantsAndOpenedAccounts() {
-        return this.createRegressionModelForPricesAndParticipants().getCorrelation();
+        double correlation = this.createRegressionModelForParticipantsAndOpenedAccounts().getCorrelation() * 10000;
+        correlation = Math.round(correlation);
+        return correlation / 10000;
     }        
     
     public double predictPriceByParticipants(Integer x) {

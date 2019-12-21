@@ -1,5 +1,6 @@
 package analytica.domain;
 
+import analytica.service.AccountService;
 import analytica.domain.FakeSQLAccountDao;
 import org.junit.Before;
 import org.junit.Test;
