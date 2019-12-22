@@ -82,4 +82,15 @@ Both Account and Event have corresponding classes for saving and retrieving data
 
 ## Structural deficiencies
 
-Some of the input validation messages could be more specific and specified for a specific input field.
+__Input validation__
+- Some of the input validation messages could be more specific and specified for a specific input field.
+- Validation is done only on the user interface level
+
+__User interface__
+- Dashboard class could be divided into several smaller classes that are responsible for the individual UI components
+- Input validation could be done in one static class
+- Rendering logic for more than 16 events in EventList could be done more properly by pagination (or page scroll)
+  - Pagination could be done on the database layer
+
+__AnalyticsService class__
+- Additional class could be created to be responsible for creation of regression models
