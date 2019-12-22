@@ -17,7 +17,16 @@ public class EventServiceTest {
             
     @Before
     public void setUp() {
-        this.service = new EventService(new FakeSQLEventDao());
+        this.service = new EventService(new FakeSQLEventDao());        
+    }
+    
+    public void initializeEventService() {
+        Event event1 = new Event("Test1", 0.0, 0, 0, 0, 0, 0);
+        Event event2 = new Event("Test2", 0.0, 0, 0, 0, 0, 0);
+        Event event3 = new Event("Test3", 0.0, 0, 0, 0, 0, 0);
+        this.service.createEvent(event1);
+        this.service.createEvent(event2);
+        this.service.createEvent(event3);
     }
     
     @Test
@@ -46,62 +55,32 @@ public class EventServiceTest {
     }
     
     @Test
-    public void getEventsReturnsAListOfEventsOfTheRigthSize() {
-        Event event1 = new Event("Test1", 0.0, 0, 0, 0, 0, 0);
-        Event event2 = new Event("Test2", 0.0, 0, 0, 0, 0, 0);
-        Event event3 = new Event("Test3", 0.0, 0, 0, 0, 0, 0);
-        this.service.createEvent(event1);
-        this.service.createEvent(event2);
-        this.service.createEvent(event3);
-        
+    public void getEventsReturnsAListOfEventsOfTheRigthSize() {        
+        this.initializeEventService();        
         assertEquals(3, this.service.getEvents().size());
     }
     
     @Test
     public void getParticipantsReturnsAListOfTheRightSize() {
-        Event event1 = new Event("Test1", 0.0, 0, 0, 0, 0, 0);
-        Event event2 = new Event("Test2", 0.0, 0, 0, 0, 0, 0);
-        Event event3 = new Event("Test3", 0.0, 0, 0, 0, 0, 0);
-        this.service.createEvent(event1);
-        this.service.createEvent(event2);
-        this.service.createEvent(event3);
-        
+        this.initializeEventService();        
         assertEquals(3, this.service.getParticipantsList().size());
     }
     
     @Test
     public void getPricesReturnsAListOfTheRightSize() {
-        Event event1 = new Event("Test1", 0.0, 0, 0, 0, 0, 0);
-        Event event2 = new Event("Test2", 0.0, 0, 0, 0, 0, 0);
-        Event event3 = new Event("Test3", 0.0, 0, 0, 0, 0, 0);
-        this.service.createEvent(event1);
-        this.service.createEvent(event2);
-        this.service.createEvent(event3);
-        
+        this.initializeEventService();
         assertEquals(3, this.service.getPricesList().size());
     }
     
     @Test
     public void getOpenedReturnsAListOfTheRightSize() {
-        Event event1 = new Event("Test1", 0.0, 0, 0, 0, 0, 0);
-        Event event2 = new Event("Test2", 0.0, 0, 0, 0, 0, 0);
-        Event event3 = new Event("Test3", 0.0, 0, 0, 0, 0, 0);
-        this.service.createEvent(event1);
-        this.service.createEvent(event2);
-        this.service.createEvent(event3);
-        
+        this.initializeEventService();        
         assertEquals(3, this.service.getOpenedList().size());
     }
     
     @Test
     public void getNotOpenedReturnsAListOfTheRightSize() {
-        Event event1 = new Event("Test1", 0.0, 0, 0, 0, 0, 0);
-        Event event2 = new Event("Test2", 0.0, 0, 0, 0, 0, 0);
-        Event event3 = new Event("Test3", 0.0, 0, 0, 0, 0, 0);
-        this.service.createEvent(event1);
-        this.service.createEvent(event2);
-        this.service.createEvent(event3);
-        
+        this.initializeEventService();
         assertEquals(3, this.service.getNotOpenedList().size());
     }
     

@@ -30,9 +30,13 @@ Domain package contains four classes, Account, Event, Statistics and Regression:
 
 ![class diagram](https://github.com/MikaelTornwall/ot-harjoitustyo/blob/master/documentation/images/domainclasses.png?raw=true)
 
-Account and Event classes are responsible for the implementing the representing the entity data. Statistics and Regression classes are responsible for making models and calculations from the event data.
+Account and Event classes are responsible for the implementation and representation of the entity data. Statistics and Regression classes are responsible for making models and calculations from the event data.
 
-AccountService class is responsible for the functional application logic related to account class. It contains several methods, that connect user inputs and request to the DAO classes, AccountDAO, and through them to the database. It is responsible account management logic by fetching information from the database using DAO interfaces with given parameters and returning this data to the user interface.
+AccountService class is responsible for the application logic related to the Account class. It contains several methods, that connect user inputs and requests to the SQLAccountDao class, and through it to the database in form of database queries. It is responsible for account management logic by fetching information from the database with given parameters and delivering this data to the user interface.
+
+EventService class is responsible for the application logic related to the Event class. It contains several methods, that connect user inputs and requests to the SQLEventDao class, and through it to the database in form of database queries. It is responsible for event management logic by fetching information from the database with given parameters and delivering this data to the user interface.
+
+AnalyticsService class invokes and delivers calculations made using event data, that it retrieves using services provided by the EventService class, for the use of Statistics and Regression classes, which in turn use this data to conduct relevant calculations through specific methods within the AnalyticsService class. AnalyticsService defines which event data is to be used and its methods prepare this data for the Statistics and Regression classes.
 
 Below is a more detailed class/package diagram representing the most relevant relationships between domain, service and dao packages and classes within these packages:
 
