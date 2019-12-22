@@ -48,7 +48,7 @@ Below is a more detailed class/package diagram representing the most relevant re
 
 User can be created by clicking the Create new user button on the application login page and then feeding in username and password. After the user clicks the Add button, the following actions are going to be executed to create a new user account:
 
-![class diagram](https://github.com/MikaelTornwall/ot-harjoitustyo/blob/master/documentation/images/analytica_sequence.png?raw=true)
+![class diagram](https://github.com/MikaelTornwall/ot-harjoitustyo/blob/master/documentation/images/create_sequence.png?raw=true)
 
 After this the user will be directed to the login scene, where they can use their newly created credential to access the tool.
 
@@ -56,11 +56,15 @@ After this the user will be directed to the login scene, where they can use thei
 
 User can log in on the login view by typing valid credentials into login form and clicking login button. After the user click the Login button, the following actions are going to be executed for the user to be able to access the tool:
 
+![class diagram](https://github.com/MikaelTornwall/ot-harjoitustyo/blob/master/documentation/images/login_sequence.png?raw=true)
+
 After this the user will be directed to the application dashboard.
 
 ### New event
 
 User can create a new event in the events view by typing in the event information and clicking the Add event button. After clicking the button, the following actions are being executed to create a new event:
+
+![class diagram](https://github.com/MikaelTornwall/ot-harjoitustyo/blob/master/documentation/images/newevent_sequence.png?raw=true)
 
 After successful event creation user can view event details in the Events view and view updated statistics on the dashboard view.
 
@@ -77,3 +81,5 @@ These two tables are independent, i.e. there is no dependency relationship betwe
 Both Account and Event have corresponding classes for saving and retrieving data to and from the SQL database. These classes are SQLAccountDao, which implements the AccountDao interface, and SQLEventDao, which implements the EventDao interface.
 
 ## Structural deficiencies
+
+Some of the input validation messages could be more specific and specified for a specific input field.

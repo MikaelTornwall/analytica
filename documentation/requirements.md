@@ -1,8 +1,8 @@
-# Requirement specification
+# Application requirements
 
 ## Description
 
-Application is intended for the use of an imaginary company that organizes investment events.
+The application is intended for the use of an imaginary company that organizes investment events.
 It provides an interface for collecting and analyzing data that is most relevant for their core business.
 
 For each event they can record
@@ -32,30 +32,32 @@ __Before logging in__
   - [x] If login is successful user will be directed to the application
   - [x] If login is unsuccessful user will receive a notification and can try again
 
-  __After logging in__  
+__After logging in__  
 
-  - [x] User can select preferred view from the menu
+- [x] User can select preferred view from the menu
 
-  _Dashboard_  
-  - [x] User will see a summary and key KPIs calculated from the event data and can predict future values. E.g.
-    - Total revenue
-    - Total participants
-    - Total opened accounts
-    - Average ticket price
-    - Average revenue KPIs
-    - Correlation between number of participants and number of opened accounts
-    - Field for predicting future ticket prices, number of participants and revenue by participants or by ticket price
+_Dashboard_  
+- [x] User will see a summary and key KPIs calculated from the event data and can predict future values. E.g.
+  - Total revenue
+  - Total participants
+  - Total opened accounts
+  - Average ticket price
+  - Average revenue KPIs
+  - Correlation between number of participants and number of opened accounts
+  - Field for predicting future ticket prices, number of participants and revenue by participants or by ticket price
 
-  _New event_
+_New event_
 
-  - [x] User can input event details
-  - [x] User can create new event
+- [x] User can input event details
+- [x] User can create new event
 
-  _Events_
+_Events_
 
-  - [x] User can view at most 20 latest events with their specific details (older event details are not important to view, but the data is relevant for calculations)
+- [x] User can view at most 20 latest events with their specific details (older event details are not important to view, but the data is relevant for calculations)
 
 ## User interface
+
+Below are displayed user interface components after logging in:
 
 __Dashboard__
 
@@ -83,4 +85,4 @@ __New event__
 
 ## Environmental constrains
 
-The application should work on both MacOS and Linux systems.
+The application works on MacOS and Linux systems.

@@ -1,4 +1,4 @@
-# Testing Documentation
+# Testing documentation
 
 The application has been tested using JUnit testing library with unit and integration tests. System level testing has been done manually on MacOS and Linux environments.
 
@@ -34,4 +34,4 @@ All the features described in the [requirements](https://github.com/MikaelTornwa
 
 ### Existing quality concerns
 
-Some of the input validation messages could be more specific and specified for a specific input field.
+Input validation is done on the user interface level. Hence system-wise for example Event class allows a situation where the number of opened and not opened accounts does not have to sum up to the number of participants. The data integrity is important for accurate calculations and predictions. This is not a major concern, since the only way to input these values is through the graphical user interface. However, from the quality standpoint this is something that could be enhanced.
