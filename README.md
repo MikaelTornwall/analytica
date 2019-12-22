@@ -5,11 +5,13 @@ It provides an interface for collecting and analyzing data that is most relevant
 
 ## 1. Documentation
 
+[Instructions](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/documentation/instructions.md)
+
 [Requirements](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/documentation/requirements.md)
 
 [Architecture](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/documentation/architecture.md)
 
-[Instructions](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/documentation/instructions.md)
+[Testing](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/documentation/testing.md)
 
 [Work hour log](https://github.com/MikaelTornwall/ot-harjoitustyo/tree/master/documentation/workhours.md)
 
@@ -73,3 +75,5 @@ Then open file _target/site/apidocs/index.html_ in your browser to see the resul
 [Week 5](https://github.com/MikaelTornwall/ot-harjoitustyo/releases/tag/week5)
 
 [Week 6](https://github.com/MikaelTornwall/ot-harjoitustyo/releases/tag/week6)
+
+[Final release](https://github.com/MikaelTornwall/ot-harjoitustyo/releases/tag/loppupalautus)
