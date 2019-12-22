@@ -7,6 +7,9 @@
 /analytica/nbproject/
 /analytica/.DS_Store/
 /.DS_Store/
+._.DS_Store
+**/.DS_Store
+**/._.DS_Store
 /analytica/analytica_db.mv.db
 /analytica/analytica_db.trace.db
 *Db.*

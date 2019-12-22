@@ -16,7 +16,7 @@ import javafx.geometry.Insets;
 
 public class AnalyticaUI extends Application {     
     private final int WIDTH = 1100;
-    private final int HEIGHT = 600;
+    private final int HEIGHT = 700;
         
     private Menu menu;
     

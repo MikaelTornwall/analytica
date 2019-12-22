@@ -82,14 +82,16 @@ public class EventList {
                 pane.add(new Text(Integer.toString(events.get(i).getFemales())), 6, i + 2);            
             }
         } else {
+            int j = 2;
             for (int i = this.events.size() - 20; i < this.events.size(); i++) {
-                pane.add(new Text(events.get(i).getName()), 0, i + 2);
-                pane.add(new Text(Double.toString(events.get(i).getPrice())), 1, i + 2);            
-                pane.add(new Text(Integer.toString(events.get(i).getParticipants())), 2, i + 2);            
-                pane.add(new Text(Integer.toString(events.get(i).getOpenedAccount())), 3, i + 2);            
-                pane.add(new Text(Integer.toString(events.get(i).getDidNotOpenAccount())), 4, i + 2);            
-                pane.add(new Text(Integer.toString(events.get(i).getMales())), 5, i + 2);            
-                pane.add(new Text(Integer.toString(events.get(i).getFemales())), 6, i + 2);            
+                pane.add(new Text(events.get(i).getName()), 0, j);
+                pane.add(new Text(Double.toString(events.get(i).getPrice())), 1, j);            
+                pane.add(new Text(Integer.toString(events.get(i).getParticipants())), 2, j);            
+                pane.add(new Text(Integer.toString(events.get(i).getOpenedAccount())), 3, j);            
+                pane.add(new Text(Integer.toString(events.get(i).getDidNotOpenAccount())), 4, j);            
+                pane.add(new Text(Integer.toString(events.get(i).getMales())), 5, j);            
+                pane.add(new Text(Integer.toString(events.get(i).getFemales())), 6, j);
+                j++;
             }
         }
                 
