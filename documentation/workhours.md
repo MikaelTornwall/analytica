@@ -19,4 +19,4 @@
 | 20.12 | 6        | Create dashboard and event list UIs, update AnalyticsService |
 | 21.12 | 8        | Update UI and related methods in AnalyticsService (most of UI event handling) and input validation, more tests, instructions and requirements |
 | 22.12 | 8        | Create more tests for EventService, update architecture, testing and requirements documentation, create diagrams |
-| total | 67.5     |       |
+| total | 75.5     |       |
