@@ -6,7 +6,8 @@ import analytica.dao.EventDao;
 import analytica.domain.Event;
 
 /**
- *
+ * EventService class
+ * 
  * @author Mikael Törnwall
  */
 

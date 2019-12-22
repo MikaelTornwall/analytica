@@ -17,7 +17,7 @@ import javafx.geometry.Insets;
 /**
  * Register class is responsible for generating and managing register component
  * 
- * @return true if input data is ok, otherwise false
+ * @author Mikael Törnwall
  */
 
 public class Register {

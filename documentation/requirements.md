@@ -12,11 +12,11 @@ For each event they can record
 - How many of the participants opened an investment portfolio account at the event
 - How many male and female participants were in the event
 
-With this information they can calculate key figures that will help the company in data-driven future business planning.
+With this information they can calculate key figures that will help the company in data-driven business planning.
 
 ## Users
 
-Currently the application is intended only for the internal use within the company, so only one user role is required. Each user is able to access all the data, since all the event information is relevant to everyone within the company.
+Currently the application is intended only for internal use within the company, so only one user role is required. Each user is able to access all the data, since all the event information is relevant to everyone within the company.
 
 ## Features
 

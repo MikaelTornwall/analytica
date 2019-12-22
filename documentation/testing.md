@@ -1,6 +1,6 @@
 # Testing documentation
 
-The application has been tested using JUnit testing library with unit and integration tests. System level testing has been done manually on MacOS and Linux environments.
+The application has been tested using JUnit testing library with unit and integration tests. System level testing has been done manually in MacOS and Linux environments.
 
 ## Unit and integration testing
 
@@ -16,17 +16,17 @@ The application uses a test database, _analytica_test_db.mv.db_ for testing dao 
 
 ### Test coverage
 
-Test coverage on the application level 85%. Lowest test coverage is in Event class which is due to the large amount of getters and setters that are not being tested nor reached by the integrations tests. Below is the test coverage report generated with Jacoco:
+The test coverage on the application level is 85%. The lowest test coverage is in the Event class which is due to the large amount of getters and setters that are not being tested nor reached by the integrations tests. Below is the test coverage report generated with Jacoco:
 
 ![test coverage](https://github.com/MikaelTornwall/ot-harjoitustyo/blob/master/documentation/images/coverage.png?raw=true)
 
 ## System level testing
 
-System level testing has been conducted manually on MacOS Mojave 10.14.6 and Linux environments.
+System level testing has been conducted manually in MacOS Mojave 10.14.6 and Linux environments.
 
 ### Installation
 
-The application has been downloaded and tested as the [instructions](https://github.com/MikaelTornwall/ot-harjoitustyo/blob/master/documentation/instructions.md) suggests. This included launching the application without an existing database so that the application had to create a new database and database tables.
+The application has been downloaded and tested as the [instructions](https://github.com/MikaelTornwall/ot-harjoitustyo/blob/master/documentation/instructions.md) suggest. This included launching the application without an existing database so that the application had to create a new database and database tables.
 
 ### Features
 
@@ -34,4 +34,4 @@ All the features described in the [requirements](https://github.com/MikaelTornwa
 
 ### Existing quality concerns
 
-Input validation is done on the user interface level. Hence system-wise for example Event class allows a situation where the number of opened and not opened accounts does not have to sum up to the number of participants. The data integrity is important for accurate calculations and predictions. This is not a major concern, since the only way to input these values is through the graphical user interface. However, from the quality standpoint this is something that could be enhanced.
+Input validation is done on the user interface level. Hence system-wise for example Event class allows a situation where the number of opened and not opened accounts does not have to sum up to the number of participants. The data integrity is important for accurate calculations and predictions. This is not a major concern, since the only way to input these values is through the graphical user interface. However, from a quality standpoint this is something that could be enhanced.

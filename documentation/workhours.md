@@ -18,5 +18,5 @@
 | 19.12 | 9        | Update regression class and regression tests, create AnalyticaService class and tests, build dashboard and eventlist UIs |
 | 20.12 | 6        | Create dashboard and event list UIs, update AnalyticsService |
 | 21.12 | 8        | Update UI and related methods in AnalyticsService (most of UI event handling) and input validation, more tests, instructions and requirements |
-| 22.12 | 8        | Create more tests for EventService, update architecture, testing and requirements documentation, create diagrams |
-| total | 75.5     |       |
+| 22.12 | 10        | Create more tests for EventService, update architecture, testing and requirements documentation, create diagrams, update javadocs, fix typos, final fixes |
+| total | 77.5     |       |

@@ -5,7 +5,8 @@ import analytica.domain.Statistics;
 import java.util.List;
 
 /**
- *
+ * AnalyticsService class
+ * 
  * @author Mikael Törnwall
  */
 
@@ -276,6 +277,7 @@ public class AnalyticsService {
     /**
      * Method uses the generated regression model for getting the predicted price in terms of number of participants
      *      
+     * @param x is a double value
      * @return double value
      */
     
@@ -286,6 +288,7 @@ public class AnalyticsService {
     /**
      * Method uses the generated regression model for getting the predicted number of participantsin terms of price
      *      
+     * @param x is a double value
      * @return double value
      */
     
@@ -296,6 +299,7 @@ public class AnalyticsService {
     /**
      * Method uses the generated regression model for getting the predicted revenue in terms of number of participants
      *      
+     * @param x is a double value
      * @return double value
      */
     
@@ -305,7 +309,8 @@ public class AnalyticsService {
     
     /**
      * Method uses the generated regression model for getting the predicted revenue in terms of price
-     *      
+     *     
+     * @param x is a double value
      * @return double value
      */
     

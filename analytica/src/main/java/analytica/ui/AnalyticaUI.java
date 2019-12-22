@@ -6,13 +6,18 @@ import analytica.service.AnalyticsService;
 import analytica.dao.SQLAccountDao;
 import analytica.dao.SQLEventDao;
 import analytica.db.SQLDatabase;
-import java.sql.SQLException;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.control.Button;
 import javafx.geometry.Insets;
+
+/**
+ * AnalyticaUI class is responsible for building the graphical user interface
+ * 
+ * @author Mikael Törnwall
+ */
 
 public class AnalyticaUI extends Application {     
     private final int WIDTH = 1100;
@@ -28,6 +33,12 @@ public class AnalyticaUI extends Application {
     private EventService eventService;  
     private AnalyticsService analyticsService;
     
+    /**
+     * Method replaces the class default constructor and initialized the class
+     * 
+     * @param path as a String
+     */
+    
     public void init(String path) {
         this.accountService = new AccountService(new SQLAccountDao(new SQLDatabase(path)));                                  
         this.eventService = new EventService(new SQLEventDao(new SQLDatabase(path)));                                  
@@ -35,8 +46,14 @@ public class AnalyticaUI extends Application {
         this.menu = new Menu();                
     }
     
+    /**
+     * Method generates the user interface and manages related operations
+     * 
+     * @param stage as a JavaFX Stage object
+     */
+    
     @Override
-    public void start(Stage stage) throws SQLException {
+    public void start(Stage stage) {
         
         // Initialization
         // Database path

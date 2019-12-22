@@ -2,6 +2,12 @@ package analytica.domain;
 
 import java.util.Objects;
 
+/** 
+ * Event class
+ * 
+ * @author Mikael Törnwall
+ */
+
 public class Event {
     private int id;
     private String name;

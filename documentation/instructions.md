@@ -26,15 +26,15 @@ If the chosen username is not taken you will be automatically directed to the lo
 
 ## Login
 
-Write your username and password and click "Login" button:
+Write your username and password and click the "Login" button:
 
 ![login form](https://github.com/MikaelTornwall/ot-harjoitustyo/blob/master/documentation/images/logininstruction.png?raw=true)
 
-If you inputted valid credentials, you will be directed to the application dashboard.
+If you input valid credentials, you will be directed to the application dashboard.
 
 ## Menu
 
-After logging in you will be directed to the dashboard view, where is also visible the application menu. By clicking the menu items you can access different views. These are dashboard, events and new event:
+After logging in you will be directed to the dashboard view, where the application menu is also visible. By clicking the menu buttons, you can access different views. These are dashboard, events and new event:
 
 ![menu](https://github.com/MikaelTornwall/ot-harjoitustyo/blob/master/documentation/images/menuinstruction.png?raw=true)
 
@@ -48,18 +48,18 @@ Application dashboard displays important values and KPIs calculated from the eve
 
 ![dashboard](https://github.com/MikaelTornwall/ot-harjoitustyo/blob/master/documentation/images/dashboardinstruction.png?raw=true)
 
-You can predict different values, such as price, number of participants or revenue by feeding data into the input field and clicking "Predict" button:
+You can predict different values, such as price, number of participants, or revenue by feeding data into the input field and clicking the "Predict" button:
 
 ![predict](https://github.com/MikaelTornwall/ot-harjoitustyo/blob/master/documentation/images/predictinstruction.png?raw=true)
 
 ## Events
 
-Events view displays the list of the 20 most recent events with all the event specific details:
+The Events view displays the list of the 20 most recent events with all the event specific details:
 
 ![events](https://github.com/MikaelTornwall/ot-harjoitustyo/blob/master/documentation/images/eventsinstruction.png?raw=true)
 
 ## New event
 
-New event view allows you to pass event details, which are the name of the event, price of the event, number of participants, number of people who opened an account, number of male participants and number of female participants:
+A New event view allows you to input the following event details: name of the event, price of the event, number of participants, number of people who opened an account, number of male participants and number of female participants:
 
 ![new event](https://github.com/MikaelTornwall/ot-harjoitustyo/blob/master/documentation/images/addeventinstruction.png?raw=true)

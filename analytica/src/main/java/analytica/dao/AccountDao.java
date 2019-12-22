@@ -1,13 +1,13 @@
 package analytica.dao;
 
+import analytica.domain.Account;
+import java.util.List;
+
 /**
  * Interface for Account dao 
  * 
  * @author Mikael Törnwall
  */
-
-import analytica.domain.Account;
-import java.util.List;
 
 public interface AccountDao {
     void create(Account account);

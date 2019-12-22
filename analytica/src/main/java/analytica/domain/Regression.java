@@ -1,5 +1,11 @@
 package analytica.domain;
 
+/** 
+ * Regression class contains linear regression and related methods for data analysis
+ * 
+ * @author Mikael Törnwall
+ */
+
 public class Regression {
         
     private double[] xValues;
@@ -119,6 +125,8 @@ public class Regression {
     /**
      * Method calculates the product of a given value pair
      *   
+     * @param x is a double value
+     * @param y is a double value
      * @return double value
      */
     

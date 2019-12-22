@@ -14,11 +14,11 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.geometry.Insets;
 
-    /**
-     * Dashboard is responsible for generating and managing the dashboard component
-     * 
-     * @author Mikael Törnwall
-     */
+/**
+ * Dashboard is responsible for generating and managing the dashboard component
+ * 
+ * @author Mikael Törnwall
+ */
 
 public class Dashboard {     
     private Parent dashboard;
@@ -199,7 +199,7 @@ public class Dashboard {
         Text ratesText = new Text("Rates");
         Text revenueText = new Text("Revenue KPIs");
         Text correlationText = new Text("Correlation between participants and opened accounts");        
-        Text predictOneText = new Text("Below you can price by no. of participants and no. of participants by price");
+        Text predictOneText = new Text("Below you can predict price by no. of participants and no. of participants by price");
         Text predictTwoText = new Text("Below you can predict future revenues by no. of participants or by price");
         
         generalText.setFont(Font.font("Arial", FontWeight.BOLD, 14));

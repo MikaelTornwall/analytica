@@ -6,7 +6,7 @@ The application structure follows a three layer architecture:
 
 ![package structure](https://github.com/MikaelTornwall/ot-harjoitustyo/blob/master/documentation/images/packagestructure.png?raw=true)
 
-Top layer is the graphical user interface that is built with JavaFX components. Middle-layer consists of domain classes Account and Event that are the application entities and Statistics and Regression that provide methods for calculations, and of service classes that handle the application logic. Top and middle layers use the bottom layer dao, that is responsible for saving and retrieving information to and from the database.
+The top layer is the graphical user interface that is built with JavaFX components. The middle-layer consists of domain classes Account and Event that are the application entities and Statistics and Regression that provide methods for calculations, and of service classes that handle the application logic. The top and middle layers use the bottom layer dao, that is responsible for saving and retrieving information to and from the database.
 
 ## User interface
 
@@ -26,17 +26,17 @@ The user interface is built within the class [analytica.ui.analyticaUI](https://
 
 ### Basic class structure
 
-Domain package contains four classes, Account, Event, Statistics and Regression:
+The domain package contains four classes, Account, Event, Statistics and Regression:
 
 ![class diagram](https://github.com/MikaelTornwall/ot-harjoitustyo/blob/master/documentation/images/domainclasses.png?raw=true)
 
-Account and Event classes are responsible for the implementation and representation of the entity data. Statistics and Regression classes are responsible for making models and calculations from the event data.
+The Account and Event classes are responsible for the implementation and representation of the entity data. Statistics and Regression classes are responsible for making models and calculations from the event data.
 
-AccountService class is responsible for the application logic related to the Account class. It contains several methods, that connect user inputs and requests to the SQLAccountDao class, and through it to the database in form of database queries. It is responsible for account management logic by fetching information from the database with given parameters and delivering this data to the user interface.
+The AccountService class is responsible for the application logic related to the Account class. It contains several methods, that connect user inputs and requests to the SQLAccountDao class, and through it to the database in form of database queries. It is responsible for account management logic by fetching information from the database with given parameters and delivering this data to the user interface.
 
-EventService class is responsible for the application logic related to the Event class. It contains several methods, that connect user inputs and requests to the SQLEventDao class, and through it to the database in form of database queries. It is responsible for event management logic by fetching information from the database with given parameters and delivering this data to the user interface.
+The EventService class is responsible for the application logic related to the Event class. It contains several methods, that connect user inputs and requests to the SQLEventDao class, and through it to the database in form of database queries. It is responsible for event management logic by fetching information from the database with given parameters and delivering this data to the user interface.
 
-AnalyticsService class invokes and delivers calculations made using event data, that it retrieves using services provided by the EventService class, for the use of Statistics and Regression classes, which in turn use this data to conduct relevant calculations through specific methods within the AnalyticsService class. AnalyticsService defines which event data is to be used and its methods prepare this data for the Statistics and Regression classes.
+The AnalyticsService class invokes and delivers calculations made using event data, that it retrieves using services provided by the EventService class, for the use of Statistics and Regression classes, which in turn use this data to conduct relevant calculations through specific methods within the AnalyticsService class. AnalyticsService defines which event data is to be used and its methods prepare this data for the Statistics and Regression classes.
 
 Below is a more detailed class/package diagram representing the most relevant relationships between domain, service and dao packages and classes within these packages:
 
@@ -46,27 +46,27 @@ Below is a more detailed class/package diagram representing the most relevant re
 
 ### Create user
 
-User can be created by clicking the Create new user button on the application login page and then feeding in username and password. After the user clicks the Add button, the following actions are going to be executed to create a new user account:
+A User can be created by clicking the Create new user button on the application login page and then feeding in username and password. After the user clicks the Add button, the following actions are going to be executed to create a new user account:
 
 ![class diagram](https://github.com/MikaelTornwall/ot-harjoitustyo/blob/master/documentation/images/create_sequence.png?raw=true)
 
-After this the user will be directed to the login scene, where they can use their newly created credential to access the tool.
+After this, the user will be directed to the login scene, where they can use their newly created credential to access the tool.
 
 ### Login
 
-User can log in on the login view by typing valid credentials into login form and clicking login button. After the user click the Login button, the following actions are going to be executed for the user to be able to access the tool:
+The User can log in on the login view by typing valid credentials into login form and clicking login button. After the user clicks the Login button, the following actions are going to be executed for the user to be able to access the tool:
 
 ![class diagram](https://github.com/MikaelTornwall/ot-harjoitustyo/blob/master/documentation/images/login_sequence.png?raw=true)
 
-After this the user will be directed to the application dashboard.
+After this, the user will be directed to the application dashboard.
 
 ### New event
 
-User can create a new event in the events view by typing in the event information and clicking the Add event button. After clicking the button, the following actions are being executed to create a new event:
+The User can create a new event in the events view by typing the event information and clicking the Add event button. After clicking the button, the following actions are being executed to create a new event:
 
 ![class diagram](https://github.com/MikaelTornwall/ot-harjoitustyo/blob/master/documentation/images/newevent_sequence.png?raw=true)
 
-After successful event creation user can view event details in the Events view and view updated statistics on the dashboard view.
+After a successful event creation the user can view event details in the Events view and view updated statistics on the dashboard view.
 
 ## Database
 
@@ -76,7 +76,7 @@ The database has two database tables, Account and Event, which contain the follo
 
 ![database tables](https://github.com/MikaelTornwall/ot-harjoitustyo/blob/master/documentation/images/databasetables.png?raw=true)
 
-These two tables are independent, i.e. there is no dependency relationship between these two tables through foreign keys.
+These two tables are independent, i.e. there is no dependency relationship between the two tables through foreign keys.
 
 Both Account and Event have corresponding classes for saving and retrieving data to and from the SQL database. These classes are SQLAccountDao, which implements the AccountDao interface, and SQLEventDao, which implements the EventDao interface.
 
@@ -93,4 +93,4 @@ __User interface__
   - Pagination could be done on the database layer
 
 __AnalyticsService class__
-- Additional class could be created to be responsible for creation of regression models
+- An additional class could be created to be responsible for the creation of regression models
